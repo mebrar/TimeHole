@@ -8,6 +8,7 @@ import java.lang.String;
 import java.util.ArrayList;
 
 public class Activity {
+
     private String name;
     private boolean done;
     private long duration;
@@ -66,11 +67,15 @@ public class Activity {
         this.duration = duration;
     }
 
+    /**
+     * setTags methodu kullanici tagleri degistirmek istediginde en bastan secerse yararli
+     * ancak sadece ekstra bir tag eklemek istedigi durumlar icin tag ekleme methodu gerekli
+     **/
+
     public void setTags(ArrayList<Tag> tags) {
         this.tags = tags;
     }
-    /** setTags methodu kullan�c� tagleri de�i�tirmek istedi�inde en ba�tan se�erse yararl�
-    ancak sadece ekstra bir tag eklemek istedi�i durumlar i�in tag ekleme methodu gerekli**/
+
     public void addTag(Tag tag)
     {
         tags.add(tag);

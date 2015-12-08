@@ -5,5 +5,5 @@
 package com.beter.timehole.core;
 
 public enum Priority {
-    
+    important, more_important, most_important
 }

@@ -12,14 +12,14 @@ import android.view.ViewGroup;
 
 import com.beter.timehole.R;
 
-public class ReminderFragment extends Fragment {
+public class TagsFragment extends Fragment {
 
-    public ReminderFragment() {
+    public TagsFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.reminder_fragment, container, false);
+        return inflater.inflate(R.layout.tags_fragment, container, false);
     }
 }

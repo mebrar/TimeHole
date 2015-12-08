@@ -11,19 +11,36 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v4.app.*;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.beter.timehole.fragments.ActivitiesFragment;
+import com.beter.timehole.fragments.HelpFragment;
+import com.beter.timehole.fragments.MainFragment;
+import com.beter.timehole.fragments.ReminderFragment;
+import com.beter.timehole.fragments.StatisticsFragment;
+import com.beter.timehole.fragments.TagsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     static FragmentManager fragment_manager;
+    static Toolbar toolbar;
+    static NavigationView navigationView;
+    static FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        MainFragment mainScreenFragment = new MainFragment();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, mainScreenFragment);
+        fragmentTransaction.commit();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -41,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -82,21 +99,42 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         fragment_manager = getFragmentManager();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_home) {
+            MainFragment mainScreenFragment = new MainFragment();
+            fragmentTransaction.replace(R.id.fragment_container, mainScreenFragment);
+            fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_activities) {
+            ActivitiesFragment activitiesScreenFragment = new ActivitiesFragment();
+            fragmentTransaction.replace(R.id.fragment_container, activitiesScreenFragment);
+            fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_reminder) {
+            ReminderFragment reminderScreenFragment = new ReminderFragment();
+            fragmentTransaction.replace(R.id.fragment_container, reminderScreenFragment);
+            fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_statistics) {
+            StatisticsFragment statisticsScreenFragment = new StatisticsFragment();
+            fragmentTransaction.replace(R.id.fragment_container, statisticsScreenFragment);
+            fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_tags) {
+            TagsFragment tagsScreenFragment = new TagsFragment();
+            fragmentTransaction.replace(R.id.fragment_container, tagsScreenFragment);
+            fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_help) {
+            HelpFragment helpScreenFragment = new HelpFragment();
+            fragmentTransaction.replace(R.id.fragment_container, helpScreenFragment);
+            fragmentTransaction.commit();
+        }
+        else if (id == R.id.nav_settings) {
+            // activity inflater will come here...
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
