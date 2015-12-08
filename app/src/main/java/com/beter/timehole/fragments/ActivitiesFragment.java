@@ -6,4 +6,5 @@ import android.app.Fragment;
  * Created by Ebrar on 08/12/15.
  */
 public class ActivitiesFragment extends Fragment {
+
 }
