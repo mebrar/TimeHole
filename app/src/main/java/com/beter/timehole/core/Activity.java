@@ -16,7 +16,7 @@ public class Activity {
     private ArrayList<Tag> tags = null;
     private String note;
 
-    public Activity(String name, boolean done, long duration, String startDate, String finishDate, ArrayList<Tag> tags, String note){
+    public Activity(String name, boolean done, int duration, String startDate, String finishDate, ArrayList<Tag> tags, String note){
         this.name = name;
         this.done = done;
         this.duration = duration;
