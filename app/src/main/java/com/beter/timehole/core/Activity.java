@@ -4,4 +4,5 @@
 package com.beter.timehole.core;
 
 public class Activity {
+    int x = 56;
 }
