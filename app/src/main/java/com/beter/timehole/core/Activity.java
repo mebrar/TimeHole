@@ -16,7 +16,7 @@ public class Activity {
     private ArrayList<Tag> tags = null;
     private String note;
 
-    public Activity(name,boolean done, long duration,String startDate,String finishDate,ArrayList<Tag> tags,note){
+    public Activity(String name, boolean done, long duration, String startDate, String finishDate, ArrayList<Tag> tags, String note){
         this.name = name;
         this.done = done;
         this.duration = duration;
@@ -69,8 +69,8 @@ public class Activity {
     public void setTags(ArrayList<Tag> tags) {
         this.tags = tags;
     }
-    /** setTags methodu kullanýcý tagleri deðiþtirmek istediðinde en baþtan seçerse yararlý
-    ancak sadece ekstra bir tag eklemek istediði durumlar için tag ekleme methodu gerekli**/
+    /** setTags methodu kullanï¿½cï¿½ tagleri deï¿½iï¿½tirmek istediï¿½inde en baï¿½tan seï¿½erse yararlï¿½
+    ancak sadece ekstra bir tag eklemek istediï¿½i durumlar iï¿½in tag ekleme methodu gerekli**/
     public void addTag(Tag tag)
     {
         tags.add(tag);
@@ -88,5 +88,6 @@ public class Activity {
         {
             result+= tags.get(i)+" ";
         }
+        return result;
     }
 }
