@@ -1,3 +1,7 @@
+/**
+ * Created by Ebrar on 08/12/15.
+ */
+
 package com.beter.timehole.fragments;
 
 import android.content.Context;
@@ -15,15 +19,18 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.beter.timehole.core.Tag;
+import com.beter.timehole.R;
+import com.beter.timehole.core.*;
 
 
 import java.util.ArrayList;
 
-/**
- * Created by Ebrar on 08/12/15.
- */
+
 public class ActivitiesFragment extends Fragment {
+
+    public ActivitiesFragment() {
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,9 @@ public class ActivitiesFragment extends Fragment {
 
     @Nullable
     @Override
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.help_fragment, container, false);
     }
+
+
 }
