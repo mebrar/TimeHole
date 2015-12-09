@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.app.Activity;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,23 +32,31 @@ public class ActivitiesFragment extends Fragment {
     public ActivitiesFragment() {
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Tag defaultTag = new Tag("tag1");
-        ArrayList<Tag> tags = null;
-        tags.add(defaultTag);
-        Activity activity1 = new Activity("ders",true,4,"19 08 1996","08 12 2015",tags,"Must do it carefully");
-        Activity[] doneActivities ={activity1};
-        ListAdapter DoneActivityList = new ArrayAdapter<Activity>(this,android.R.layout.simple_list_item_1,doneActivities);
-        ListView ListView1 = (ListView) findViewById(R.id.ListView1);
-    }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.help_fragment, container, false);
+        ArrayList<Tag> tags1= new ArrayList<Tag>();
+        tags1.add(new Tag("Çalışma"));
+
+        ArrayList<Tag> tags2= new ArrayList<Tag>();
+        tags2.add(new Tag("Eğlence"));
+
+        Activity doneSample = new Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptım");
+        Activity undoneSample = new Activity("ders",false,30,"13 30","14 00",tags2,"ben yapacağım");
+        View rootView = inflater.inflate(R.layout.activity_fragment, container, false);
+        ArrayList<Activity> doneActivities = new ArrayList<Activity>();
+        doneActivities.add(doneSample);
+        ListView doneList = (ListView) rootView.findViewById(R.id.listView1);
+        doneList.setAdapter(new ArrayAdapter<Activity>(getActivity(),R.layout.support_simple_spinner_dropdown_item,doneActivities));
+
+        ArrayList<Activity> undoneActivities = new ArrayList<Activity>();
+        undoneActivities.add(undoneSample);
+        ListView undoneList = (ListView) rootView.findViewById(R.id.listView1);
+        undoneList.setAdapter(new ArrayAdapter<Activity>(getActivity(),R.layout.support_simple_spinner_dropdown_item,undoneActivities));
+
+        return rootView;
     }
-
-
 }
+
