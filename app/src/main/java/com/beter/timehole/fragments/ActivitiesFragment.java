@@ -54,7 +54,8 @@ public class ActivitiesFragment extends Fragment {
         undoneActivities.add(undoneSample);
         undoneActivities.add(doneSample);
         ListView undoneList = (ListView) rootView.findViewById(R.id.listView2);
-        undoneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(),R.layout.simple_list_item_1,undoneActivities));// Ebrar bu haliyle sende de sıkıntı varsa tanımıyorsa 2. parametreye " R.layout.support_simple_spinner_dropdown_item " yazıp tekrar denesene.
+        undoneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(),
+                R.layout.support_simple_spinner_dropdown_item,undoneActivities));// Ebrar bu haliyle sende de sıkıntı varsa tanımıyorsa 2. parametreye " R.layout.support_simple_spinner_dropdown_item " yazıp tekrar denesene.
         return rootView;
     }
 
