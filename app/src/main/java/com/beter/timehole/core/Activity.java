@@ -68,8 +68,8 @@ public class Activity {
     }
 
     /**
-     * setTags methodu kullanici tagleri degistirmek istediginde en bastan secerse yararli
-     * ancak sadece ekstra bir tag eklemek istedigi durumlar icin tag ekleme methodu gerekli
+     * setTags methodu kullanıcı taglerı degıstırmek ıstedıgınde en bastan secerse yararlı
+     * ancak sadece ekstra bır tag eklemek ıstedıgı durumlar ıcın tag ekleme methodu gereklı
      **/
 
     public void setTags(ArrayList<Tag> tags) {
@@ -93,6 +93,6 @@ public class Activity {
         {
             result+= tags.get(i)+" ";
         }
-        return result;
+        return result+note;
     }
 }

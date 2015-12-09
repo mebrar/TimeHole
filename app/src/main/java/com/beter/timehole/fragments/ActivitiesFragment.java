@@ -52,7 +52,7 @@ public class ActivitiesFragment extends Fragment {
 
         ArrayList<com.beter.timehole.core.Activity> undoneActivities = new ArrayList<com.beter.timehole.core.Activity>();
         undoneActivities.add(undoneSample);
-        ListView undoneList = (ListView) rootView.findViewById(R.id.listView1);
+        ListView undoneList = (ListView) rootView.findViewById(R.id.listView2);
         undoneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(),R.layout.support_simple_spinner_dropdown_item,undoneActivities));
 
         return rootView;
