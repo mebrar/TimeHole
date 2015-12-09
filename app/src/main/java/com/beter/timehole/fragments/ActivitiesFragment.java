@@ -41,7 +41,7 @@ public class ActivitiesFragment extends Fragment {
 
         ArrayList<Tag> tags2= new ArrayList<Tag>();
         tags2.add(new Tag("Eglence"));
-
+        int rumeyza_test = 1;
         com.beter.timehole.core.Activity doneSample = new com.beter.timehole.core.Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptim");
         com.beter.timehole.core.Activity undoneSample = new com.beter.timehole.core.Activity("eğlence",false,30,"13 30","14 00",tags2,"ben yapacagim");
         View rootView = inflater.inflate(R.layout.activity_fragment, container, false);
