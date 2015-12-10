@@ -3,7 +3,7 @@
  */
 
 package com.beter.timehole.fragments;
-
+import java.lang.Class;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,12 +12,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.KeyEvent;
+import android.view.KeyEvent.Callback;
 import android.app.Activity;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import com.beter.timehole.R;
 import com.beter.timehole.core.*;
@@ -26,7 +29,7 @@ import com.beter.timehole.core.*;
 import java.util.ArrayList;
 
 
-public class ActivitiesFragment extends Fragment implements onBackPressed {
+public class ActivitiesFragment extends Fragment {
 
     public ActivitiesFragment() {
     }
@@ -57,7 +60,5 @@ public class ActivitiesFragment extends Fragment implements onBackPressed {
                 R.layout.support_simple_spinner_dropdown_item,undoneActivities));// Ebrar bu haliyle sende de sıkıntı varsa tanımıyorsa 2. parametreye " R.layout.support_simple_spinner_dropdown_item " yazıp tekrar denesene.
         return rootView;
     }
-    public void onBackPressed(){
 
-    }
 }
