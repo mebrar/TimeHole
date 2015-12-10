@@ -26,7 +26,7 @@ import com.beter.timehole.core.*;
 import java.util.ArrayList;
 
 
-public class ActivitiesFragment extends Fragment {
+public class ActivitiesFragment extends Fragment implements onBackPressed {
 
     public ActivitiesFragment() {
     }
@@ -57,6 +57,7 @@ public class ActivitiesFragment extends Fragment {
                 R.layout.support_simple_spinner_dropdown_item,undoneActivities));// Ebrar bu haliyle sende de sıkıntı varsa tanımıyorsa 2. parametreye " R.layout.support_simple_spinner_dropdown_item " yazıp tekrar denesene.
         return rootView;
     }
+    public void onBackPressed(){
 
-
+    }
 }
