@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity
     static NavigationView navigationView;
     static FragmentTransaction fragmentTransaction;
 
-    final int test = 1;
-    int sdgdfdfgdf = 23435435;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
