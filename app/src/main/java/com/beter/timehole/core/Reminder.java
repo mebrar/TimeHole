@@ -65,7 +65,6 @@ public class Reminder {
         tags.add(tag);
     }
 
-
     @Override
     public String toString() {
         String result = name + date;
