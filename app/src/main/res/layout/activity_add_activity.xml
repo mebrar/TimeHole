@@ -7,6 +7,130 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.beter.timehole.AddActivityActivity">
+    tools:context="com.beter.timehole.AddActivityActivity"
+    android:id="@+id/name">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Name : "
+        android:id="@+id/name"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameInput"
+        android:inputType="text"
+        android:layout_alignBottom="@+id/name"
+        android:layout_alignStart="@+id/durationInput" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Duration :"
+        android:id="@+id/duration"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/durationInput"
+        android:layout_alignBottom="@+id/duration"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/duration" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="StartDate :"
+        android:id="@+id/startDate"
+        android:layout_below="@+id/doneInput"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/startDateInput"
+        android:layout_alignBottom="@+id/startDate"
+        android:layout_alignEnd="@+id/durationInput"
+        android:layout_toEndOf="@+id/startDate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="FinishDate :"
+        android:id="@+id/finishDate"
+        android:layout_below="@+id/startDate"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/finishDateInput"
+        android:layout_alignBottom="@+id/finishDate"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/finishDate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tags :"
+        android:id="@+id/tag"
+        android:layout_below="@+id/finishDate"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="41dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Note"
+        android:id="@+id/note"
+        android:layout_below="@+id/tag"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noteInput"
+        android:layout_alignBottom="@+id/note"
+        android:layout_toEndOf="@+id/note" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done/Undone"
+        android:id="@+id/doneInput"
+        android:checked="false"
+        android:layout_below="@+id/durationInput"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="46dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Activity"
+        android:id="@+id/createButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/finishDate"
+        android:onClick="onClick" />
 
 </RelativeLayout>
