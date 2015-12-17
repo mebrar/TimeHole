@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.support.v4.app.*;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
+import android.content.Context;
 
 import com.beter.timehole.fragments.ActivitiesFragment;
 import com.beter.timehole.fragments.HelpFragment;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         MainFragment mainScreenFragment = new MainFragment();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, mainScreenFragment);
@@ -47,10 +50,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+             }
+         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

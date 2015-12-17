@@ -5,6 +5,7 @@
 package com.beter.timehole.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.beter.timehole.AddActivityActivity;
 import com.beter.timehole.R;
 import com.beter.timehole.core.*;
 
@@ -56,4 +58,5 @@ public class ActivitiesFragment extends Fragment  {
         undoneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(),R.layout.support_simple_spinner_dropdown_item,undoneActivities));// Ebrar bu haliyle sende de sıkıntı varsa tanımıyorsa 2. parametreye " R.layout.support_simple_spinner_dropdown_item " yazıp tekrar denesene.
         return rootView;
     }
+
 }

@@ -12,6 +12,7 @@ public class Reminder {
     private String note;
     private String notification;
     private ArrayList<Tag> tags;
+    Priority priority;
 
     public Reminder(Date date, String name, String note, String notification, ArrayList<Tag> tag) {
         this.date = date;
@@ -63,6 +64,14 @@ public class Reminder {
 
     public void addTag(Tag tag){
         tags.add(tag);
+    }
+
+    public void setPriority(Priority priority){
+        this.priority = priority;
+    }
+
+    public Priority getPriority(){
+        return priority;
     }
 
     @Override
