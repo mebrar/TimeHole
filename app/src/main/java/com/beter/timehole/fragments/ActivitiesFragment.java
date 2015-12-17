@@ -26,7 +26,7 @@ import com.beter.timehole.core.*;
 import java.util.ArrayList;
 
 
-public class ActivitiesFragment extends Fragment {
+public class ActivitiesFragment extends Fragment  {
 
     public ActivitiesFragment() {
     }
