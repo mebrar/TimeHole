@@ -5,7 +5,6 @@
 package com.beter.timehole.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,7 +19,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.beter.timehole.AddActivityActivity;
 import com.beter.timehole.R;
 import com.beter.timehole.core.*;
 
@@ -28,7 +26,7 @@ import com.beter.timehole.core.*;
 import java.util.ArrayList;
 
 
-public class ActivitiesFragment extends Fragment  {
+public class ActivitiesFragment extends Fragment {
 
     public ActivitiesFragment() {
     }
@@ -45,18 +43,15 @@ public class ActivitiesFragment extends Fragment  {
         tags2.add(new Tag("Eglence"));
 
         com.beter.timehole.core.Activity doneSample = new com.beter.timehole.core.Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptim");
-        com.beter.timehole.core.Activity undoneSample = new com.beter.timehole.core.Activity("eğlence",false,30,"13 30","14 00",tags2,"ben yapacagim");
-        View ActivitiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.activity_fragment, container, false);
         ArrayList<com.beter.timehole.core.Activity> doneActivities = new ArrayList<com.beter.timehole.core.Activity>();
         doneActivities.add(doneSample);
-        ListView doneList = (ListView) ActivitiesRootView.findViewById(R.id.listView1);
-        doneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(), R.layout.support_simple_spinner_dropdown_item, doneActivities));
 
-        ArrayList<com.beter.timehole.core.Activity> undoneActivities = new ArrayList<com.beter.timehole.core.Activity>();
-        undoneActivities.add(undoneSample);
-        ListView undoneList = (ListView) ActivitiesRootView.findViewById(R.id.listView2);
-        undoneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(),R.layout.support_simple_spinner_dropdown_item,undoneActivities));// Ebrar bu haliyle sende de sıkıntı varsa tanımıyorsa 2. parametreye " R.layout.support_simple_spinner_dropdown_item " yazıp tekrar denesene.
-        return ActivitiesRootView;
+        MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
+        ListView doneList = (ListView) rootView.findViewById(R.id.listView1);
+        doneList.setAdapter(adapter);
+
+        return rootView;
     }
 
 }

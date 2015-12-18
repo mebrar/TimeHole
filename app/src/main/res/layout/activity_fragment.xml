@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.beter.timehole.fragment.ActivitiesFragment"
-    android:background="#F9FBE7">
+    tools:context="com.beter.timehole.fragment.ActivitiesFragment">
 
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,23 +15,6 @@
         android:layout_marginTop="5dp"
         android:id="@+id/listView1"
         />
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_below="@+id/listView1"
-        android:layout_marginTop="30dp"
-        android:id="@+id/listView2"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Activity"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="115dp"
-        android:onClick="addActivityClicked" />
 
 </RelativeLayout>
 
