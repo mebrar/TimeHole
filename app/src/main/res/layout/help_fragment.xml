@@ -6,11 +6,9 @@
     android:background="#F9FBE7">
 
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="HELP"
-        android:id="@+id/textView3"
-        android:layout_gravity="center" />
+        android:id="@+id/helpList"
+        android:layout_gravity="left|top" />
 </FrameLayout>
