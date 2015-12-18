@@ -67,9 +67,9 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                                                     String text="";
                                                     list.get(positionForCheckBox).setDone(checkbox.isChecked());//Changes the value of the activity object's boolean
                                                     if(checkbox.isChecked())
-                                                        checkbox.setText("done");
+                                                        checkbox.setText("Done  ");
                                                     else
-                                                        checkbox.setText("undone");
+                                                        checkbox.setText("Undone");
                                                     // perform logic
                                                 }
             }
