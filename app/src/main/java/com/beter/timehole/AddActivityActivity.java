@@ -1,5 +1,6 @@
 package com.beter.timehole;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.app.Activity;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class AddActivityActivity extends AppCompatActivity {
@@ -40,9 +42,17 @@ public class AddActivityActivity extends AppCompatActivity {
          * In order the doneValue and durationValue to be used in the button listener they must be declared as final that is why their type is final.
          */
 
+        Context context = getApplicationContext();
+        CharSequence text = "Activity Created";
+        int duration = Toast.LENGTH_SHORT;
+
+        final Toast toast = Toast.makeText(context, text, duration);
+
+
         createButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v){
                     com.beter.timehole.core.Activity newActivity = new com.beter.timehole.core.Activity(nameText.getText().toString(),doneValue,durationValue,startDate.getText().toString(),finishDate.getText().toString(),null,note.getText().toString());
+                    toast.show();
                 }
         }
         );
