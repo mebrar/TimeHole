@@ -136,7 +136,8 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
         }
         else if (id == R.id.nav_settings) {
-            // activity inflater will come here...
+            Intent settingsInflater = new Intent(this, SettingsActivity.class);
+            startActivity(settingsInflater);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

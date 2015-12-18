@@ -36,7 +36,7 @@ public class ActivitiesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View ActivtiesrootView = inflater.inflate(R.layout.activity_fragment, container, false);
+        View ActivtiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
 
         ArrayList<Tag> tags1= new ArrayList<Tag>();
         tags1.add(new Tag("Calisma"));
@@ -51,10 +51,10 @@ public class ActivitiesFragment extends Fragment {
 
 
         MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
-        ListView doneList = (ListView) ActivtiesrootView.findViewById(R.id.listView1);
+        ListView doneList = (ListView) ActivtiesRootView.findViewById(R.id.listView1);
         doneList.setAdapter(adapter);
 
-        return ActivtiesrootView;
+        return ActivtiesRootView;
     }
 
 }
