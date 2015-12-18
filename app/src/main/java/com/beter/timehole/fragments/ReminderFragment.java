@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
 import com.beter.timehole.*;
 import com.beter.timehole.R;
 
@@ -26,7 +27,14 @@ public class ReminderFragment extends Fragment {
 
         View reminderRootView = inflater.inflate(R.layout.reminder_fragment, container, false);
 
-        Button add_reminder = (Button) reminderRootView.findViewById(R.id.reminderbutton);
+        Button addReminderButton = (Button) reminderRootView.findViewById(R.id.reminderbutton);
+        addReminderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AddReminderActivity.class);
+                startActivity(i);
+            }
+        });
         return reminderRootView;
     }
 

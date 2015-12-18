@@ -43,15 +43,15 @@ public class ActivitiesFragment extends Fragment {
         tags2.add(new Tag("Eglence"));
 
         com.beter.timehole.core.Activity doneSample = new com.beter.timehole.core.Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptim");
-        View rootView = inflater.inflate(R.layout.activity_fragment, container, false);
+        View ActivitiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
         ArrayList<com.beter.timehole.core.Activity> doneActivities = new ArrayList<com.beter.timehole.core.Activity>();
         doneActivities.add(doneSample);
 
         MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
-        ListView doneList = (ListView) rootView.findViewById(R.id.listView1);
+        ListView doneList = (ListView) ActivitiesRootView.findViewById(R.id.listView1);
         doneList.setAdapter(adapter);
 
-        return rootView;
+        return ActivitiesRootView;
     }
 
 }

@@ -22,7 +22,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddActivityActivity" />
-        <activity android:name=".AddReminderActivity"></activity>
+        <activity android:name=".AddReminderActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.beter.timehole.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

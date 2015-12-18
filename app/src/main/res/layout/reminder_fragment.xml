@@ -17,12 +17,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD REMINDER"
+        android:text="Add Reminder"
         android:id="@+id/reminderbutton"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="147dp"
-        android:onClick="addReminderClicked" />
+        android:layout_marginBottom="147dp" />
 
 </RelativeLayout>
