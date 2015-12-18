@@ -9,7 +9,9 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="36px"
         android:id="@+id/helpList"
-        android:layout_gravity="left|top" />
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="180px"
+        android:layout_marginRight="18dp" />
 </FrameLayout>
