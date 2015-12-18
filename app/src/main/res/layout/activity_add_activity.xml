@@ -132,6 +132,7 @@
         android:id="@+id/createButton"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/finishDate"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:allowUndo="true" />
 
 </RelativeLayout>
