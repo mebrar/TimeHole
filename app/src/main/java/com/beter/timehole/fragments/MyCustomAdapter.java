@@ -56,10 +56,14 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
          */
         final CheckBox checkbox = (CheckBox) view.findViewById(R.id.doneCheckBox);
         final int positionForCheckBox = position;
-        if(list.get(position).isDone())
+        if(list.get(position).isDone()) {
             checkbox.setChecked(true);
-        else
+            checkbox.setText("Done");
+        }
+        else {
             checkbox.setChecked(false);
+            checkbox.setText("Undone");
+        }
 
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                                 @Override
@@ -67,7 +71,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                                                     String text="";
                                                     list.get(positionForCheckBox).setDone(checkbox.isChecked());//Changes the value of the activity object's boolean
                                                     if(checkbox.isChecked())
-                                                        checkbox.setText("Done  ");
+                                                        checkbox.setText("Done");
                                                     else
                                                         checkbox.setText("Undone");
                                                     // perform logic

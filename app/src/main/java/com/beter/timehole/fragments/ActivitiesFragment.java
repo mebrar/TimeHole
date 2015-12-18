@@ -42,9 +42,9 @@ public class ActivitiesFragment extends Fragment {
         tags1.add(new Tag("Calisma"));
 
         com.beter.timehole.core.Activity doneSample = new com.beter.timehole.core.Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptim");
-        com.beter.timehole.core.Activity doneSample1 = new com.beter.timehole.core.Activity("ders1",false,70,"16 50","17 00",tags1,"ben yaptim1");
+        com.beter.timehole.core.Activity doneSample1 = new com.beter.timehole.core.Activity("ders1",false,70,"16 50","17 00",tags1,"ben yapcam1");
         com.beter.timehole.core.Activity doneSample2 = new com.beter.timehole.core.Activity("ders2",true,70,"16 50","17 00",tags1,"ben yaptim2");
-        com.beter.timehole.core.Activity doneSample3 = new com.beter.timehole.core.Activity("ders3",false,70,"16 50","17 00",tags1,"ben yaptim3");
+        com.beter.timehole.core.Activity doneSample3 = new com.beter.timehole.core.Activity("ders3",false,70,"16 50","17 00",tags1,"ben yapcam3");
 
         ArrayList<com.beter.timehole.core.Activity> doneActivities = new ArrayList<com.beter.timehole.core.Activity>();
         doneActivities.add(doneSample);
