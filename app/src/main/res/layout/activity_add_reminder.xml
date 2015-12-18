@@ -74,7 +74,8 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:orientation="vertical"
-        android:layout_below="@id/activity_transition_header">
+        android:layout_below="@id/activity_transition_header"
+        android:background="#EDE7F6">
 
         <TextView
             android:layout_width="match_parent"

@@ -9,7 +9,8 @@
         android:id="@+id/listView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/reminderListView" />
+        android:layout_above="@+id/reminderListView"
+        android:background="#EDE7F6" />
 
     <Button
         android:layout_width="wrap_content"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context="com.beter.timehole.HelpFragment"
-    android:background="#F9FBE7">
+    android:background="#EDE7F6">
 
 
     <ListView
