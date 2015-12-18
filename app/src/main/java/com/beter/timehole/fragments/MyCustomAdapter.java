@@ -62,11 +62,11 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             checkbox.setChecked(false);
 
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-               checkbox.setChecked(checkbox.isChecked());
-                    // perform logic
-                }
+                                                @Override
+                                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                    checkbox.setChecked(checkbox.isChecked());
+                                                    // perform logic
+                                                }
             }
 
         );
