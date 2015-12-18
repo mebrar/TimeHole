@@ -36,22 +36,25 @@ public class ActivitiesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View ActivtiesrootView = inflater.inflate(R.layout.activity_fragment, container, false);
+
         ArrayList<Tag> tags1= new ArrayList<Tag>();
         tags1.add(new Tag("Calisma"));
 
-        ArrayList<Tag> tags2= new ArrayList<Tag>();
-        tags2.add(new Tag("Eglence"));
-
         com.beter.timehole.core.Activity doneSample = new com.beter.timehole.core.Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptim");
-        View ActivitiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
+        com.beter.timehole.core.Activity doneSample1 = new com.beter.timehole.core.Activity("ders1",false,70,"16 50","17 00",tags1,"ben yaptim1");
+        com.beter.timehole.core.Activity doneSample2 = new com.beter.timehole.core.Activity("ders2",true,70,"16 50","17 00",tags1,"ben yaptim2");
+        com.beter.timehole.core.Activity doneSample3 = new com.beter.timehole.core.Activity("ders3",false,70,"16 50","17 00",tags1,"ben yaptim3");
+
         ArrayList<com.beter.timehole.core.Activity> doneActivities = new ArrayList<com.beter.timehole.core.Activity>();
         doneActivities.add(doneSample);
 
+
         MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
-        ListView doneList = (ListView) ActivitiesRootView.findViewById(R.id.listView1);
+        ListView doneList = (ListView) ActivtiesrootView.findViewById(R.id.listView1);
         doneList.setAdapter(adapter);
 
-        return ActivitiesRootView;
+        return ActivtiesrootView;
     }
 
 }
