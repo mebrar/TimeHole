@@ -19,6 +19,5 @@
     android:layout_alignParentRight="true"
     android:layout_centerVertical="true"
     android:layout_marginRight="5dp"
-    android:text="Done"
-        android:onClick="onCheckedChangeListener" />
+    android:text="Done" />
 </RelativeLayout>
