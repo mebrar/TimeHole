@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/libs/MaterialDesignLibrary/MaterialDesignLibrary.iml" filepath="$PROJECT_DIR$/libs/MaterialDesignLibrary/MaterialDesignLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/MaterialDesignLibrary/MaterialDesignLibrary.iml" filepath="$PROJECT_DIR$/libs/MaterialDesignLibrary/MaterialDesignLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/TimeHole.iml" filepath="$PROJECT_DIR$/TimeHole.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
