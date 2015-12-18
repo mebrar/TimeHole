@@ -55,7 +55,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
          * Takes the current item converts to string and puts in the current order in the list.
          */
         final CheckBox checkbox = (CheckBox) view.findViewById(R.id.doneCheckBox);
-
+        final int positionForCheckBox = position;
         if(list.get(position).isDone())
             checkbox.setChecked(true);
         else
@@ -64,7 +64,12 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                                 @Override
                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                                    checkbox.setChecked(checkbox.isChecked());
+                                                    String text="";
+                                                    list.get(positionForCheckBox).setDone(checkbox.isChecked());//Changes the value of the activity object's boolean
+                                                    if(checkbox.isChecked())
+                                                        checkbox.setText("done");
+                                                    else
+                                                        checkbox.setText("undone");
                                                     // perform logic
                                                 }
             }
