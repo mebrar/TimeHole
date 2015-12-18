@@ -88,11 +88,11 @@ public class Activity {
     @Override
     public String toString() {
         String result;
-        result= name + " " + finishDate + "\n" ;
+        result= name + " " + duration + "\n" ;
         for(int i=0;i<tags.size();i++)
         {
             result+= tags.get(i)+" ";
         }
-        return result+note;
+        return result;
     }
 }
