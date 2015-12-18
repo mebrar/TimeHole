@@ -27,7 +27,7 @@ public class TagsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View tagsView = inflater.inflate(R.layout.tags_fragment, container, false);
+        View tagsRootView = inflater.inflate(R.layout.tags_fragment, container, false);
         Tag sleep= new Tag("Sleep");
         Tag eating= new Tag("Eating");
         Tag study= new Tag("Study");
@@ -36,10 +36,10 @@ public class TagsFragment extends Fragment {
         Tag hobby= new Tag("Hobby");
         Tag[] tags = {sleep, eating, study, free_time, house_work, hobby};
 
-        ListView tagsList = (ListView) tagsView.findViewById(R.id.tagsListView);
+        ListView tagsList = (ListView) tagsRootView.findViewById(R.id.tagsListView);
         tagsList.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, tags));
 
-        return tagsView;
+        return tagsRootView;
     }
 
 

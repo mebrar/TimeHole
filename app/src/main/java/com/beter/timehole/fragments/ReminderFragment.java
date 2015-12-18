@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.beter.timehole.*;
 import com.beter.timehole.R;
@@ -22,7 +23,11 @@ public class ReminderFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.reminder_fragment, container, false);
+
+        View reminderRootView = inflater.inflate(R.layout.reminder_fragment, container, false);
+
+        Button add_reminder = (Button) reminderRootView.findViewById(R.id.reminderbutton);
+        return reminderRootView;
     }
 
 

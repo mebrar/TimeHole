@@ -21,6 +21,9 @@ public class StatisticsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.statistics_fragment, container, false);
+
+        View statisticsRootView = inflater.inflate(R.layout.statistics_fragment, container, false);
+
+        return statisticsRootView;
     }
 }

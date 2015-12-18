@@ -24,12 +24,12 @@ public class HelpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View helpView = inflater.inflate(R.layout.help_fragment, container, false);
+        View helpRootView = inflater.inflate(R.layout.help_fragment, container, false);
 
         String[] list = {"How to Use?", "FAQ", "End-User License Agreement", "Troubleshooting", "Send Feedback", "AboutUs"};
-        ListView helpList = (ListView) helpView.findViewById(R.id.helpList);
+        ListView helpList = (ListView) helpRootView.findViewById(R.id.helpList);
         helpList.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, list));
 
-        return helpView;
+        return helpRootView;
     }
 }
