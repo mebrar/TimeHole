@@ -48,6 +48,9 @@ public class ActivitiesFragment extends Fragment {
 
         ArrayList<com.beter.timehole.core.Activity> doneActivities = new ArrayList<com.beter.timehole.core.Activity>();
         doneActivities.add(doneSample);
+        doneActivities.add(doneSample1);
+        doneActivities.add(doneSample2);
+        doneActivities.add(doneSample3);
 
 
         MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
