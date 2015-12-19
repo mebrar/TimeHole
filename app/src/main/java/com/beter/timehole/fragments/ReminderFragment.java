@@ -18,13 +18,20 @@ import android.widget.ListAdapter;
 
 import com.beter.timehole.*;
 import com.beter.timehole.R;
+import com.beter.timehole.core.Reminder;
 import com.beter.timehole.core.Tag;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
+import android.util.Log;
 
 public class ReminderFragment extends Fragment {
+
+    private static final String TAG = "checkControl";
+    private ArrayList<Reminder> reminderArrayList = new ArrayList<>();
 
     public ReminderFragment() {
     }
@@ -37,21 +44,13 @@ public class ReminderFragment extends Fragment {
         ArrayList<Tag> tags1= new ArrayList<Tag>();
         tags1.add(new Tag("Calisma"));
 
-        com.beter.timehole.core.Reminder reminder1 = new com.beter.timehole.core.Reminder(new Date(18),"sınav1","Part A çalış","sınav saat 6 da",tags1);
-        com.beter.timehole.core.Reminder reminder2 = new com.beter.timehole.core.Reminder(new Date(18),"sınav2","Part A çalış","sınav saat 6 da",tags1);
-        com.beter.timehole.core.Reminder reminder3 = new com.beter.timehole.core.Reminder(new Date(18),"sınav3","Part A çalış","sınav saat 6 da",tags1);
-        com.beter.timehole.core.Reminder reminder4 = new com.beter.timehole.core.Reminder(new Date(18),"sınav4","Part A çalış","sınav saat 6 da",tags1);
 
-        ArrayList<com.beter.timehole.core.Reminder> reminderList = new ArrayList<com.beter.timehole.core.Reminder>();
-        reminderList.add(reminder1);
-        reminderList.add(reminder2);
-        reminderList.add(reminder3);
-        reminderList.add(reminder4);
+        reminderArrayList = readRemindersFromFile();
 
         ListView reminderlist = (ListView) reminderRootView.findViewById(R.id.listView);
 
         reminderlist.setAdapter(new ArrayAdapter<com.beter.timehole.core.Reminder>(getActivity(),
-                android.R.layout.simple_list_item_1, reminderList));
+                android.R.layout.simple_list_item_1, reminderArrayList));
 
         Button addReminderButton = (Button) reminderRootView.findViewById(R.id.reminderbutton);
         addReminderButton.setOnClickListener(new View.OnClickListener() {
@@ -63,4 +62,29 @@ public class ReminderFragment extends Fragment {
         });
         return reminderRootView;
     }
+
+
+    private ArrayList<com.beter.timehole.core.Reminder> readRemindersFromFile(){
+        ArrayList<com.beter.timehole.core.Reminder> remindersFromFile = new ArrayList<>();
+        try{
+            FileInputStream reminderFileInputStream = getContext().openFileInput("reminderobjects.dat");
+            Log.i(TAG,"First Step");
+            ObjectInputStream reminderObjectInputStream = new ObjectInputStream(reminderFileInputStream);
+
+            com.beter.timehole.core.Reminder reminder;
+            for(int count = 0; count < AddReminderActivity.reminderCount; count++) {
+                reminder = (com.beter.timehole.core.Reminder) reminderObjectInputStream.readObject();
+                remindersFromFile.add(reminder);
+            }
+
+            reminderObjectInputStream.close();
+            reminderFileInputStream.close();
+        }
+        catch (Exception e){
+            Log.i(TAG,"Catch Step");
+            e.printStackTrace();
+        }
+        return remindersFromFile;
+    }
+
 }

@@ -44,28 +44,30 @@ public class ActivitiesFragment extends Fragment {
         ArrayList<Tag> tags1= new ArrayList<Tag>();
         tags1.add(new Tag("Calisma"));
 
-        com.beter.timehole.core.Activity doneSample = new com.beter.timehole.core.Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptim");
-        com.beter.timehole.core.Activity doneSample1 = new com.beter.timehole.core.Activity("ders1",true,70,"16 50","17 00",tags1,"ben yapcam1");
-        com.beter.timehole.core.Activity doneSample2 = new com.beter.timehole.core.Activity("ders2",true,70,"16 50","17 00",tags1,"ben yaptim2");
-        com.beter.timehole.core.Activity doneSample3 = new com.beter.timehole.core.Activity("ders3",false,70,"16 50","17 00",tags1,"ben yapcam3");
+        ArrayList<com.beter.timehole.core.Activity> activitiesList = readActivitiesFromFile();
 
-        ArrayList<com.beter.timehole.core.Activity> doneActivities = new ArrayList<com.beter.timehole.core.Activity>();
-        doneActivities.add(doneSample);
-        doneActivities.add(doneSample1);
-        doneActivities.add(doneSample2);
-        doneActivities.add(doneSample3);
-
-        //FileInputStream activitiesInputStream = getContext().openFileInput("activities");
-        //ObjectInputStream activitiesObjectStream = new ObjectInputStream(activitiesInputStream);
-        //com.beter.timehole.core.Activity sampleFile = (com.beter.timehole.core.Activity) activitiesObjectStream.readObject();
-
-
-
-        MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
+        MyCustomAdapter adapter = new MyCustomAdapter(activitiesList,getActivity());
         ListView doneList = (ListView) ActivtiesRootView.findViewById(R.id.listView1);
         doneList.setAdapter(adapter);
 
         return ActivtiesRootView;
     }
 
+    private ArrayList<com.beter.timehole.core.Activity> readActivitiesFromFile(){
+        ArrayList<com.beter.timehole.core.Activity> activitiesFromFile = new ArrayList<>();
+        try{
+            FileInputStream activityFileInputStream = getContext().openFileInput("activityobjects.dat");
+            ObjectInputStream activityObjectInputStream = new ObjectInputStream(activityFileInputStream);
+            while(activityObjectInputStream.available() > 0){
+                com.beter.timehole.core.Activity activity = (com.beter.timehole.core.Activity) activityObjectInputStream.readObject();
+                activitiesFromFile.add(activity);
+            }
+            activityObjectInputStream.close();
+            activityFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return activitiesFromFile;
+    }
 }
