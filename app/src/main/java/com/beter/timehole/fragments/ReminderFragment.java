@@ -72,11 +72,10 @@ public class ReminderFragment extends Fragment {
             ObjectInputStream reminderObjectInputStream = new ObjectInputStream(reminderFileInputStream);
 
             com.beter.timehole.core.Reminder reminder;
-            for(int count = 0; count < AddReminderActivity.reminderCount; count++) {
+            while(reminderObjectInputStream.available()>0) {
                 reminder = (com.beter.timehole.core.Reminder) reminderObjectInputStream.readObject();
                 remindersFromFile.add(reminder);
             }
-
             reminderObjectInputStream.close();
             reminderFileInputStream.close();
         }
