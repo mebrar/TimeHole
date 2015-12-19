@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
-
 import com.beter.timehole.*;
 import com.beter.timehole.R;
 import com.beter.timehole.core.Tag;
@@ -64,6 +63,4 @@ public class ReminderFragment extends Fragment {
         });
         return reminderRootView;
     }
-
-
 }
