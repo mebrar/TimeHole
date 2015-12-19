@@ -3,6 +3,7 @@ package com.beter.timehole;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.Activity;
@@ -19,11 +20,14 @@ public class AddActivityActivity extends AppCompatActivity {
     private static EditText finishDate;
     private static CheckBox done;
     private static EditText note;
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_activity);
+
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
 
         nameText = (EditText) findViewById(R.id.nameInput);
         duration = (EditText) findViewById(R.id.durationInput);
@@ -33,7 +37,8 @@ public class AddActivityActivity extends AppCompatActivity {
         done = (CheckBox) findViewById(R.id.doneInput);
         final Button createButton = (Button) findViewById(R.id.createButton);
         final boolean doneValue= done.isChecked();// if checkBox done is checked doneValue is set to true and vice versa.
-        final long durationValue = Long.parseLong(duration.getText().toString());
+        final long durationValue = Long.parseLong(duration.getText().toString()); 
+
 
         /** Another possible way for parsing a string in to a long is:
          * long durationValue = Long.valueOf(duration.getText().toString()).longValue();
