@@ -1,3 +1,1 @@
-include ':app', ':MaterialDesignDemo', ':MaterialDesign'
-project(':MaterialDesignDemo').projectDir = new File('libs/MaterialDesignLibrary/MaterialDesignDemo')
-project(':MaterialDesign').projectDir = new File('libs/MaterialDesignLibrary/MaterialDesign')
+include ':app'

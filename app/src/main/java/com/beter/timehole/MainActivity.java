@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.content.Context;
+import android.widget.Button;
 
 import com.beter.timehole.fragments.ActivitiesFragment;
 import com.beter.timehole.fragments.HelpFragment;
@@ -51,8 +52,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-             }
-         });
+            }
+        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

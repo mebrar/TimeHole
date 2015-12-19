@@ -3,7 +3,7 @@
  */
 package com.beter.timehole.core;
 
-public class Tag {
+public class Tag implements java.io.Serializable {
 
     private String tagName;
 

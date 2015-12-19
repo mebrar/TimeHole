@@ -23,6 +23,9 @@ import com.beter.timehole.R;
 import com.beter.timehole.core.*;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 
@@ -51,6 +54,11 @@ public class ActivitiesFragment extends Fragment {
         doneActivities.add(doneSample1);
         doneActivities.add(doneSample2);
         doneActivities.add(doneSample3);
+
+        //FileInputStream activitiesInputStream = getContext().openFileInput("activities");
+        //ObjectInputStream activitiesObjectStream = new ObjectInputStream(activitiesInputStream);
+        //com.beter.timehole.core.Activity sampleFile = (com.beter.timehole.core.Activity) activitiesObjectStream.readObject();
+
 
 
         MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
