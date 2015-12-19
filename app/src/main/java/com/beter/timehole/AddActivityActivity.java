@@ -1,5 +1,8 @@
 package com.beter.timehole;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +12,15 @@ import android.view.ViewGroup;
 import android.app.Activity;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.beter.timehole.core.Reminder;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 
 public class AddActivityActivity extends AppCompatActivity {
@@ -20,14 +30,25 @@ public class AddActivityActivity extends AppCompatActivity {
     private static EditText finishDate;
     private static CheckBox done;
     private static EditText note;
-    private Toolbar toolbar;
+
+    com.rey.material.widget.EditText datePickerInput;
+    com.rey.material.widget.EditText timePickerInput;
+    static final int DATE_DIALOG_ID = 0;
+    static final int TIME_DIALOG_ID = 1;
+
+
+    private int dateYear;
+    private int dateMonth;
+    private int dateDay;
+    private int timeHour;
+    private int timeMinute;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_activity);
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
 
         nameText = (EditText) findViewById(R.id.nameInput);
         duration = (EditText) findViewById(R.id.durationInput);
@@ -62,6 +83,70 @@ public class AddActivityActivity extends AppCompatActivity {
         }
         );
 
+    }
+
+    public void datePickerClicked(View v){
+        showDialog(DATE_DIALOG_ID);
+    }
+
+    public void timePickerClicked(View v){
+        showDialog(TIME_DIALOG_ID);
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id){
+        if(id == DATE_DIALOG_ID){
+            return new DatePickerDialog(this,datePickerListener, dateYear,dateMonth,dateDay);
+        }
+        else if(id == TIME_DIALOG_ID){
+            return new TimePickerDialog(this,timePickerListener,timeHour,timeMinute,true);
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            dateYear = year;
+            dateMonth = monthOfYear +1;
+            dateDay = dayOfMonth;
+            Toast.makeText(AddActivityActivity.this,dateYear + "/" + dateMonth + "/"+dateDay,Toast.LENGTH_LONG).show();
+            updateDatePickerText();
+        }
+    };
+
+    private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            timeHour = hourOfDay;
+            timeMinute = minute;
+            Toast.makeText(AddActivityActivity.this,timeHour + ":" +timeMinute,Toast.LENGTH_LONG).show();
+            updateTimePickerText();
+        }
+    };
+
+    private void updateDatePickerText(){
+        datePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.reminder_date_input);
+        datePickerInput.setText(dateYear + "/" + dateMonth + "/"+dateDay);
+    }
+
+    private void updateTimePickerText(){
+        timePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.reminder_time_input);
+        timePickerInput.setText(timeHour + ":" +timeMinute);
+    }
+
+
+    private void writeActivityToFile(com.beter.timehole.core.Activity activity) {
+        try {
+            FileOutputStream activityFileOutputStream = this.openFileOutput("ActivityObjects", Context.MODE_PRIVATE);
+            ObjectOutputStream activityObjectOutputStream = new ObjectOutputStream(activityFileOutputStream);
+            activityObjectOutputStream.writeObject(activity);
+            activityObjectOutputStream.close();
+            activityFileOutputStream.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
