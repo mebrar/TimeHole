@@ -3,6 +3,8 @@
  */
 package com.beter.timehole.fragments;
 
+import com.beter.timehole.AddTagsActivity;
+import com.beter.timehole.fragments.GeneralCustomTagsAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +17,11 @@ import android.widget.ListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Button;
 import com.beter.timehole.core.Tag;
+import android.content.Intent;
+
+
 
 import com.beter.timehole.R;
 
@@ -37,8 +43,18 @@ public class TagsFragment extends Fragment {
         Tag[] tags = {sleep, eating, study, free_time, house_work, hobby};
 
         ListView tagsList = (ListView) tagsRootView.findViewById(R.id.tagsListView);
-        tagsList.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, tags));
 
+
+        tagsList.setAdapter(new GeneralCustomTagsAdapter(getActivity(), tags));
+
+        Button tagButton = (Button) tagsRootView.findViewById(R.id.addTagButton);
+        tagButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AddTagsActivity.class);
+                startActivity(i);
+            }
+        });
         return tagsRootView;
     }
 
