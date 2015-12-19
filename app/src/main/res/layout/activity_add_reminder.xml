@@ -12,6 +12,12 @@
     tools:context="com.beter.timehole.AddReminderActivity"
     android:id="@+id/name"
     android:background="#EDE7F6">
+    <include
+        android:id="@+id/app_bar"
+        android:layout="@layout/app_bar_main"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        />
 
 
     <com.rey.material.widget.EditText
