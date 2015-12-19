@@ -19,13 +19,10 @@ public class AddReminderActivity extends AppCompatActivity {
     EditText timePickerInput;
     static final int DATE_DIALOG_ID = 0;
     static final int TIME_DIALOG_ID = 1;
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
 
         setContentView(R.layout.activity_add_reminder);
     }

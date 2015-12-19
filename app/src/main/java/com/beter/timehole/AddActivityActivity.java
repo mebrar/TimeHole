@@ -20,14 +20,12 @@ public class AddActivityActivity extends AppCompatActivity {
     private static EditText finishDate;
     private static CheckBox done;
     private static EditText note;
-    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_activity);
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
 
         nameText = (EditText) findViewById(R.id.nameInput);
         duration = (EditText) findViewById(R.id.durationInput);
