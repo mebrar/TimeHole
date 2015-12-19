@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.beter.timehole.fragment.ActivitiesFragment"
-    android:background="#F9FBE7">
+    android:background="#EDE7F6">
 
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,16 +12,11 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150px"
         android:id="@+id/listView1"
         />
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_below="@+id/listView1"
-        android:layout_marginTop="30dp"
-        android:id="@+id/listView2"
-        />
+
+
 </RelativeLayout>
 

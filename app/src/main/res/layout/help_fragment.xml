@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context="com.beter.timehole.HelpFragment"
-    android:background="#F9FBE7">
+    android:background="#EDE7F6">
 
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/helpList"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-</RelativeLayout>
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="180px"
+        android:layout_marginRight="18dp" />
+
+</FrameLayout>

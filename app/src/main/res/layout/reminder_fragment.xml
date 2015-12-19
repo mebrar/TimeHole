@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#F9FBE7">
+    android:background="#EDE7F6">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Reminder"
-        android:id="@+id/textView4"
-        android:layout_gravity="center"
-        android:layout_above="@+id/button"
+        android:layout_marginTop="180px"
+        android:id="@+id/listView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="144dp" />
+        android:layout_above="@+id/reminderListView"
+        android:background="#EDE7F6" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD REMINDER"
-        android:id="@+id/button"
+        android:text="Add Reminder"
+        android:id="@+id/reminderbutton"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_alignParentBottom="true"
+        android:layout_below="@+id/reminderListView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="147dp"
-        android:onClick="addReminderClicked" />
+        android:layout_marginBottom="147dp" />
+
 
 </RelativeLayout>

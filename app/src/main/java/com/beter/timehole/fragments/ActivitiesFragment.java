@@ -23,10 +23,13 @@ import com.beter.timehole.R;
 import com.beter.timehole.core.*;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 
-public class ActivitiesFragment extends Fragment  {
+public class ActivitiesFragment extends Fragment {
 
     public ActivitiesFragment() {
     }
@@ -36,25 +39,33 @@ public class ActivitiesFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View ActivtiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
+
         ArrayList<Tag> tags1= new ArrayList<Tag>();
         tags1.add(new Tag("Calisma"));
 
-        ArrayList<Tag> tags2= new ArrayList<Tag>();
-        tags2.add(new Tag("Eglence"));
-
         com.beter.timehole.core.Activity doneSample = new com.beter.timehole.core.Activity("ders",true,70,"16 50","17 00",tags1,"ben yaptim");
-        com.beter.timehole.core.Activity undoneSample = new com.beter.timehole.core.Activity("eğlence",false,30,"13 30","14 00",tags2,"ben yapacagim");
-        View rootView = inflater.inflate(R.layout.activity_fragment, container, false);
+        com.beter.timehole.core.Activity doneSample1 = new com.beter.timehole.core.Activity("ders1",true,70,"16 50","17 00",tags1,"ben yapcam1");
+        com.beter.timehole.core.Activity doneSample2 = new com.beter.timehole.core.Activity("ders2",true,70,"16 50","17 00",tags1,"ben yaptim2");
+        com.beter.timehole.core.Activity doneSample3 = new com.beter.timehole.core.Activity("ders3",false,70,"16 50","17 00",tags1,"ben yapcam3");
 
         ArrayList<com.beter.timehole.core.Activity> doneActivities = new ArrayList<com.beter.timehole.core.Activity>();
         doneActivities.add(doneSample);
-        ListView doneList = (ListView) rootView.findViewById(R.id.listView1);
-        doneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(), R.layout.support_simple_spinner_dropdown_item, doneActivities));
+        doneActivities.add(doneSample1);
+        doneActivities.add(doneSample2);
+        doneActivities.add(doneSample3);
 
-        ArrayList<com.beter.timehole.core.Activity> undoneActivities = new ArrayList<com.beter.timehole.core.Activity>();
-        undoneActivities.add(undoneSample);
-        ListView undoneList = (ListView) rootView.findViewById(R.id.listView2);
-        undoneList.setAdapter(new ArrayAdapter<com.beter.timehole.core.Activity>(getActivity(),R.layout.support_simple_spinner_dropdown_item,undoneActivities));// Ebrar bu haliyle sende de sıkıntı varsa tanımıyorsa 2. parametreye " R.layout.support_simple_spinner_dropdown_item " yazıp tekrar denesene.
-        return rootView;
+        //FileInputStream activitiesInputStream = getContext().openFileInput("activities");
+        //ObjectInputStream activitiesObjectStream = new ObjectInputStream(activitiesInputStream);
+        //com.beter.timehole.core.Activity sampleFile = (com.beter.timehole.core.Activity) activitiesObjectStream.readObject();
+
+
+
+        MyCustomAdapter adapter = new MyCustomAdapter(doneActivities,getActivity());
+        ListView doneList = (ListView) ActivtiesRootView.findViewById(R.id.listView1);
+        doneList.setAdapter(adapter);
+
+        return ActivtiesRootView;
     }
+
 }

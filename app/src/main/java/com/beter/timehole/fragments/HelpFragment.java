@@ -3,68 +3,33 @@
  */
 package com.beter.timehole.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.beter.timehole.R;
 import com.beter.timehole.core.Activity;
-
-import java.util.ArrayList;
 
 public class HelpFragment extends Fragment {
 
     public HelpFragment() {
     }
 
-    ListView helpList;
-
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.help_fragment, container, false);
-        ListView helpList = (ListView) this.getActivity().findViewById(R.id.helpList);
-        String[] list = {"How to Use?", "FAQ", "End-User License Agreement", "Troubleshooting", "Send Feedback", "About us"};
-        ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, list);
-        helpList.setAdapter(aa);
+        View helpRootView = inflater.inflate(R.layout.help_fragment, container, false);
 
-        helpList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String help = String.valueOf(parent.getItemAtPosition(position));
-                // seçilince olacaklar için metodlar burada olacak
-            }
-        });
+        String[] list = {"How to Use?", "FAQ", "End-User License Agreement", "Troubleshooting", "Send Feedback", "AboutUs"};
+        ListView helpList = (ListView) helpRootView.findViewById(R.id.helpList);
+        helpList.setAdapter(new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, list));
 
-        return view;
+        return helpRootView;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

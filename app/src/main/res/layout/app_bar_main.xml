@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
 
 
-        android:background="#F9FBE7">
+        android:background="#EDE7F6">
 
     </FrameLayout>
 
