@@ -138,7 +138,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
     private void writeActivityToFile(com.beter.timehole.core.Activity activity) {
         try {
-            FileOutputStream activityFileOutputStream = this.openFileOutput("ActivityObjects", Context.MODE_PRIVATE);
+            FileOutputStream activityFileOutputStream = this.openFileOutput("activityobjects.dat", Context.MODE_WORLD_READABLE);
             ObjectOutputStream activityObjectOutputStream = new ObjectOutputStream(activityFileOutputStream);
             activityObjectOutputStream.writeObject(activity);
             activityObjectOutputStream.close();

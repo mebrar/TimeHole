@@ -56,7 +56,7 @@ public class ActivitiesFragment extends Fragment {
     private ArrayList<com.beter.timehole.core.Activity> readActivitiesFromFile(){
         ArrayList<com.beter.timehole.core.Activity> activitiesFromFile = new ArrayList<>();
         try{
-            FileInputStream activityFileInputStream = getContext().openFileInput("ActivityObjects");
+            FileInputStream activityFileInputStream = getContext().openFileInput("activityobjects.dat");
             ObjectInputStream activityObjectInputStream = new ObjectInputStream(activityFileInputStream);
             while(activityObjectInputStream.available() > 0){
                 com.beter.timehole.core.Activity activity = (com.beter.timehole.core.Activity) activityObjectInputStream.readObject();
