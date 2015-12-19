@@ -10,49 +10,10 @@
     android:weightSum="1">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/add_activity_button"
-        android:text="butttoooon"
-        android:layout_gravity="center_vertical" />
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view2"
-        android:layout_width="158dp"
-        android:layout_height="161dp"
-        card_view:cardCornerRadius="4dp"
-        android:layout_gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/info_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2-ddfgdfgdsfgg" />
 
-    </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_width="147dp"
-        android:layout_height="145dp"
-        card_view:cardCornerRadius="4dp"
-        android:layout_gravity="bottom">
 
-        <TextView
-            android:id="@+id/info_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1-testetsesdgdsfg" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/butttton"
-            android:text="butttoooon"
-            android:layout_gravity="center_vertical" />
-
-    </android.support.v7.widget.CardView>
 
 </LinearLayout>

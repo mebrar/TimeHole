@@ -29,14 +29,7 @@ public class MainFragment extends Fragment {
         View mainRootView = inflater.inflate(R.layout.main_fragment, container, false);
 
 
-        Button addActivityButton = (Button) mainRootView.findViewById(R.id.add_activity_button);
-        addActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), AddReminderActivity.class);
-                startActivity(i);
-            }
-        });
+
 
         return mainRootView;
     }

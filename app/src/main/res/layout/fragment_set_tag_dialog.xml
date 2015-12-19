@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.beter.timehole.fragments.SetTagDialogFragment"
+    android:background="#EDE7F6">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/redButton"
+        android:layout_marginTop="128dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="107dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orangeButton"
+        android:layout_alignTop="@+id/redButton"
+        android:layout_toStartOf="@+id/redButton"
+        android:layout_marginEnd="113dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/blueButton"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/redButton"
+        android:layout_alignStart="@+id/redButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/greenButtom"
+        android:layout_alignTop="@+id/blueButton"
+        android:layout_alignStart="@+id/orangeButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yellowButton"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/greenButtom"
+        android:layout_alignStart="@+id/greenButtom" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/brownButton"
+        android:layout_alignTop="@+id/yellowButton"
+        android:layout_alignStart="@+id/blueButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/blackButton"
+
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/brownButton"
+        android:layout_alignStart="@+id/brownButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/purpleButton"
+        android:layout_alignBottom="@+id/blackButton"
+        android:layout_toEndOf="@+id/blackButton"
+        android:layout_alignStart="@+id/yellowButton"
+        android:tint="#FFFFFF" />
+
+</RelativeLayout>

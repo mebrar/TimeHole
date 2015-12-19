@@ -12,6 +12,10 @@ public class Tag implements java.io.Serializable {
         this.tagName=tagName;
     }
 
+    public String getTagName() {
+        return tagName;
+    }
+
     @Override
     public String toString() {
         return  tagName ;

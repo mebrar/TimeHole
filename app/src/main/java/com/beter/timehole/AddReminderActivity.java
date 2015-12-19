@@ -2,12 +2,14 @@ package com.beter.timehole;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -18,7 +20,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import android.util.Log;
 
 import com.beter.timehole.core.Reminder;
 import com.rey.material.widget.EditText;
@@ -28,6 +33,8 @@ public class AddReminderActivity extends AppCompatActivity {
 
     EditText datePickerInput;
     EditText timePickerInput;
+    EditText nameInput;
+    EditText noteInput;
     static final int DATE_DIALOG_ID = 0;
     static final int TIME_DIALOG_ID = 1;
     private int dateYear;
@@ -35,6 +42,9 @@ public class AddReminderActivity extends AppCompatActivity {
     private int dateDay;
     private int timeHour;
     private int timeMinute;
+    public static int reminderCount = 0;
+    private static final String TAG = "checkControl";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,15 +110,29 @@ public class AddReminderActivity extends AppCompatActivity {
 
     private void writeReminderToFile(Reminder reminder) {
         try {
-            FileOutputStream reminderFileOutputStream = this.openFileOutput("reminderObjects", Context.MODE_PRIVATE);
+            Log.i(TAG, "WriteFile Step");
+            FileOutputStream reminderFileOutputStream = this.openFileOutput("reminderobjects.dat", Context.MODE_WORLD_READABLE);
             ObjectOutputStream reminderObjectStream = new ObjectOutputStream(reminderFileOutputStream);
             reminderObjectStream.writeObject(reminder);
+            reminderCount++;
             reminderObjectStream.close();
             reminderFileOutputStream.close();
         }
         catch(Exception e){
+            Log.i(TAG, "WriteFile Catch Step");
             e.printStackTrace();
         }
     }
 
+
+    public void addReminderClicked(View v){
+        nameInput = (EditText)findViewById(R.id.reminder_name_input);
+        noteInput = (EditText)findViewById(R.id.reminder_note_input);
+        String reminderName = nameInput.getText().toString();
+        String reminderNote = noteInput.getText().toString();
+        Reminder reminder = new Reminder(new Date(dateYear,dateMonth,dateDay,timeHour,timeMinute), reminderName,reminderNote,null,null);
+        writeReminderToFile(reminder);
+        Log.i(TAG, "Pressed and Wrote Step");
+        onBackPressed();
+    }
 }
