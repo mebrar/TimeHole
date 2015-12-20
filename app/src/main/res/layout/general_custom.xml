@@ -12,7 +12,7 @@
         android:layout_height="30dp"
         android:src="@drawable/ic_action_alarm"
         android:id="@+id/tagsImage"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:layout_width="291dp"

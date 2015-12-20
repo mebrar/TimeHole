@@ -60,30 +60,34 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
             tagImage.setImageResource(R.drawable.ic_hotel_black_24dp);
         }
 
-        if(singleTagItem.getTagName().equals("Eating")){
+        else if(singleTagItem.getTagName().equals("Eating")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_local_restaurant_black_24dp);
         }
 
 
-        if(singleTagItem.getTagName().equals("Study")){
+        else if(singleTagItem.getTagName().equals("Study")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_border_color_black_24dp);
         }
 
-        if(singleTagItem.getTagName().equals("Free Time")){
+        else if(singleTagItem.getTagName().equals("Free Time")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_headset_black_24dp);
         }
 
-        if(singleTagItem.getTagName().equals("House Work")){
+        else if(singleTagItem.getTagName().equals("House Work")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_home_black_24dp);
         }
 
-        if(singleTagItem.getTagName().equals("Hobby")){
+        else if(singleTagItem.getTagName().equals("Hobby")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_color_lens_black_24dp);
+        }
+        else{
+            tagText.setText(singleTagItem.getTagName());
+            tagImage.setImageResource(R.drawable.ic_favorite_black_24dp);
         }
 
 
