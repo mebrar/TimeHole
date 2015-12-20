@@ -32,31 +32,16 @@
                 android:value="com.beter.timehole.MainActivity" />
         </activity>
         <activity android:name=".AddTagsActivity" />
-        <activity
-            android:name=".fragments.HowToUseActivity"
-            android:label="@string/title_activity_how_to_use"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".fragments.AboutUsActivity"
-            android:label="@string/title_activity_about_us"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".fragments.EULAActivity"
-            android:label="@string/title_activity_eula"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".fragments.FAQActivity"
-            android:label="@string/title_activity_faq"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".fragments.SendFeedbackActivity"
-            android:label="@string/title_activity_send_feedback"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".fragments.TroubleshootingActivity"
-            android:label="@string/title_activity_troubleshooting"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <service android:name=".ScheduleService" />
         <service android:name=".NotifyService" />
+
+        <activity android:name=".helpActivities.AboutUsActivity" />
+        <activity android:name=".helpActivities.EULAActivity" />
+        <activity android:name=".helpActivities.FAQActivity" />
+        <activity android:name=".helpActivities.HowToUseActivity" />
+        <activity android:name=".helpActivities.SendFeedbackActivity" />
+        <activity android:name=".helpActivities.TroubleshootingActivity"></activity>
     </application>
+
 </manifest>

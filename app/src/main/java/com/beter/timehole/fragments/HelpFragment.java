@@ -22,6 +22,7 @@ import android.app.FragmentTransaction;
 import com.beter.timehole.MainActivity;
 import com.beter.timehole.R;
 import com.beter.timehole.core.Activity;
+import com.beter.timehole.helpActivities.*;
 
 public class HelpFragment extends Fragment {
 
