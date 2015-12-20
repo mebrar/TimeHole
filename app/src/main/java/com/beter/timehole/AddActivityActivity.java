@@ -7,7 +7,6 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -27,10 +26,8 @@ import java.util.Date;
 
 public class AddActivityActivity extends AppCompatActivity {
 
-    private static EditText nameText;
     private static EditText duration;
     private static CheckBox done;
-    private static EditText note;
 
     com.rey.material.widget.EditText startDatePickerInput;
     com.rey.material.widget.EditText startTimePickerInput;
@@ -97,13 +94,13 @@ public class AddActivityActivity extends AppCompatActivity {
             return new DatePickerDialog(this,startDatePickerListener, startDateYear,startDateMonth,startDateDay);
         }
         else if(id == FINISH_DATE_DIALOG_ID){
-            return new DatePickerDialog(this,startDatePickerListener, finishDateYear,finishDateMonth,finishDateDay);
+            return new DatePickerDialog(this,finishDatePickerListener, finishDateYear,finishDateMonth,finishDateDay);
         }
         else if(id == START_TIME_DIALOG_ID){
             return new TimePickerDialog(this,startTimePickerListener,startTimeHour,startTimeMinute,true);
         }
         else if(id == FINISH_TIME_DIALOG_ID){
-            return new TimePickerDialog(this,startTimePickerListener,finishTimeHour,finishTimeMinute,true);
+            return new TimePickerDialog(this,finishTimePickerListener,finishTimeHour,finishTimeMinute,true);
         }
         return null;
     }
@@ -153,7 +150,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
     private void updateStartDatePickerText(){
         startDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_start_date_input);
-        startDatePickerInput.setText(startDateYear + "/" + startDateMonth + "/"+startDateDay);
+        startDatePickerInput.setText(startDateDay + "/" + startDateMonth + "/"+startDateYear);
     }
 
     private void updateStartTimePickerText(){
@@ -163,7 +160,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
     private void updateFinishDatePickerText(){
         finishDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_finish_date_input);
-        finishDatePickerInput.setText(finishDateYear + "/" + finishDateMonth + "/"+finishDateDay);
+        finishDatePickerInput.setText(finishDateDay + "/" + finishDateMonth + "/"+finishDateYear);
     }
 
     private void updateFinishTimePickerText(){
