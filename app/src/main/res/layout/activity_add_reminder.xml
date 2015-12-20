@@ -17,7 +17,7 @@
         app:et_supportMode="none"
         app:et_labelEnable="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
