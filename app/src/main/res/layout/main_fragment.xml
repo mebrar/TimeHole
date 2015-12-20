@@ -14,11 +14,13 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activity_card"
         android:layout_width="match_parent"
-        android:layout_height="105dp"
+        android:layout_height="150dp"
+        card_view:cardBackgroundColor = "#B39DDB"
         card_view:cardCornerRadius="4dp"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="70dp"
+        android:layout_weight="0.08">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,8 +59,9 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/reminder_card"
         android:layout_width="match_parent"
-        android:layout_height="105dp"
+        android:layout_height="150dp"
         card_view:cardCornerRadius="4dp"
+        card_view:cardBackgroundColor = "#B39DDB"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp">
@@ -93,50 +96,6 @@
             android:layout_toRightOf="@+id/reminder_icon"
             android:layout_below="@+id/reminder"
             />
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/statistics_card"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        card_view:cardCornerRadius="4dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/statistics_icon"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_equalizer_black_24dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/statistics"
-                android:layout_toRightOf="@+id/statistics_icon"
-                android:layout_alignParentTop="true"
-                android:textSize="30sp"
-                android:text="Statistics" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/last_statistics"
-                android:layout_toRightOf="@+id/statistics_icon"
-                android:layout_below="@+id/statistics"
-                />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
