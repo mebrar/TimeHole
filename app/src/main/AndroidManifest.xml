@@ -56,11 +56,7 @@
             android:name=".fragments.TroubleshootingActivity"
             android:label="@string/title_activity_troubleshooting"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <service
-            android:name=".MyService"
-            android:enabled="true"
-            android:exported="true"></service>
+        <service android:name=".ScheduleService" />
+        <service android:name=".NotifyService" />
     </application>
-
 </manifest>
