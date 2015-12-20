@@ -78,7 +78,8 @@ public class Reminder implements java.io.Serializable {
 
     @Override
     public String toString() {
-        String result = name + date;
+        String result = "Name: " +name + "\n"+ "Note  : "+ note + "\n"+"Date  : " + date.getMonth()+"/"
+                +date.getDay()+ "/"+date.getYear() +"\n"+ "Time : " + date.getHours() +":" + date.getMinutes()+":"+date.getSeconds();
         //for(int i = 0; i<tags.size();i++)
         //result += tags.get(i);
         return result;

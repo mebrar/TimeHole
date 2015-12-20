@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.beter.timehole.AddActivityActivity;
 import com.beter.timehole.AddReminderActivity;
+import com.beter.timehole.fragments.ReminderFragment;
 import com.beter.timehole.R;
 
 public class MainFragment extends Fragment {

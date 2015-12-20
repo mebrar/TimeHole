@@ -9,20 +9,22 @@
 
     <com.rey.material.widget.EditText
         android:id="@+id/reminder_name_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
         android:inputType="text"
         android:hint="Name"
         app:et_inputId="@+id/textfield_reminder_name"
         app:et_supportMode="none"
         app:et_labelEnable="true"
-        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
     <com.rey.material.widget.EditText
         android:id="@+id/reminder_date_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
         android:inputType="text"
         android:hint="Date"
         app:et_inputId="@+id/textfield_reminder_date"
@@ -30,9 +32,10 @@
         app:et_labelEnable="true"
         android:onClick="datePickerClicked"
         app:et_helper="Click to Set Date"
-        android:layout_above="@+id/reminder_name_input"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="39dp" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/reminder_note_input"
+        android:layout_alignParentStart="true" />
 
     <com.rey.material.widget.EditText
         android:id="@+id/reminder_time_input"
@@ -45,22 +48,24 @@
         app:et_labelEnable="true"
         app:et_helper="Click to Set Time"
         android:onClick="timePickerClicked"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="156dp" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/reminder_date_input"
+        android:layout_alignEnd="@+id/reminder_date_input" />
 
     <com.rey.material.widget.EditText
         android:id="@+id/reminder_note_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
         android:inputType="text"
         android:hint="Note"
         app:et_inputId="@+id/textfield_reminder_note"
         app:et_supportMode="none"
         app:et_labelEnable="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="82dp" />
+        android:layout_marginTop="46dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/reminder_name_input"
+        android:layout_alignEnd="@+id/createReminderButton" />
 
     <Button
         android:layout_width="wrap_content"
