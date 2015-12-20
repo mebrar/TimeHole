@@ -45,8 +45,8 @@ public class AddReminderActivity extends AppCompatActivity {
 
     EditText datePickerInput;
     EditText timePickerInput;
-    EditText nameInput;
-    EditText noteInput;
+    static EditText nameInput;
+    static EditText noteInput;
     static final int DATE_DIALOG_ID = 0;
     static final int TIME_DIALOG_ID = 1;
     static public int dateYear;
