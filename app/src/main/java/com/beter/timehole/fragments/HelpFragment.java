@@ -45,23 +45,23 @@ public class HelpFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         if (position == 0) {
-                            Intent h2u = new Intent(getActivity(), HowToUseActivity.class);
-                            startActivity(h2u);
+                            Intent howToUseIntent = new Intent(getActivity(), HowToUseActivity.class);
+                            startActivity(howToUseIntent);
                         } else if (position == 1) {
-                            Intent faq = new Intent(getActivity(), FAQActivity.class);
-                            startActivity(faq);
+                            Intent FAQIntent = new Intent(getActivity(), FAQActivity.class);
+                            startActivity(FAQIntent);
                         } else if (position == 2) {
-                            Intent eula = new Intent(getActivity(), EULAActivity.class);
-                            startActivity(eula);
+                            Intent EULAIntent = new Intent(getActivity(), EULAActivity.class);
+                            startActivity(EULAIntent);
                         } else if (position == 3) {
-                            Intent ts = new Intent(getActivity(), TroubleshootingActivity.class);
-                            startActivity(ts);
+                            Intent TSIntent = new Intent(getActivity(), TroubleshootingActivity.class);
+                            startActivity(TSIntent);
                         } else if (position == 4) {
-                            Intent sf = new Intent(getActivity(), SendFeedbackActivity.class);
-                            startActivity(sf);
+                            Intent SendFeedbackIntent = new Intent(getActivity(), SendFeedbackActivity.class);
+                            startActivity(SendFeedbackIntent);
                         } else if (position == 5) {
-                            Intent au = new Intent(getActivity(), AboutUsActivity.class);
-                            startActivity(au);
+                            Intent AboutUsIntent = new Intent(getActivity(), AboutUsActivity.class);
+                            startActivity(AboutUsIntent);
                         }
                     }
                 }
