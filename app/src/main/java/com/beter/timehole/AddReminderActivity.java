@@ -49,22 +49,21 @@ public class AddReminderActivity extends AppCompatActivity {
     EditText noteInput;
     static final int DATE_DIALOG_ID = 0;
     static final int TIME_DIALOG_ID = 1;
-    private int dateYear;
-    private int dateMonth;
-    private int dateDay;
-    private int timeHour;
-    private int timeMinute;
+    static public int dateYear;
+    static public int dateMonth;
+    static public int dateDay;
+    static  int timeHour;
+    static public int timeMinute;
     private ArrayList<Reminder> reminderContainer = new ArrayList<>();
+    static Notification.Builder  notification;
 
-    NotificationCompat.Builder notification;
-    private static final int uniqueID = 426346;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        notification = new NotificationCompat.Builder(this);
+        notification = new Notification.Builder (this);
         notification.setAutoCancel(true);
 
         final Calendar cal = Calendar.getInstance();
@@ -174,18 +173,17 @@ public class AddReminderActivity extends AppCompatActivity {
         notification.setWhen(System.currentTimeMillis());
         notification.setContentTitle("" + nameInput);
         notification.setContentText("" + noteInput);
-        notification.setWhen(time);
 
         Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         notification.setContentIntent(pendingIntent);
 
-        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        nm.notify(uniqueID,notification.build());
+
+        Intent i = new Intent(this,MyService.class);
+        startService(i);
 
 
 
         onBackPressed();
     }
-
 }
