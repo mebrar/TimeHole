@@ -16,8 +16,13 @@ import android.support.design.widget.NavigationView;
 
 
 import com.beter.timehole.*;
-import com.beter.timehole.fragments.*;
+import com.beter.timehole.core.Activity;
+import com.beter.timehole.core.Reminder;
 import com.beter.timehole.R;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
 
@@ -38,9 +43,27 @@ public class MainFragment extends Fragment {
         activitiesCardView = (CardView)mainRootView.findViewById(R.id.activity_card);
         reminderCardView = (CardView)mainRootView.findViewById(R.id.reminder_card);
         navView = (NavigationView)(getActivity().findViewById(R.id.nav_view));
+        ArrayList<Reminder> reminderListFromFile = readRemindersFromFile();
+        ArrayList<Activity> activitiesListFromFile = readActivitiesFromFile();
+        Reminder lastReminder;
+        Activity lastActivity;
+
+        if(reminderListFromFile.isEmpty()){
+
+        }
+        else{
+            lastReminder = reminderListFromFile.get(reminderListFromFile.size()-1);
+        }
+
+        if(activitiesListFromFile.isEmpty()){
+
+        }
+        else{
+            lastActivity = activitiesListFromFile.get(activitiesListFromFile.size()-1);
+        }
+
 
         fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-
 
         activitiesCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +85,36 @@ public class MainFragment extends Fragment {
 
 
         return mainRootView;
+    }
+
+    private ArrayList<Reminder> readRemindersFromFile(){
+        ArrayList<com.beter.timehole.core.Reminder> remindersFromFile = new ArrayList<>();
+        try{
+            FileInputStream reminderFileInputStream = getContext().openFileInput("reminderobjects.dat");
+            ObjectInputStream reminderObjectInputStream = new ObjectInputStream(reminderFileInputStream);
+            remindersFromFile = (ArrayList<Reminder>)reminderObjectInputStream.readObject();
+            reminderObjectInputStream.close();
+            reminderFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return remindersFromFile;
+    }
+
+    private ArrayList<Activity> readActivitiesFromFile(){
+        ArrayList<Activity> activitiesFromFile = new ArrayList<>();
+        try{
+            FileInputStream activityFileInputStream = getContext().openFileInput("activityobjects.dat");
+            ObjectInputStream activityObjectInputStream = new ObjectInputStream(activityFileInputStream);
+            activitiesFromFile = (ArrayList<Activity>)activityObjectInputStream.readObject();
+            activityObjectInputStream.close();
+            activityFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return activitiesFromFile;
     }
 
 }
