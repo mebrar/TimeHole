@@ -46,8 +46,8 @@ public class MainFragment extends Fragment {
         navView = (NavigationView)(getActivity().findViewById(R.id.nav_view));
         ArrayList<Reminder> reminderListFromFile = readRemindersFromFile();
         ArrayList<Activity> activitiesListFromFile = readActivitiesFromFile();
-        TextView lastReminderTextView = (TextView)getActivity().findViewById(R.id.last_reminders);
-        TextView lastActivityTextView = (TextView)getActivity().findViewById(R.id.last_activities);
+        TextView lastReminderTextView = (TextView)(mainRootView.findViewById(R.id.last_reminders));
+        TextView lastActivityTextView = (TextView)(mainRootView.findViewById(R.id.last_activities));
         Reminder lastReminder;
         Activity lastActivity;
 
