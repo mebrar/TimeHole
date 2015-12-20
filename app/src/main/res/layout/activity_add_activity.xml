@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/activityName"
         android:layout_alignStart="@+id/durationInput"
-        android:inputType="text"/>
+        android:inputType="text" />
 
 
     <TextView
