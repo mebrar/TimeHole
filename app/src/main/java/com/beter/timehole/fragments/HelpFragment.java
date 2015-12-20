@@ -65,6 +65,7 @@ public class HelpFragment extends Fragment {
                     }
                 }
         );
+
         return helpRootView;
     }
 }
