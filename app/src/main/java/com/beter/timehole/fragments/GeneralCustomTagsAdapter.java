@@ -87,7 +87,7 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
         }
         else{
             tagText.setText(singleTagItem.getTagName());
-            tagImage.setImageResource(R.drawable.ic_favorite_black_24dp);
+            tagImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
         }
 
 
