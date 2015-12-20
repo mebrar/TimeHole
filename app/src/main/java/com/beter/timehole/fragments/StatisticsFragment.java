@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import com.beter.timehole.R;
+
+import java.util.ArrayList;
 
 
 public class StatisticsFragment extends Fragment {
@@ -24,6 +27,8 @@ public class StatisticsFragment extends Fragment {
 
         View statisticsRootView = inflater.inflate(R.layout.statistics_fragment, container, false);
 
+
         return statisticsRootView;
     }
+
 }

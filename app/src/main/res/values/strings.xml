@@ -67,4 +67,10 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_how_to_use">HowToUseActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="title_activity_eula">EULAActivity</string>
+    <string name="title_activity_faq">FAQActivity</string>
+    <string name="title_activity_send_feedback">SendFeedbackActivity</string>
+    <string name="title_activity_troubleshooting">TroubleshootingActivity</string>
 </resources>
