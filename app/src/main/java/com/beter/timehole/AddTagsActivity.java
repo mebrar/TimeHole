@@ -29,5 +29,7 @@ public class AddTagsActivity extends AppCompatActivity {
                // SetTagDialogFragment.show(fm,"Dialog Fragment");
             }
         });
+
+
     }
 }
