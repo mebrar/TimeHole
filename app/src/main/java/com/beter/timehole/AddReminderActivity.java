@@ -16,11 +16,23 @@ import android.app.TimePickerDialog;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import android.app.AlarmManager;
+import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import android.util.Log;
@@ -42,13 +54,18 @@ public class AddReminderActivity extends AppCompatActivity {
     private int dateDay;
     private int timeHour;
     private int timeMinute;
-    public static int reminderCount = 0;
-    private static final String TAG = "checkControl";
+    private ArrayList<Reminder> reminderContainer = new ArrayList<>();
+
+    NotificationCompat.Builder notification;
+    private static final int uniqueID = 426346;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        notification = new NotificationCompat.Builder(this);
+        notification.setAutoCancel(true);
 
         final Calendar cal = Calendar.getInstance();
         dateYear = cal.get(Calendar.YEAR);
@@ -108,22 +125,33 @@ public class AddReminderActivity extends AppCompatActivity {
         timePickerInput.setText(timeHour + ":" +timeMinute);
     }
 
-    private void writeReminderToFile(Reminder reminder) {
+    private void writeReminderToFile(ArrayList<Reminder> reminderCont) {
         try {
-            Log.i(TAG, "WriteFile Step");
             FileOutputStream reminderFileOutputStream = this.openFileOutput("reminderobjects.dat", Context.MODE_WORLD_READABLE);
             ObjectOutputStream reminderObjectStream = new ObjectOutputStream(reminderFileOutputStream);
-            reminderObjectStream.writeObject(reminder);
-            reminderCount++;
+            reminderObjectStream.writeObject(reminderCont);
             reminderObjectStream.close();
             reminderFileOutputStream.close();
         }
         catch(Exception e){
-            Log.i(TAG, "WriteFile Catch Step");
             e.printStackTrace();
         }
     }
 
+    private ArrayList<Reminder> readRemindersFromFile(){
+        ArrayList<com.beter.timehole.core.Reminder> remindersFromFile = new ArrayList<>();
+        try{
+            FileInputStream reminderFileInputStream = this.openFileInput("reminderobjects.dat");
+            ObjectInputStream reminderObjectInputStream = new ObjectInputStream(reminderFileInputStream);
+            remindersFromFile = (ArrayList<Reminder>)reminderObjectInputStream.readObject();
+            reminderObjectInputStream.close();
+            reminderFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return remindersFromFile;
+    }
 
     public void addReminderClicked(View v){
         nameInput = (EditText)findViewById(R.id.reminder_name_input);
@@ -131,8 +159,33 @@ public class AddReminderActivity extends AppCompatActivity {
         String reminderName = nameInput.getText().toString();
         String reminderNote = noteInput.getText().toString();
         Reminder reminder = new Reminder(new Date(dateYear,dateMonth,dateDay,timeHour,timeMinute), reminderName,reminderNote,null,null);
-        writeReminderToFile(reminder);
-        Log.i(TAG, "Pressed and Wrote Step");
+        reminderContainer = readRemindersFromFile();
+        reminderContainer.add(reminder);
+        writeReminderToFile(reminderContainer);
+
+        Calendar calendar = Calendar.getInstance();
+        dateYear = calendar.get(Calendar.YEAR);
+        dateMonth = calendar.get(Calendar.MONTH);
+        dateDay = calendar.get(Calendar.DAY_OF_MONTH);
+        long time = calendar.getTimeInMillis();
+
+        notification.setSmallIcon(R.drawable.ic_watch_later_black_18dp);
+        notification.setTicker("Reminder: " + nameInput);
+        notification.setWhen(System.currentTimeMillis());
+        notification.setContentTitle("" + nameInput);
+        notification.setContentText("" + noteInput);
+        notification.setWhen(time);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        notification.setContentIntent(pendingIntent);
+
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(uniqueID,notification.build());
+
+
+
         onBackPressed();
     }
+
 }

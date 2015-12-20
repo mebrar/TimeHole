@@ -6,10 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
-import android.app.Activity;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -17,31 +14,46 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.beter.timehole.core.Reminder;
+import com.beter.timehole.core.Activity;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class AddActivityActivity extends AppCompatActivity {
     private static EditText nameText;
     private static EditText duration;
-    private static EditText startDate;
-    private static EditText finishDate;
     private static CheckBox done;
     private static EditText note;
 
-    com.rey.material.widget.EditText datePickerInput;
-    com.rey.material.widget.EditText timePickerInput;
-    static final int DATE_DIALOG_ID = 0;
-    static final int TIME_DIALOG_ID = 1;
+    com.rey.material.widget.EditText startDatePickerInput;
+    com.rey.material.widget.EditText startTimePickerInput;
+    com.rey.material.widget.EditText finishDatePickerInput;
+    com.rey.material.widget.EditText finishTimePickerInput;
+
+    static final int START_DATE_DIALOG_ID = 0;
+    static final int FINISH_DATE_DIALOG_ID = 1;
+    static final int START_TIME_DIALOG_ID = 2;
+    static final int FINISH_TIME_DIALOG_ID = 3;
 
 
-    private int dateYear;
-    private int dateMonth;
-    private int dateDay;
-    private int timeHour;
-    private int timeMinute;
+    private int startDateYear;
+    private int startDateMonth;
+    private int startDateDay;
+    private int startTimeHour;
+    private int startTimeMinute;
+
+    private int finishDateYear;
+    private int finishDateMonth;
+    private int finishDateDay;
+    private int finishTimeHour;
+    private int finishTimeMinute;
+
+    private ArrayList<Activity> activitiesContainer = new ArrayList<>();
 
 
     @Override
@@ -49,98 +61,110 @@ public class AddActivityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_activity);
 
-
-        nameText = (EditText) findViewById(R.id.nameInput);
-        duration = (EditText) findViewById(R.id.durationInput);
-        startDate = (EditText) findViewById(R.id.startDateInput);
-        finishDate = (EditText) findViewById(R.id.finishDateInput);
-        note = (EditText) findViewById(R.id.noteInput);
-        done = (CheckBox) findViewById(R.id.doneInput);
-        final Button createButton = (Button) findViewById(R.id.createButton);
-        final boolean doneValue= done.isChecked();// if checkBox done is checked doneValue is set to true and vice versa.
-        final long durationValue = Long.parseLong(duration.getText().toString()); 
-
-
-        /** Another possible way for parsing a string in to a long is:
-         * long durationValue = Long.valueOf(duration.getText().toString()).longValue();
-         * Thus it can also be used in case there are problems with this solution.
-         *
-         * In order the doneValue and durationValue to be used in the button listener they must be declared as final that is why their type is final.
-         */
-
-        Context context = getApplicationContext();
-        CharSequence text = "Activity Created";
-        int duration = Toast.LENGTH_SHORT;
-
-        final Toast toast = Toast.makeText(context, text, duration);
-
-
-        createButton.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v){
-                    com.beter.timehole.core.Activity newActivity = new com.beter.timehole.core.Activity(nameText.getText().toString(),doneValue,durationValue,startDate.getText().toString(),finishDate.getText().toString(),null,note.getText().toString());
-                    toast.show();
-                }
-        }
-        );
-
     }
 
-    public void datePickerClicked(View v){
-        showDialog(DATE_DIALOG_ID);
+    public void startDatePickerClicked(View v){
+        showDialog(START_DATE_DIALOG_ID);
     }
 
-    public void timePickerClicked(View v){
-        showDialog(TIME_DIALOG_ID);
+    public void finishDatePickerClicked(View v){
+        showDialog(FINISH_DATE_DIALOG_ID);
+    }
+
+    public void startTimePickerClicked(View v){
+        showDialog(START_TIME_DIALOG_ID);
+    }
+
+    public void finishTimePickerClicked(View v){
+        showDialog(FINISH_TIME_DIALOG_ID);
     }
 
     @Override
     protected Dialog onCreateDialog(int id){
-        if(id == DATE_DIALOG_ID){
-            return new DatePickerDialog(this,datePickerListener, dateYear,dateMonth,dateDay);
+        if(id == START_DATE_DIALOG_ID){
+            return new DatePickerDialog(this,startDatePickerListener, startDateYear,startDateMonth,startDateDay);
         }
-        else if(id == TIME_DIALOG_ID){
-            return new TimePickerDialog(this,timePickerListener,timeHour,timeMinute,true);
+        else if(id == FINISH_DATE_DIALOG_ID){
+            return new DatePickerDialog(this,startDatePickerListener, finishDateYear,finishDateMonth,finishDateDay);
+        }
+        else if(id == START_TIME_DIALOG_ID){
+            return new TimePickerDialog(this,startTimePickerListener,startTimeHour,startTimeMinute,true);
+        }
+        else if(id == FINISH_TIME_DIALOG_ID){
+            return new TimePickerDialog(this,startTimePickerListener,finishTimeHour,finishTimeMinute,true);
         }
         return null;
     }
 
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+
+    private DatePickerDialog.OnDateSetListener startDatePickerListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            dateYear = year;
-            dateMonth = monthOfYear +1;
-            dateDay = dayOfMonth;
-            Toast.makeText(AddActivityActivity.this,dateYear + "/" + dateMonth + "/"+dateDay,Toast.LENGTH_LONG).show();
-            updateDatePickerText();
+            startDateYear = year;
+            startDateMonth = monthOfYear +1;
+            startDateDay = dayOfMonth;
+            Toast.makeText(AddActivityActivity.this,startDateYear + "/" + startDateMonth + "/"+startDateDay,Toast.LENGTH_LONG).show();
+            updateStartDatePickerText();
         }
     };
 
-    private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
+    private TimePickerDialog.OnTimeSetListener startTimePickerListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            timeHour = hourOfDay;
-            timeMinute = minute;
-            Toast.makeText(AddActivityActivity.this,timeHour + ":" +timeMinute,Toast.LENGTH_LONG).show();
-            updateTimePickerText();
+            startTimeHour = hourOfDay;
+            startTimeMinute = minute;
+            Toast.makeText(AddActivityActivity.this,startTimeHour + ":" +startTimeMinute,Toast.LENGTH_LONG).show();
+            updateStartTimePickerText();
         }
     };
 
-    private void updateDatePickerText(){
-        datePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.reminder_date_input);
-        datePickerInput.setText(dateYear + "/" + dateMonth + "/"+dateDay);
+    private DatePickerDialog.OnDateSetListener finishDatePickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            finishDateYear = year;
+            finishDateMonth = monthOfYear +1;
+            finishDateDay = dayOfMonth;
+            Toast.makeText(AddActivityActivity.this,finishDateYear + "/" + finishDateMonth + "/"+finishDateDay,Toast.LENGTH_LONG).show();
+            updateFinishDatePickerText();
+        }
+    };
+
+    private TimePickerDialog.OnTimeSetListener finishTimePickerListener = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            finishTimeHour = hourOfDay;
+            finishTimeMinute = minute;
+            Toast.makeText(AddActivityActivity.this,finishTimeHour + ":" +finishTimeMinute,Toast.LENGTH_LONG).show();
+            updateFinishTimePickerText();
+        }
+    };
+
+    private void updateStartDatePickerText(){
+        //startDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_start_date_input);
+        startDatePickerInput.setText(startDateYear + "/" + startDateMonth + "/"+startDateDay);
     }
 
-    private void updateTimePickerText(){
-        timePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.reminder_time_input);
-        timePickerInput.setText(timeHour + ":" +timeMinute);
+    private void updateStartTimePickerText(){
+        //startTimePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_start_time_input);
+        startTimePickerInput.setText(startTimeHour + ":" +startTimeMinute);
+    }
+
+    private void updateFinishDatePickerText(){
+        //finishDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_finish_date_input);
+        finishDatePickerInput.setText(finishDateYear + "/" + finishDateMonth + "/"+finishDateDay);
+    }
+
+    private void updateFinishTimePickerText(){
+        //finishTimePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_finish_time_input);
+        finishTimePickerInput.setText(finishTimeHour + ":" +finishTimeMinute);
     }
 
 
-    private void writeActivityToFile(com.beter.timehole.core.Activity activity) {
+    private void writeActivityToFile(ArrayList<Activity> activityCont) {
         try {
             FileOutputStream activityFileOutputStream = this.openFileOutput("activityobjects.dat", Context.MODE_WORLD_READABLE);
             ObjectOutputStream activityObjectOutputStream = new ObjectOutputStream(activityFileOutputStream);
-            activityObjectOutputStream.writeObject(activity);
+            activityObjectOutputStream.writeObject(activityCont);
             activityObjectOutputStream.close();
             activityFileOutputStream.close();
         }
@@ -149,4 +173,30 @@ public class AddActivityActivity extends AppCompatActivity {
         }
     }
 
+    private ArrayList<Activity> readActivitiesFromFile(){
+        ArrayList<Activity> activitiesFromFile = new ArrayList<>();
+        try{
+            FileInputStream activityFileInputStream = this.openFileInput("activityobjects.dat");
+            ObjectInputStream activityObjectInputStream = new ObjectInputStream(activityFileInputStream);
+            activitiesFromFile = (ArrayList<Activity>)activityObjectInputStream.readObject();
+            activityObjectInputStream.close();
+            activityFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return activitiesFromFile;
+    }
+
+    public void addActivityClicked(View v){
+        Date startDate = new Date(startDateYear,startDateMonth,startDateDay,startTimeHour,startTimeMinute);
+        Date finishDate = new Date(finishDateYear,finishDateMonth,finishDateDay,finishTimeHour,finishTimeMinute);
+        String activityName;
+        String activityNote;
+        Activity activity = new Activity(activityName,true,0,startDate,finishDate,null,activityNote);
+        activitiesContainer = readActivitiesFromFile();
+        activitiesContainer.add(activity);
+        writeActivityToFile(activitiesContainer);
+        onBackPressed();
+    }
 }
