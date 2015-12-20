@@ -61,16 +61,17 @@ public class AddReminderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        notification = new Notification.Builder (this);
-        notification.setAutoCancel(true);
+        setContentView(R.layout.activity_add_reminder);
+        //Creating new service client
+        scheduleClient = new ScheduleClient(this);
+        scheduleClient.doBindService();
 
         final Calendar cal = Calendar.getInstance();
         dateYear = cal.get(Calendar.YEAR);
         dateMonth = cal.get(Calendar.MONTH);
         dateDay = cal.get(Calendar.DAY_OF_MONTH);
 
-        setContentView(R.layout.activity_add_reminder);
+
     }
 
     public void datePickerClicked(View v){
@@ -162,8 +163,7 @@ public class AddReminderActivity extends AppCompatActivity {
         reminderContainer.add(reminder);
         writeReminderToFile(reminderContainer);
 
-        scheduleClient = new ScheduleClient(this);
-        scheduleClient.doBindService();
+
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(dateYear,dateMonth,dateDay,timeHour,timeMinute);
