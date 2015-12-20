@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class ActivitiesFragment extends Fragment {
 
-    private ArrayList<Activity> activitiesContainer = new ArrayList<>();
+    private ArrayList<Activity> activitiesArrayList = new ArrayList<>();
 
     public ActivitiesFragment() {
     }
@@ -40,9 +40,9 @@ public class ActivitiesFragment extends Fragment {
         ArrayList<Tag> tags1= new ArrayList<Tag>();
         tags1.add(new Tag("Calisma"));
 
-        activitiesContainer = readActivitiesFromFile();
+        activitiesArrayList = readActivitiesFromFile();
 
-        MyCustomAdapter adapter = new MyCustomAdapter(activitiesContainer,getActivity());
+        MyCustomAdapter adapter = new MyCustomAdapter(activitiesArrayList,getActivity());
         ListView doneList = (ListView) ActivtiesRootView.findViewById(R.id.listView1);
         doneList.setAdapter(adapter);
 
