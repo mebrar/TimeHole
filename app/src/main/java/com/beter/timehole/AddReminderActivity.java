@@ -56,6 +56,7 @@ public class AddReminderActivity extends AppCompatActivity {
     static public int timeMinute;
     private ArrayList<Reminder> reminderContainer = new ArrayList<>();
     static Notification.Builder  notification;
+    private ScheduleClient scheduleClient;
 
 
 
@@ -163,26 +164,15 @@ public class AddReminderActivity extends AppCompatActivity {
         reminderContainer.add(reminder);
         writeReminderToFile(reminderContainer);
 
+        scheduleClient = new ScheduleClient(this);
+        scheduleClient.doBindService();
+
         Calendar calendar = Calendar.getInstance();
-        dateYear = calendar.get(Calendar.YEAR);
-        dateMonth = calendar.get(Calendar.MONTH);
-        dateDay = calendar.get(Calendar.DAY_OF_MONTH);
-        long time = calendar.getTimeInMillis();
+        calendar.set(dateYear,dateMonth,dateDay,timeHour,timeMinute);
+        calendar.set(Calendar.SECOND,0);
 
-        notification.setSmallIcon(R.drawable.ic_watch_later_black_18dp);
-        notification.setTicker("Reminder: " + nameInput);
-        notification.setWhen(System.currentTimeMillis());
-        notification.setContentTitle("" + nameInput);
-        notification.setContentText("" + noteInput);
-
-        Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        notification.setContentIntent(pendingIntent);
-
-
-        Intent i = new Intent(this,MyService.class);
-        startService(i);
-
+        scheduleClient.setAlarmForNotification(calendar);
+        Toast.makeText(this,"Reminder set",Toast.LENGTH_SHORT).show();
 
         onBackPressed();
     }
