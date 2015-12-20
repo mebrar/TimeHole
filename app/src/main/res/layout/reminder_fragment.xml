@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="#EDE7F6">
+
 
     <ListView
         android:layout_width="wrap_content"
@@ -10,7 +12,6 @@
         android:id="@+id/listView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/reminderListView"
         android:background="#EDE7F6"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp" />
@@ -22,7 +23,6 @@
         android:id="@+id/reminderbutton"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/reminderListView"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="147dp" />
 
