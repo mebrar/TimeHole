@@ -153,7 +153,7 @@ public class AddReminderActivity extends AppCompatActivity {
         return remindersFromFile;
     }
 
-    public void addReminderClicked(View v){
+    public void createReminderClicked(View v){
         nameInput = (EditText)findViewById(R.id.reminder_name_input);
         noteInput = (EditText)findViewById(R.id.reminder_note_input);
         String reminderName = nameInput.getText().toString();

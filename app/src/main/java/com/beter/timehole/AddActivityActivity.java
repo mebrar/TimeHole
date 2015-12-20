@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -59,6 +60,16 @@ public class AddActivityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final Calendar cal = Calendar.getInstance();
+        startDateYear = cal.get(Calendar.YEAR);
+        startDateMonth = cal.get(Calendar.MONTH);
+        startDateDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        finishDateYear = startDateYear;
+        finishDateMonth = startDateMonth;
+        finishDateDay = startDateDay;
+
         setContentView(R.layout.activity_add_activity);
 
     }
@@ -140,22 +151,22 @@ public class AddActivityActivity extends AppCompatActivity {
     };
 
     private void updateStartDatePickerText(){
-        //startDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_start_date_input);
+        startDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_start_date_input);
         startDatePickerInput.setText(startDateYear + "/" + startDateMonth + "/"+startDateDay);
     }
 
     private void updateStartTimePickerText(){
-        //startTimePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_start_time_input);
+        startTimePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_start_time_input);
         startTimePickerInput.setText(startTimeHour + ":" +startTimeMinute);
     }
 
     private void updateFinishDatePickerText(){
-        //finishDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_finish_date_input);
+        finishDatePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_finish_date_input);
         finishDatePickerInput.setText(finishDateYear + "/" + finishDateMonth + "/"+finishDateDay);
     }
 
     private void updateFinishTimePickerText(){
-        //finishTimePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_finish_time_input);
+        finishTimePickerInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_finish_time_input);
         finishTimePickerInput.setText(finishTimeHour + ":" +finishTimeMinute);
     }
 
@@ -188,12 +199,12 @@ public class AddActivityActivity extends AppCompatActivity {
         return activitiesFromFile;
     }
 
-    public void addActivityClicked(View v){
+    public void createActivityClicked(View v){
         Date startDate = new Date(startDateYear,startDateMonth,startDateDay,startTimeHour,startTimeMinute);
         Date finishDate = new Date(finishDateYear,finishDateMonth,finishDateDay,finishTimeHour,finishTimeMinute);
         String activityName;
         String activityNote;
-        Activity activity = new Activity(activityName,true,0,startDate,finishDate,null,activityNote);
+        Activity activity = new Activity("test",true,0,startDate,finishDate,null,"test");
         activitiesContainer = readActivitiesFromFile();
         activitiesContainer.add(activity);
         writeActivityToFile(activitiesContainer);

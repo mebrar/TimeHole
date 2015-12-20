@@ -48,10 +48,11 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        final Intent fabIntent = new Intent(this, AddActivityActivity.class);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(fabIntent);
             }
         });
 
