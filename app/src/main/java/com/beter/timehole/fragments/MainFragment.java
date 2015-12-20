@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.CardView;
 import android.support.design.widget.NavigationView;
+import android.widget.TextView;
 
 
 import com.beter.timehole.*;
@@ -45,21 +46,25 @@ public class MainFragment extends Fragment {
         navView = (NavigationView)(getActivity().findViewById(R.id.nav_view));
         ArrayList<Reminder> reminderListFromFile = readRemindersFromFile();
         ArrayList<Activity> activitiesListFromFile = readActivitiesFromFile();
+        TextView lastReminderTextView = (TextView)getActivity().findViewById(R.id.last_reminders);
+        TextView lastActivityTextView = (TextView)getActivity().findViewById(R.id.last_activities);
         Reminder lastReminder;
         Activity lastActivity;
 
         if(reminderListFromFile.isEmpty()){
-
+            lastReminderTextView.setText("No reminder created yet...");
         }
         else{
             lastReminder = reminderListFromFile.get(reminderListFromFile.size()-1);
+            lastReminderTextView.setText(lastReminder.toString());
         }
 
         if(activitiesListFromFile.isEmpty()){
-
+            lastActivityTextView.setText("No activity created yet...");
         }
         else{
             lastActivity = activitiesListFromFile.get(activitiesListFromFile.size()-1);
+            lastActivityTextView.setText(lastActivity.toString());
         }
 
 
