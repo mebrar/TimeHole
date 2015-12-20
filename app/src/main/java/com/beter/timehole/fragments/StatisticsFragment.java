@@ -84,6 +84,7 @@ public class StatisticsFragment extends Fragment {
             seriesRenderer.setColor(Color.parseColor(colors[i]));
 
             renderer.addSeriesRenderer(seriesRenderer);
+
         }
 
         renderer.setChartTitleTextSize(60);
