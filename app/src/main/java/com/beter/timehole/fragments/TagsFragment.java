@@ -4,8 +4,6 @@
 package com.beter.timehole.fragments;
 import com.beter.timehole.core.Tag;
 import com.beter.timehole.AddTagsActivity;
-import com.beter.timehole.fragments.GeneralCustomTagsAdapter;
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,6 +23,8 @@ import android.content.Intent;
 
 import com.beter.timehole.R;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class TagsFragment extends Fragment {
@@ -51,6 +51,7 @@ public class TagsFragment extends Fragment {
         tags.add(hobby);
 
 
+
         ListView tagsList = (ListView) tagsRootView.findViewById(R.id.tagsListView);
 
 
@@ -67,7 +68,19 @@ public class TagsFragment extends Fragment {
         return tagsRootView;
     }
 
-
-
+    private ArrayList<Tag> readTagsFromFile(){
+        ArrayList<Tag> tagsFromFile = new ArrayList<>();
+        try{
+            FileInputStream tagFileInputStream = getContext().openFileInput("tagobjects.dat");
+            ObjectInputStream tagObjectInputStream = new ObjectInputStream(tagFileInputStream);
+            tagsFromFile = (ArrayList<Tag>)tagObjectInputStream.readObject();
+            tagObjectInputStream.close();
+            tagFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return tagsFromFile;
+    }
 
 }
