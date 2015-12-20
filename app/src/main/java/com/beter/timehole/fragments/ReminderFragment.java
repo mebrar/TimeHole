@@ -64,23 +64,16 @@ public class ReminderFragment extends Fragment {
     }
 
 
-    private ArrayList<com.beter.timehole.core.Reminder> readRemindersFromFile(){
+    private ArrayList<Reminder> readRemindersFromFile(){
         ArrayList<com.beter.timehole.core.Reminder> remindersFromFile = new ArrayList<>();
         try{
             FileInputStream reminderFileInputStream = getContext().openFileInput("reminderobjects.dat");
-            Log.i(TAG,"First Step");
             ObjectInputStream reminderObjectInputStream = new ObjectInputStream(reminderFileInputStream);
-
-            com.beter.timehole.core.Reminder reminder;
-            while(reminderObjectInputStream.available()>0) {
-                reminder = (com.beter.timehole.core.Reminder) reminderObjectInputStream.readObject();
-                remindersFromFile.add(reminder);
-            }
+            remindersFromFile = (ArrayList<Reminder>)reminderObjectInputStream.readObject();
             reminderObjectInputStream.close();
             reminderFileInputStream.close();
         }
         catch (Exception e){
-            Log.i(TAG,"Catch Step");
             e.printStackTrace();
         }
         return remindersFromFile;

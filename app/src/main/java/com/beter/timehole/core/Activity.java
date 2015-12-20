@@ -6,19 +6,20 @@ package com.beter.timehole.core;
 import java.lang.Override;
 import java.lang.String;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Activity implements java.io.Serializable {
 
     private String name;
     private boolean done;
     private long duration;
-    private String startDate;
-    private String finishDate;
+    private Date startDate;
+    private Date finishDate;
     private ArrayList<Tag> tags = null;
     private String note;
     public static final long serialVersionUID = 4321L;
 
-    public Activity(String name, boolean done, long duration, String startDate, String finishDate, ArrayList<Tag> tags, String note){
+    public Activity(String name, boolean done, long duration, Date startDate, Date finishDate, ArrayList<Tag> tags, String note){
         this.name = name;
         this.done = done;
         this.duration = duration;
@@ -48,11 +49,11 @@ public class Activity implements java.io.Serializable {
         return note;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public String getFinishDate() {
+    public Date getFinishDate() {
         return finishDate;
     }
 
@@ -66,6 +67,14 @@ public class Activity implements java.io.Serializable {
 
     public void setDuration(long duration) {
         this.duration = duration;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setFinishDate(Date finishDate) {
+        this.finishDate = finishDate;
     }
 
     /**
