@@ -20,7 +20,8 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="70dp"
-        android:layout_weight="0.08">
+        android:layout_weight="0.08"
+        android:onClick="activitiesCardClicked">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,7 +65,8 @@
         card_view:cardBackgroundColor = "#B39DDB"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:onClick="reminderCardClicked">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

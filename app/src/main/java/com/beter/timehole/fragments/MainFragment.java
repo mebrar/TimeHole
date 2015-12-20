@@ -7,18 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.beter.timehole.AddActivityActivity;
-import com.beter.timehole.AddReminderActivity;
-import com.beter.timehole.fragments.ReminderFragment;
+
+import com.beter.timehole.*;
+import com.beter.timehole.fragments.*;
 import com.beter.timehole.R;
 
 public class MainFragment extends Fragment {
 
+    static FragmentTransaction fragmentTransaction;
 
     public MainFragment() {
     }
@@ -29,9 +30,19 @@ public class MainFragment extends Fragment {
 
         View mainRootView = inflater.inflate(R.layout.main_fragment, container, false);
 
-
-
-
         return mainRootView;
     }
+
+    public void activitiesCardClicked(View v){
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new ActivitiesFragment());
+        fragmentTransaction.commit();
+    }
+
+    public void reminderCardClicked(View v){
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new ReminderFragment());
+        fragmentTransaction.commit();
+    }
+
 }
