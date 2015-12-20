@@ -99,10 +99,10 @@ public class Activity implements java.io.Serializable {
     public String toString() {
         String result;
         result= name + " " + duration + "\n" ;
-        for(int i=0;i<tags.size();i++)
-        {
-            result+= tags.get(i)+" ";
-        }
+        //for(int i=0;i<tags.size();i++)
+        //{
+        //    result+= tags.get(i)+" ";
+        //}
         return result;
     }
 

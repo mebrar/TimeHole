@@ -26,6 +26,7 @@ import java.util.Date;
 
 
 public class AddActivityActivity extends AppCompatActivity {
+
     private static EditText nameText;
     private static EditText duration;
     private static CheckBox done;
@@ -202,9 +203,11 @@ public class AddActivityActivity extends AppCompatActivity {
     public void createActivityClicked(View v){
         Date startDate = new Date(startDateYear,startDateMonth,startDateDay,startTimeHour,startTimeMinute);
         Date finishDate = new Date(finishDateYear,finishDateMonth,finishDateDay,finishTimeHour,finishTimeMinute);
-        String activityName;
-        String activityNote;
-        Activity activity = new Activity("test",true,0,startDate,finishDate,null,"test");
+        com.rey.material.widget.EditText activityNameInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_name_input);
+        com.rey.material.widget.EditText activityNoteInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_note_input);
+        String activityName = activityNameInput.getText().toString();
+        String activityNote = activityNoteInput.getText().toString();
+        Activity activity = new Activity(activityName,true,0,startDate,finishDate,null,activityNote);
         activitiesContainer = readActivitiesFromFile();
         activitiesContainer.add(activity);
         writeActivityToFile(activitiesContainer);

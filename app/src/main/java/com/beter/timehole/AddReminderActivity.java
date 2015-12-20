@@ -116,7 +116,7 @@ public class AddReminderActivity extends AppCompatActivity {
 
     private void updateDatePickerText(){
         datePickerInput = (EditText)findViewById(R.id.reminder_date_input);
-        datePickerInput.setText(dateYear + "/" + dateMonth + "/"+dateDay);
+        datePickerInput.setText(dateDay + "/" + dateMonth + "/"+dateYear);
     }
 
     private void updateTimePickerText(){
@@ -157,8 +157,9 @@ public class AddReminderActivity extends AppCompatActivity {
         noteInput = (EditText)findViewById(R.id.reminder_note_input);
         String reminderName = nameInput.getText().toString();
         String reminderNote = noteInput.getText().toString();
-        Reminder reminder = new Reminder(new Date(dateYear,dateMonth,dateDay,timeHour,timeMinute), reminderName,reminderNote,null,null);
+        Reminder reminder = new Reminder(new Date(dateYear,dateMonth-1,dateDay,timeHour,timeMinute), reminderName,reminderNote,null,null);
         reminderContainer = readRemindersFromFile();
+        Toast.makeText(AddReminderActivity.this,"Reminder Created: " +reminder.getDate().toString(),Toast.LENGTH_LONG).show();
         reminderContainer.add(reminder);
         writeReminderToFile(reminderContainer);
 
@@ -181,7 +182,6 @@ public class AddReminderActivity extends AppCompatActivity {
 
         Intent i = new Intent(this,MyService.class);
         startService(i);
-
 
 
         onBackPressed();

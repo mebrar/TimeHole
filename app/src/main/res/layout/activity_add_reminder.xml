@@ -23,19 +23,20 @@
 
     <com.rey.material.widget.EditText
         android:id="@+id/reminder_date_input"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="Date"
         app:et_inputId="@+id/textfield_reminder_date"
-        app:et_supportMode="none"
         app:et_labelEnable="true"
         android:onClick="datePickerClicked"
+        app:et_supportMode="helper"
         app:et_helper="Click to Set Date"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="46dp"
         android:layout_below="@+id/reminder_note_input"
         android:layout_alignParentStart="true" />
+
 
     <com.rey.material.widget.EditText
         android:id="@+id/reminder_time_input"
@@ -44,7 +45,7 @@
         android:inputType="text"
         android:hint="Time"
         app:et_inputId="@+id/textfield_reminder_time"
-        app:et_supportMode="none"
+        app:et_supportMode="helper"
         app:et_labelEnable="true"
         app:et_helper="Click to Set Time"
         android:onClick="timePickerClicked"
