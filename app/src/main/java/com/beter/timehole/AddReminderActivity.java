@@ -58,8 +58,6 @@ public class AddReminderActivity extends AppCompatActivity {
     static Notification.Builder  notification;
     private ScheduleClient scheduleClient;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,5 +173,14 @@ public class AddReminderActivity extends AppCompatActivity {
         Toast.makeText(this,"Reminder set",Toast.LENGTH_SHORT).show();
 
         onBackPressed();
+    }
+
+    @Override
+    protected void onStop() {
+        // When our activity is stopped ensure we also stop the connection to the service
+        // this stops us leaking our activity into the system *bad*
+        if(scheduleClient != null)
+            scheduleClient.doUnbindService();
+        super.onStop();
     }
 }
