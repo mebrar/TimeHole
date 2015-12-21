@@ -44,7 +44,7 @@
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageButton"
+        android:id="@+id/redImage"
         android:src="@drawable/red"
         android:clickable="true"
         android:layout_below="@+id/pick_color"
@@ -54,107 +54,107 @@
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView3"
+        android:id="@+id/blueGreyImage"
         android:src="@drawable/blue_grey"
         android:clickable="true"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton"
+        android:layout_below="@+id/redImage"
+        android:layout_alignStart="@+id/redImage"
         android:layout_marginTop="52dp" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView4"
+        android:id="@+id/brownImage"
         android:src="@drawable/brown"
         android:clickable="true"
         android:layout_marginLeft="45dp"
         android:layout_below="@+id/pick_color"
-        android:layout_toEndOf="@+id/imageButton" />
+        android:layout_toEndOf="@+id/redImage" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView5"
+        android:id="@+id/greenImage"
         android:src="@drawable/green"
         android:clickable="true"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_alignStart="@+id/imageView4" />
+        android:layout_alignTop="@+id/blueGreyImage"
+        android:layout_alignStart="@+id/brownImage" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView6"
+        android:id="@+id/purpleImage"
         android:layout_marginLeft="45dp"
         android:src="@drawable/purple"
         android:clickable="true"
-        android:layout_above="@+id/imageView9"
+        android:layout_above="@+id/pinkImage"
         android:layout_toEndOf="@+id/dfragbutton" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginLeft="45dp"
-        android:id="@+id/imageView7"
+        android:id="@+id/darkBlueImage"
         android:src="@drawable/deepblue"
         android:clickable="true"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_alignEnd="@+id/imageView6" />
+        android:layout_alignTop="@+id/brownImage"
+        android:layout_alignEnd="@+id/purpleImage" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView8"
+        android:id="@+id/orangeImage"
         android:src="@drawable/orange"
         android:clickable="true"
         android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/imageView9"
-        android:layout_alignStart="@+id/imageView5" />
+        android:layout_alignTop="@+id/pinkImage"
+        android:layout_alignStart="@+id/greenImage" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView9"
+        android:id="@+id/pinkImage"
         android:src="@drawable/pink"
         android:clickable="true"
-        android:layout_below="@+id/imageView3"
-        android:layout_alignStart="@+id/imageView3"
+        android:layout_below="@+id/blueGreyImage"
+        android:layout_alignStart="@+id/blueGreyImage"
         android:layout_marginTop="62dp" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView10"
+        android:id="@+id/tealImage"
         android:src="@drawable/teal"
         android:clickable="true"
         android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/imageView8"
-        android:layout_alignStart="@+id/imageView6" />
+        android:layout_alignTop="@+id/orangeImage"
+        android:layout_alignStart="@+id/purpleImage" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView11"
+        android:id="@+id/yellowImage"
         android:src="@drawable/yellow"
         android:clickable="true"
         android:layout_above="@+id/dfragbutton"
-        android:layout_alignStart="@+id/imageView9" />
+        android:layout_alignStart="@+id/pinkImage" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView12"
+        android:id="@+id/lightBlueImage"
         android:src="@drawable/lblue"
         android:clickable="true"
-        android:layout_alignTop="@+id/imageView11"
-        android:layout_alignStart="@+id/imageView8" />
+        android:layout_alignTop="@+id/yellowImage"
+        android:layout_alignStart="@+id/orangeImage" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/imageView13"
+        android:id="@+id/deepPurpleImage"
         android:src="@drawable/deeppurple"
         android:clickable="true"
-        android:layout_alignTop="@+id/imageView12"
-        android:layout_alignStart="@+id/imageView10" />
+        android:layout_alignTop="@+id/lightBlueImage"
+        android:layout_alignStart="@+id/tealImage" />
 
 </RelativeLayout>
