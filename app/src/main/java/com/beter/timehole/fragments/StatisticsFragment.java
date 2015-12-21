@@ -76,19 +76,16 @@ public class StatisticsFragment extends Fragment {
         ArrayList<String> colors = new ArrayList<>();
         for(int i=0;i<activitiesArrayList.size();i++)
         {
-            for(int j=0;i<activitiesArrayList.get(i).getTags().size();j++)
-            {
-                if(codename.contains(activitiesArrayList.get(i).getTags().get(j).getTagName().toString()))
+                if(codename.contains(activitiesArrayList.get(i).getTag().getTagName().toString()))
                 {
-                    int index = codename.indexOf(activitiesArrayList.get(i).getTags().get(j).getTagName().toString());
+                    int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName().toString());
                     values.set(index,values.get(index)+1);
                 }
                 else {
-                    codename.add(activitiesArrayList.get(i).getTags().get(j).getTagName().toString());
-                     int index = codename.indexOf(activitiesArrayList.get(i).getTags().get(j).getTagName().toString());
+                     codename.add(activitiesArrayList.get(i).getTag().getTagName().toString());
+                     int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName().toString());
                      values.set(index, 1.0);
                 }
-            }
         }
         /**
         for(int i=0;i<activitiesArrayList.size();i++)

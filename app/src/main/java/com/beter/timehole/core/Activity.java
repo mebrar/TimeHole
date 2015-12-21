@@ -41,7 +41,7 @@ public class Activity implements java.io.Serializable {
         return duration;
     }
 
-    public Tag getTags() {
+    public Tag getTag() {
         return tag;
     }
 
