@@ -160,7 +160,7 @@ public class AddReminderActivity extends AppCompatActivity {
         Toast.makeText(AddReminderActivity.this,"Reminder Created: " +reminder.getDate().toString(),Toast.LENGTH_LONG).show();
         reminderContainer.add(reminder);
         writeReminderToFile(reminderContainer);
-        NotificationEventReceiver.setupAlarm(getApplicationContext(),toBeRemindedDate);
+        NotificationEventReceiver.setupAlarm(getApplicationContext());
 
         Toast.makeText(this,"Reminder set",Toast.LENGTH_SHORT).show();
 

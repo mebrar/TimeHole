@@ -9,6 +9,8 @@ import android.util.Log;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import com.beter.timehole.fragments.ReminderFragment;
 import com.beter.timehole.notifications.*;
 
 
@@ -19,17 +21,15 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
 
     private static final String ACTION_START_NOTIFICATION_SERVICE = "ACTION_START_NOTIFICATION_SERVICE";
     private static final String ACTION_DELETE_NOTIFICATION = "ACTION_DELETE_NOTIFICATION";
-    public static Date date;
-    private static final int NOTIFICATIONS_INTERVAL_IN_HOURS = 2;
+    private static final int NOTIFICATIONS_INTERVAL_IN_FIFTEEN_MINUTES = 1;
 
 
-    public static void setupAlarm(Context context, Date dateToBeReminded) {
+    public static void setupAlarm(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent alarmIntent = getStartPendingIntent(context);
-        date = dateToBeReminded;
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
                 getTriggerAt(new Date()),
-                NOTIFICATIONS_INTERVAL_IN_HOURS * AlarmManager.INTERVAL_HOUR,
+                NOTIFICATIONS_INTERVAL_IN_FIFTEEN_MINUTES * AlarmManager.INTERVAL_FIFTEEN_MINUTES,
                 alarmIntent);
     }
 
@@ -42,7 +42,7 @@ public class NotificationEventReceiver extends WakefulBroadcastReceiver {
 
     private static long getTriggerAt(Date now) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
+        calendar.setTime(ReminderFragment.firstReminder.getDate());
         //calendar.add(Calendar.HOUR, NOTIFICATIONS_INTERVAL_IN_HOURS);
         return calendar.getTimeInMillis();
     }

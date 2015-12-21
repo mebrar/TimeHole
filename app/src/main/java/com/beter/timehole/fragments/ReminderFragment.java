@@ -32,6 +32,7 @@ public class ReminderFragment extends Fragment {
 
     private static final String TAG = "checkControl";
     private ArrayList<Reminder> reminderArrayList = new ArrayList<>();
+    public static Reminder firstReminder = null;
 
     public ReminderFragment() {
     }
@@ -43,6 +44,9 @@ public class ReminderFragment extends Fragment {
         View reminderRootView = inflater.inflate(R.layout.reminder_fragment, container, false);
 
         reminderArrayList = readRemindersFromFile();
+        if(!reminderArrayList.isEmpty()){
+            firstReminder = reminderArrayList.get(0);
+        }
         CustomReminderAdapter adapter = new CustomReminderAdapter(reminderArrayList,getActivity());
         ListView reminderlist = (ListView) reminderRootView.findViewById(R.id.listView);
         reminderlist.setAdapter(adapter);
