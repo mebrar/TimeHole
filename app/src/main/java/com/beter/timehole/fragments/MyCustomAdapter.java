@@ -13,7 +13,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.beter.timehole.R;
+import com.beter.timehole.core.Activity;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<com.beter.timehole.core.Activity> list = new ArrayList<com.beter.timehole.core.Activity>();
     private Context context;
+    ArrayList<Activity> dataFromFile = new ArrayList<>();
 
     public MyCustomAdapter(ArrayList<com.beter.timehole.core.Activity> list, Context context) {
         this.list = list;
@@ -44,7 +48,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -71,6 +75,8 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                                      public void onClick(View v) {
                                          list.remove(Position);
                                          notifyDataSetChanged();
+                                         dataFromFile = readActivitiesFromFile();
+                                         dataFromFile.remove(position);
                                      }
                                  }
        );
@@ -90,5 +96,20 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
 
         );
         return view;
+    }
+
+    private ArrayList<Activity> readActivitiesFromFile(){
+        ArrayList<Activity> activitiesFromFile = new ArrayList<>();
+        try{
+            FileInputStream activityFileInputStream = context.openFileInput("activityobjects.dat");
+            ObjectInputStream activityObjectInputStream = new ObjectInputStream(activityFileInputStream);
+            activitiesFromFile = (ArrayList<Activity>)activityObjectInputStream.readObject();
+            activityObjectInputStream.close();
+            activityFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return activitiesFromFile;
     }
 }
