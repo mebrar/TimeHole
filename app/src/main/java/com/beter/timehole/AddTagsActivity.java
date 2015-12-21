@@ -12,6 +12,8 @@ import android.view.View;
 
 import com.beter.timehole.core.Tag;
 import com.beter.timehole.fragments.SetTagDialogFragment;
+import com.rey.material.widget.EditText;
+
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,7 +25,8 @@ import java.util.ArrayList;
 public class AddTagsActivity extends AppCompatActivity {
 
     private Button dfragbutton;
-    private FragmentManager fm = getSupportFragmentManager();
+    private EditText tagNameInput;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,12 @@ public class AddTagsActivity extends AppCompatActivity {
     }
 
     public void createTagClicked(View v){
-
+        tagNameInput = (EditText)findViewById(R.id.tag_name_input);
+        String tagName = tagNameInput.getText().toString();
+        Tag newTag = new Tag(tagName);
+        ArrayList<Tag> tempTagsContainer = readTagsFromFile();
+        tempTagsContainer.add(newTag);
+        writeTagToFile(tempTagsContainer);
+        onBackPressed();
     }
 }

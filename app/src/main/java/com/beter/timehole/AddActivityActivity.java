@@ -14,6 +14,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.beter.timehole.core.Activity;
+import com.beter.timehole.core.Tag;
+import com.rey.material.widget.*;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,12 +29,12 @@ import java.util.Date;
 public class AddActivityActivity extends AppCompatActivity {
 
     private static EditText duration;
-    private static CheckBox done;
 
     com.rey.material.widget.EditText startDatePickerInput;
     com.rey.material.widget.EditText startTimePickerInput;
     com.rey.material.widget.EditText finishDatePickerInput;
     com.rey.material.widget.EditText finishTimePickerInput;
+    com.rey.material.widget.CheckBox doneInput;
 
     static final int START_DATE_DIALOG_ID = 0;
     static final int FINISH_DATE_DIALOG_ID = 1;
@@ -59,6 +61,8 @@ public class AddActivityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ArrayList<Tag> tagsContainer = readTagsFromFile();
 
         final Calendar cal = Calendar.getInstance();
         startDateYear = cal.get(Calendar.YEAR);
@@ -201,14 +205,34 @@ public class AddActivityActivity extends AppCompatActivity {
     public void createActivityClicked(View v){
         Date startDate = new Date(startDateYear,startDateMonth,startDateDay,startTimeHour,startTimeMinute);
         Date finishDate = new Date(finishDateYear,finishDateMonth,finishDateDay,finishTimeHour,finishTimeMinute);
+        doneInput = (com.rey.material.widget.CheckBox)findViewById(R.id.addActivityDoneInput);
+
         com.rey.material.widget.EditText activityNameInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_name_input);
         com.rey.material.widget.EditText activityNoteInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_note_input);
         String activityName = activityNameInput.getText().toString();
         String activityNote = activityNoteInput.getText().toString();
-        Activity activity = new Activity(activityName,true,0,startDate,finishDate,null,activityNote);
+        Activity activity = new Activity(activityName,doneInput.isChecked(),0,startDate,finishDate,null,activityNote);
         activitiesContainer = readActivitiesFromFile();
         activitiesContainer.add(activity);
         writeActivityToFile(activitiesContainer);
         onBackPressed();
     }
+
+
+    private ArrayList<Tag> readTagsFromFile(){
+        ArrayList<Tag> tagsFromFile = new ArrayList<>();
+        try{
+            FileInputStream tagFileInputStream = openFileInput("tagobjects.dat");
+            ObjectInputStream tagObjectInputStream = new ObjectInputStream(tagFileInputStream);
+            tagsFromFile = (ArrayList<Tag>)tagObjectInputStream.readObject();
+            tagObjectInputStream.close();
+            tagFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return tagsFromFile;
+    }
+
+
 }
