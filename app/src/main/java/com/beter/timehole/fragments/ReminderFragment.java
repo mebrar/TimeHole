@@ -41,16 +41,11 @@ public class ReminderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View reminderRootView = inflater.inflate(R.layout.reminder_fragment, container, false);
-        ArrayList<Tag> tags1= new ArrayList<Tag>();
-        tags1.add(new Tag("Calisma"));
-
 
         reminderArrayList = readRemindersFromFile();
-
+        CustomReminderAdapter adapter = new CustomReminderAdapter(reminderArrayList,getActivity());
         ListView reminderlist = (ListView) reminderRootView.findViewById(R.id.listView);
-
-        reminderlist.setAdapter(new ArrayAdapter<Reminder>(getActivity(),
-                android.R.layout.simple_list_item_1, reminderArrayList));
+        reminderlist.setAdapter(adapter);
 
         return reminderRootView;
     }

@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:text="Delete"
         android:id="@+id/button"
+        android:layout_centerVertical="true"
         android:layout_alignTop="@+id/doneCheckBox"
         android:layout_toStartOf="@+id/doneCheckBox" />
 </RelativeLayout>

@@ -23,6 +23,15 @@
         android:id="@+id/tagsText"
         android:layout_gravity="right" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/deleteButton"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toStartOf="@+id/imageView2"/>
+
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
