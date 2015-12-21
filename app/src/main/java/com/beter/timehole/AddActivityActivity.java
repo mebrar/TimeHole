@@ -7,6 +7,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,6 +25,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import android.util.Log;
+import com.rey.material.widget.Spinner;
 
 
 public class AddActivityActivity extends AppCompatActivity {
@@ -55,6 +58,8 @@ public class AddActivityActivity extends AppCompatActivity {
     private int finishTimeHour;
     private int finishTimeMinute;
 
+    private static final String TAG = "asfg";
+
     private ArrayList<Activity> activitiesContainer = new ArrayList<>();
 
 
@@ -62,7 +67,7 @@ public class AddActivityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ArrayList<Tag> tagsContainer = readTagsFromFile();
+
 
         final Calendar cal = Calendar.getInstance();
         startDateYear = cal.get(Calendar.YEAR);
@@ -73,7 +78,40 @@ public class AddActivityActivity extends AppCompatActivity {
         finishDateMonth = startDateMonth;
         finishDateDay = startDateDay;
 
+
+
         setContentView(R.layout.activity_add_activity);
+
+        Spinner tagSelect = (Spinner)findViewById(R.id.tag_select_spinner);
+
+
+        ArrayList<Tag> tagsContainer = new ArrayList<>();
+        Tag sleep= new Tag("Sleep",Tag.redColor);
+        Tag eating= new Tag("Eating",Tag.greenColor);
+        Tag study= new Tag("Study",Tag.brownColor);
+        Tag free_time= new Tag("Free Time",Tag.orangeColor);
+        Tag house_work= new Tag("House Work",Tag.pinkColor);
+        Tag hobby= new Tag("Hobby",Tag.purpleColor);
+        tagsContainer.add(sleep);
+        tagsContainer.add(eating);
+        tagsContainer.add(study);
+        tagsContainer.add(free_time);
+        tagsContainer.add(house_work);
+        tagsContainer.add(hobby);
+
+        ArrayList<Tag> fileTagsContainer = readTagsFromFile();
+        for(int i = 0 ; i < fileTagsContainer.size(); i++){
+            tagsContainer.add(fileTagsContainer.get(i));
+        }
+
+        Tag[] arrayTagContainer = new Tag[tagsContainer.size()];
+        for(int index = 0; index < arrayTagContainer.length; index++){
+            arrayTagContainer[index] = tagsContainer.get(index);
+        }
+
+        ArrayAdapter<Tag> tagAdapter = new ArrayAdapter<>(this,R.layout.row_spn,arrayTagContainer);
+        tagAdapter.setDropDownViewResource(R.layout.row_spn_dropdown);
+        tagSelect.setAdapter(tagAdapter);
 
     }
 
@@ -205,12 +243,13 @@ public class AddActivityActivity extends AppCompatActivity {
         Date startDate = new Date(startDateYear,startDateMonth,startDateDay,startTimeHour,startTimeMinute);
         Date finishDate = new Date(finishDateYear,finishDateMonth,finishDateDay,finishTimeHour,finishTimeMinute);
         doneInput = (com.rey.material.widget.CheckBox)findViewById(R.id.addActivityDoneInput);
-
+        Spinner tagSelect = (Spinner)findViewById(R.id.tag_select_spinner);
+        Tag selectedTag = (Tag)tagSelect.getSelectedItem();
         com.rey.material.widget.EditText activityNameInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_name_input);
         com.rey.material.widget.EditText activityNoteInput = (com.rey.material.widget.EditText)findViewById(R.id.activity_note_input);
         String activityName = activityNameInput.getText().toString();
         String activityNote = activityNoteInput.getText().toString();
-        Activity activity = new Activity(activityName,doneInput.isChecked(),0,startDate,finishDate,null,activityNote);
+        Activity activity = new Activity(activityName,doneInput.isChecked(),startDate,finishDate,selectedTag,activityNote);
         activitiesContainer = readActivitiesFromFile();
         activitiesContainer.add(activity);
         writeActivityToFile(activitiesContainer);

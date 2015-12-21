@@ -12,17 +12,16 @@ public class Activity implements java.io.Serializable {
 
     private String name;
     private boolean done;
-    private long duration;
     private Date startDate;
+    private long duration;
     private Date finishDate;
     private Tag tag = null;
     private String note;
     public static final long serialVersionUID = 4321L;
 
-    public Activity(String name, boolean done, long duration, Date startDate, Date finishDate, Tag tag, String note){
+    public Activity(String name, boolean done, Date startDate, Date finishDate, Tag tag, String note){
         this.name = name;
         this.done = done;
-        this.duration = duration;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.tag = tag;
@@ -37,9 +36,7 @@ public class Activity implements java.io.Serializable {
         return done;
     }
 
-    public long getDuration() {
-        return duration;
-    }
+
 
     public Tag getTag() {
         return tag;
@@ -65,10 +62,6 @@ public class Activity implements java.io.Serializable {
         this.done = done;
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
@@ -83,6 +76,10 @@ public class Activity implements java.io.Serializable {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public void calculateDuration(){
+
     }
 
     @Override
