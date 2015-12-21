@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.beter.timehole.core.Tag;
 import com.rey.material.widget.EditText;
@@ -29,6 +30,80 @@ public class AddTagsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tags);
 
+        ImageView redTag = (ImageView) findViewById(R.id.redImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView yellowTag = (ImageView) findViewById(R.id.yellowImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView pinkTag = (ImageView) findViewById(R.id.pinkImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView brownTag = (ImageView) findViewById(R.id.brownImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView tealTag = (ImageView) findViewById(R.id.tealImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView lightBlueTag = (ImageView) findViewById(R.id.lightBlueImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView deepPurpleTag = (ImageView) findViewById(R.id.deepPurpleImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView darkBlueTag = (ImageView) findViewById(R.id.darkBlueImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView greenTag = (ImageView) findViewById(R.id.greenImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView blueGreyTag = (ImageView) findViewById(R.id.blueGreyImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView purpleTag = (ImageView) findViewById(R.id.purpleImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        ImageView orangeTag = (ImageView) findViewById(R.id.orangeImage);
+        redTag.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+
+
 
         dfragbutton = (Button) findViewById(R.id.dfragbutton);
 
@@ -44,6 +119,7 @@ public class AddTagsActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void writeTagToFile(ArrayList<Tag> tagsCont) {
         try {
