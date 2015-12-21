@@ -31,10 +31,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.beter.timehole.MainActivity" />
         </activity>
+        <service
+            android:name=".notifications.NotificationIntentService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver android:name=".broadcastreceivers.NotificationEventReceiver" />
+        <receiver android:name=".broadcastreceivers.NotificationServiceStarterReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".AddTagsActivity" />
 
-        <service android:name=".ScheduleService" />
-        <service android:name=".NotifyService" />
 
         <activity android:name=".helpActivities.AboutUsActivity" />
         <activity android:name=".helpActivities.EULAActivity" />

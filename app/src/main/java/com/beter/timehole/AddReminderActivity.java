@@ -37,6 +37,7 @@ import java.util.Calendar;
 import java.util.Date;
 import android.util.Log;
 
+import com.beter.timehole.broadcastreceivers.NotificationEventReceiver;
 import com.beter.timehole.core.Reminder;
 import com.rey.material.widget.EditText;
 
@@ -55,16 +56,12 @@ public class AddReminderActivity extends AppCompatActivity {
     static  int timeHour;
     static public int timeMinute;
     private ArrayList<Reminder> reminderContainer = new ArrayList<>();
-    static Notification.Builder  notification;
-    private ScheduleClient scheduleClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reminder);
-        //Creating new service client
-        scheduleClient = new ScheduleClient(this);
-        scheduleClient.doBindService();
+
 
         final Calendar cal = Calendar.getInstance();
         dateYear = cal.get(Calendar.YEAR);
@@ -157,28 +154,27 @@ public class AddReminderActivity extends AppCompatActivity {
         noteInput = (EditText)findViewById(R.id.reminder_note_input);
         String reminderName = nameInput.getText().toString();
         String reminderNote = noteInput.getText().toString();
-        Reminder reminder = new Reminder(new Date(dateYear,dateMonth-1,dateDay,timeHour,timeMinute), reminderName,reminderNote,null,null);
+        Date toBeRemindedDate = new Date(dateYear,dateMonth-1,dateDay,timeHour,timeMinute);
+        Reminder reminder = new Reminder(toBeRemindedDate, reminderName,reminderNote,null,null);
         reminderContainer = readRemindersFromFile();
         Toast.makeText(AddReminderActivity.this,"Reminder Created: " +reminder.getDate().toString(),Toast.LENGTH_LONG).show();
         reminderContainer.add(reminder);
         writeReminderToFile(reminderContainer);
+        NotificationEventReceiver.setupAlarm(getApplicationContext(),toBeRemindedDate);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(dateYear,dateMonth,dateDay,timeHour,timeMinute);
-        calendar.set(Calendar.SECOND,0);
-
-        scheduleClient.setAlarmForNotification(calendar);
         Toast.makeText(this,"Reminder set",Toast.LENGTH_SHORT).show();
 
         onBackPressed();
     }
 
     @Override
-    protected void onStop() {
-        // When our activity is stopped ensure we also stop the connection to the service
-        // this stops us leaking our activity into the system *bad*
-        if(scheduleClient != null)
-            scheduleClient.doUnbindService();
-        super.onStop();
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
     }
 }
