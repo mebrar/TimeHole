@@ -13,7 +13,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:inputType="text"
-        android:hint="Name"
+        android:hint="Activity Name"
         app:et_inputId="@+id/textfield_activity_name"
         app:et_supportMode="none"
         app:et_labelEnable="true"

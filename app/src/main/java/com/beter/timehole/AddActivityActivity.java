@@ -40,6 +40,7 @@ public class AddActivityActivity extends AppCompatActivity {
     static final int FINISH_TIME_DIALOG_ID = 3;
 
 
+
     private int startDateYear;
     private int startDateMonth;
     private int startDateDay;

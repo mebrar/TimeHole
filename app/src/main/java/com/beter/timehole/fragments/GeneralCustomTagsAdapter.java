@@ -53,41 +53,48 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
         Tag singleTagItem =  getItem(position);
         TextView tagText = (TextView) view.findViewById(R.id.tagsText);
         ImageView tagImage= (ImageView) view.findViewById(R.id.tagsImage);
-
+        ImageView lastImage=(ImageView) view.findViewById(R.id.imageView2);
 
         if(singleTagItem.getTagName().equals("Sleep")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_hotel_black_24dp);
+            lastImage.setImageResource(R.drawable.lblue);
         }
 
         else if(singleTagItem.getTagName().equals("Eating")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_local_restaurant_black_24dp);
+            lastImage.setImageResource(R.drawable.green);
         }
 
 
         else if(singleTagItem.getTagName().equals("Study")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_border_color_black_24dp);
+            lastImage.setImageResource(R.drawable.brown);
         }
 
         else if(singleTagItem.getTagName().equals("Free Time")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_headset_black_24dp);
+            lastImage.setImageResource(R.drawable.orange);
         }
 
         else if(singleTagItem.getTagName().equals("House Work")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_home_black_24dp);
+            lastImage.setImageResource(R.drawable.pink);
         }
 
         else if(singleTagItem.getTagName().equals("Hobby")){
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_color_lens_black_24dp);
+            lastImage.setImageResource(R.drawable.purple);
         }
         else{
             tagText.setText(singleTagItem.getTagName());
             tagImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
+            lastImage.setImageResource(R.drawable.red);
         }
 
 
