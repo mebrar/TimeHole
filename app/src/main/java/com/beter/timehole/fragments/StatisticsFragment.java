@@ -68,7 +68,7 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void initData() {
-        ArrayList<com.beter.timehole.core.Activity> activitiesArrayList = new ArrayList<>();
+        ArrayList<com.beter.timehole.core.Activity> activitiesArrayList = new ArrayList<com.beter.timehole.core.Activity>();
         activitiesArrayList  = readActivitiesFromFile();
 
         ArrayList<String> codename = new ArrayList<>();
@@ -76,6 +76,8 @@ public class StatisticsFragment extends Fragment {
         ArrayList<String> colors = new ArrayList<>();
         for(int i=0;i<activitiesArrayList.size();i++)
         {
+                if(codename.size() == 0)
+                    codename.add(activitiesArrayList.get(i).getTag().getTagName().toString());
                 if(codename.contains(activitiesArrayList.get(i).getTag().getTagName().toString()))
                 {
                     int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName().toString());
