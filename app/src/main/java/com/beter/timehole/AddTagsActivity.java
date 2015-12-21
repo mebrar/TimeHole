@@ -3,15 +3,11 @@ package com.beter.timehole;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.Button;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View.OnClickListener;
 import android.view.View;
 
 import com.beter.timehole.core.Tag;
-import com.beter.timehole.fragments.SetTagDialogFragment;
 import com.rey.material.widget.EditText;
 
 
@@ -38,12 +34,15 @@ public class AddTagsActivity extends AppCompatActivity {
 
         dfragbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
-                SetTagDialogFragment dFragment = new SetTagDialogFragment();
-               // Show DialogFragment
-               // SetTagDialogFragment.show(fm,"Dialog Fragment");
+                tagNameInput = (EditText)(findViewById(R.id.tag_name_input));
+                String tagName = tagNameInput.getText().toString();
+                Tag newTag = new Tag(tagName);
+                ArrayList<Tag> tempTagsContainer = readTagsFromFile();
+                tempTagsContainer.add(newTag);
+                writeTagToFile(tempTagsContainer);
+                onBackPressed();
             }
         });
-
     }
 
     private void writeTagToFile(ArrayList<Tag> tagsCont) {
@@ -74,13 +73,4 @@ public class AddTagsActivity extends AppCompatActivity {
         return tagsFromFile;
     }
 
-    public void createTagClicked(View v){
-        tagNameInput = (EditText)findViewById(R.id.tag_name_input);
-        String tagName = tagNameInput.getText().toString();
-        Tag newTag = new Tag(tagName);
-        ArrayList<Tag> tempTagsContainer = readTagsFromFile();
-        tempTagsContainer.add(newTag);
-        writeTagToFile(tempTagsContainer);
-        onBackPressed();
-    }
 }

@@ -163,8 +163,6 @@ public class AddReminderActivity extends AppCompatActivity {
         reminderContainer.add(reminder);
         writeReminderToFile(reminderContainer);
 
-
-
         Calendar calendar = Calendar.getInstance();
         calendar.set(dateYear,dateMonth,dateDay,timeHour,timeMinute);
         calendar.set(Calendar.SECOND,0);

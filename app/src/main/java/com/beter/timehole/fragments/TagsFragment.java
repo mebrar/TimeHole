@@ -36,7 +36,8 @@ public class TagsFragment extends Fragment {
     ArrayList<Tag> tagsContainer = new ArrayList<>();
 
     public TagsFragment() {
-        tagsContainer = readTagsFromFile();
+
+       /*tagsContainer = readTagsFromFile();
         if(tagsContainer.isEmpty()){
             Tag sleep= new Tag("Sleep");
             Tag eating= new Tag("Eating");
@@ -51,18 +52,38 @@ public class TagsFragment extends Fragment {
             tagsContainer.add(house_work);
             tagsContainer.add(hobby);
             writeTagToFile(tagsContainer);
-        }
+
+        }*/
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View tagsRootView = inflater.inflate(R.layout.tags_fragment, container, false);
-
-
-        tagsContainer = readTagsFromFile();
+        Tag sleep= new Tag("Sleep");
+        Tag eating= new Tag("Eating");
+        Tag study= new Tag("Study");
+        Tag free_time= new Tag("Free Time");
+        Tag house_work= new Tag("House Work");
+        Tag hobby= new Tag("Hobby");
+        tagsContainer.add(sleep);
+        tagsContainer.add(eating);
+        tagsContainer.add(study);
+        tagsContainer.add(free_time);
+        tagsContainer.add(house_work);
+        tagsContainer.add(hobby);
+        ArrayList<Tag> addedTags = new ArrayList<Tag>();
+       // tagsContainer = readTagsFromFile();
+        for(int i= 0 ; i < readTagsFromFile().size(); i++){
+            addedTags.add( readTagsFromFile().get(i));
+        }
 
         ListView tagsList = (ListView) tagsRootView.findViewById(R.id.tagsListView);
+        addedTags.add(new Tag("rümeyza"));
+
+        for(int i = 0 ; i < addedTags.size(); i++){
+            tagsContainer.add(addedTags.get(i));
+        }
 
 
         tagsList.setAdapter(new GeneralCustomTagsAdapter(tagsContainer, getActivity()));
@@ -92,6 +113,7 @@ public class TagsFragment extends Fragment {
         }
         return tagsFromFile;
     }
+    
     private void writeTagToFile(ArrayList<Tag> tagsCont) {
         try {
             FileOutputStream tagFileOutputStream = getContext().openFileOutput("tagobjects.dat", Context.MODE_WORLD_READABLE);

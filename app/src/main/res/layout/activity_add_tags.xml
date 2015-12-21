@@ -31,15 +31,15 @@
         android:id="@+id/dfragbutton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="createTagClicked" />
+        android:nestedScrollingEnabled="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pick Color For Your Tag"
         android:id="@+id/pick_color"
-        android:layout_below="@+id/reminder_name_input"
-        android:layout_alignStart="@+id/reminder_name_input" />
+        android:layout_below="@+id/tag_name_input"
+        android:layout_alignStart="@+id/tag_name_input" />
 
     <ImageView
         android:layout_width="45dp"
