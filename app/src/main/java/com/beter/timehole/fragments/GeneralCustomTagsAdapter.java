@@ -5,6 +5,7 @@ package com.beter.timehole.fragments;
  */
 
 import com.beter.timehole.core.Activity;
+import com.beter.timehole.core.Reminder;
 import com.beter.timehole.core.Tag;
 import com.beter.timehole.R;
 import android.content.Context;
@@ -18,12 +19,17 @@ import android.widget.ListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter {
 
     private ArrayList<Tag> list = new ArrayList<Tag>();
     private Context context;
+    ArrayList<Tag> dataFromFile = new ArrayList<>();
 
 
     public GeneralCustomTagsAdapter(ArrayList<Tag> list, Context context) {
@@ -116,13 +122,41 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
                                       public void onClick(View v) {
                                           list.remove(Position);
                                           notifyDataSetChanged();
-                                          //dataFromFile = readActivitiesFromFile();
-                                          //dataFromFile.remove(position);
-                                          //writeActivityToFile(dataFromFile);
+                                          dataFromFile = readTagsFromFile();
+                                          dataFromFile.remove(Position);
+                                          writeTagToFile(dataFromFile);
                                       }
                                   }
         );
         return view;
 
+    }
+
+    private void writeTagToFile(ArrayList<Tag> tagsCont) {
+        try {
+            FileOutputStream tagFileOutputStream = context.openFileOutput("tagobjects.dat", Context.MODE_WORLD_READABLE);
+            ObjectOutputStream tagObjectOutputStream = new ObjectOutputStream(tagFileOutputStream);
+            tagObjectOutputStream.writeObject(tagsCont);
+            tagObjectOutputStream.close();
+            tagFileOutputStream.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private ArrayList<Tag> readTagsFromFile(){
+        ArrayList<Tag> tagsFromFile = new ArrayList<>();
+        try{
+            FileInputStream tagFileInputStream = context.openFileInput("tagobjects.dat");
+            ObjectInputStream tagObjectInputStream = new ObjectInputStream(tagFileInputStream);
+            tagsFromFile = (ArrayList<Tag>)tagObjectInputStream.readObject();
+            tagObjectInputStream.close();
+            tagFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return tagsFromFile;
     }
 }

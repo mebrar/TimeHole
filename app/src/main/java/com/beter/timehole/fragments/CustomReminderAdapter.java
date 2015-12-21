@@ -13,6 +13,10 @@ import com.beter.timehole.R;
 import com.beter.timehole.core.Activity;
 import com.beter.timehole.core.Reminder;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +25,7 @@ import java.util.ArrayList;
 public class CustomReminderAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<com.beter.timehole.core.Reminder> list = new ArrayList<com.beter.timehole.core.Reminder>();
     private Context context;
+    ArrayList<Reminder> dataFromFile = new ArrayList<>();
 
     public CustomReminderAdapter(ArrayList<com.beter.timehole.core.Reminder> list, Context context) {
         this.list = list;
@@ -42,7 +47,7 @@ public class CustomReminderAdapter extends BaseAdapter implements ListAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,10 +62,41 @@ public class CustomReminderAdapter extends BaseAdapter implements ListAdapter {
         button.setOnClickListener(new View.OnClickListener() {
                                       public void onClick(View v) {
                                           list.remove(Position);
+                                          dataFromFile = readRemindersFromFile();
+                                          dataFromFile.remove(position);
+                                          writeReminderToFile(dataFromFile);
                                           notifyDataSetChanged();
                                       }
                                   }
         );
         return view;
         }
+
+    private void writeReminderToFile(ArrayList<Reminder> reminderCont) {
+        try {
+            FileOutputStream reminderFileOutputStream = context.openFileOutput("reminderobjects.dat", Context.MODE_WORLD_READABLE);
+            ObjectOutputStream reminderObjectStream = new ObjectOutputStream(reminderFileOutputStream);
+            reminderObjectStream.writeObject(reminderCont);
+            reminderObjectStream.close();
+            reminderFileOutputStream.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private ArrayList<Reminder> readRemindersFromFile(){
+        ArrayList<com.beter.timehole.core.Reminder> remindersFromFile = new ArrayList<>();
+        try{
+            FileInputStream reminderFileInputStream = context.openFileInput("reminderobjects.dat");
+            ObjectInputStream reminderObjectInputStream = new ObjectInputStream(reminderFileInputStream);
+            remindersFromFile = (ArrayList<Reminder>)reminderObjectInputStream.readObject();
+            reminderObjectInputStream.close();
+            reminderFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return remindersFromFile;
+    }
 }
