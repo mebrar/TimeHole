@@ -50,7 +50,7 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
         return 0;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -93,26 +93,32 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
             lastImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
         if(singleTagItem.getTagName().equals("Sleep")){
             tagImage.setImageResource(R.drawable.ic_hotel_black_24dp);
+            button.setVisibility(Button.INVISIBLE);
         }
 
         else if(singleTagItem.getTagName().equals("Eating")){
             tagImage.setImageResource(R.drawable.ic_local_restaurant_black_24dp);
+            button.setVisibility(Button.INVISIBLE);
         }
 
         else if(singleTagItem.getTagName().equals("Study")){
             tagImage.setImageResource(R.drawable.ic_border_color_black_24dp);
+            button.setVisibility(Button.INVISIBLE);
         }
 
         else if(singleTagItem.getTagName().equals("Free Time")){
             tagImage.setImageResource(R.drawable.ic_headset_black_24dp);
+            button.setVisibility(Button.INVISIBLE);
         }
 
         else if(singleTagItem.getTagName().equals("House Work")){
             tagImage.setImageResource(R.drawable.ic_home_black_24dp);
+            button.setVisibility(Button.INVISIBLE);
         }
 
         else if(singleTagItem.getTagName().equals("Hobby")){
             tagImage.setImageResource(R.drawable.ic_color_lens_black_24dp);
+            button.setVisibility(Button.INVISIBLE);
         }
         else{
             tagImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
@@ -123,7 +129,7 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
                                           list.remove(Position);
                                           notifyDataSetChanged();
                                           dataFromFile = readTagsFromFile();
-                                          dataFromFile.remove(Position);
+                                          dataFromFile.remove(position);
                                           writeTagToFile(dataFromFile);
                                       }
                                   }
