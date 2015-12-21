@@ -61,8 +61,4 @@ public class ActivitiesFragment extends Fragment {
         return activitiesFromFile;
     }
 
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-
-    }
 }
