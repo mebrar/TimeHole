@@ -24,10 +24,10 @@ public class Tag implements java.io.Serializable {
     public static final int lightBlue = Color.parseColor("#03A9F4");
     public static final int deepPurple = Color.parseColor("#673AB7");
 
+
     public Tag(String tagName) {
         this.tagName = tagName;
         this.mycolor = Color.CYAN;
-
     }
     public Tag(String tagName,int mycolor) {
         this.tagName = tagName;

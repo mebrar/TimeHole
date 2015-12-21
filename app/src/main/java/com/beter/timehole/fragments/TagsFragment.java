@@ -45,12 +45,12 @@ public class TagsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View tagsRootView = inflater.inflate(R.layout.tags_fragment, container, false);
 
-        Tag sleep= new Tag("Sleep");
-        Tag eating= new Tag("Eating");
-        Tag study= new Tag("Study");
-        Tag free_time= new Tag("Free Time");
-        Tag house_work= new Tag("House Work");
-        Tag hobby= new Tag("Hobby");
+        Tag sleep= new Tag("Sleep",Tag.redColor);
+        Tag eating= new Tag("Eating",Tag.greenColor);
+        Tag study= new Tag("Study",Tag.brownColor);
+        Tag free_time= new Tag("Free Time",Tag.orangeColor);
+        Tag house_work= new Tag("House Work",Tag.pinkColor);
+        Tag hobby= new Tag("Hobby",Tag.purpleColor);
         tagsContainer.add(sleep);
         tagsContainer.add(eating);
         tagsContainer.add(study);
