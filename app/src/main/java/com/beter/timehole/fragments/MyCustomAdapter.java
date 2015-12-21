@@ -16,7 +16,9 @@ import com.beter.timehole.R;
 import com.beter.timehole.core.Activity;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -77,6 +79,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                                          notifyDataSetChanged();
                                          dataFromFile = readActivitiesFromFile();
                                          dataFromFile.remove(position);
+                                         writeActivityToFile(dataFromFile);
                                      }
                                  }
        );
@@ -111,5 +114,17 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             e.printStackTrace();
         }
         return activitiesFromFile;
+    }
+    private void writeActivityToFile(ArrayList<Activity> activityCont) {
+        try {
+            FileOutputStream activityFileOutputStream = context.openFileOutput("activityobjects.dat", Context.MODE_WORLD_READABLE);
+            ObjectOutputStream activityObjectOutputStream = new ObjectOutputStream(activityFileOutputStream);
+            activityObjectOutputStream.writeObject(activityCont);
+            activityObjectOutputStream.close();
+            activityFileOutputStream.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
