@@ -37,23 +37,6 @@ public class TagsFragment extends Fragment {
 
     public TagsFragment() {
 
-       /*tagsContainer = readTagsFromFile();
-        if(tagsContainer.isEmpty()){
-            Tag sleep= new Tag("Sleep");
-            Tag eating= new Tag("Eating");
-            Tag study= new Tag("Study");
-            Tag free_time= new Tag("Free Time");
-            Tag house_work= new Tag("House Work");
-            Tag hobby= new Tag("Hobby");
-            tagsContainer.add(sleep);
-            tagsContainer.add(eating);
-            tagsContainer.add(study);
-            tagsContainer.add(free_time);
-            tagsContainer.add(house_work);
-            tagsContainer.add(hobby);
-            writeTagToFile(tagsContainer);
-
-        }*/
     }
 
     @Nullable

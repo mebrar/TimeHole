@@ -12,6 +12,7 @@ public class Tag implements java.io.Serializable {
     private int mycolor;
     public static final long serialVersionUID = 12341234L;
 
+
     public Tag(String tagName) {
         this.tagName = tagName;
         this.mycolor = Color.CYAN;
