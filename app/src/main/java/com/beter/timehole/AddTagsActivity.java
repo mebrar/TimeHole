@@ -71,4 +71,7 @@ public class AddTagsActivity extends AppCompatActivity {
         return tagsFromFile;
     }
 
+    public void createTagClicked(View v){
+
+    }
 }

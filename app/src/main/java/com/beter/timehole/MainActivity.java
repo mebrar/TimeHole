@@ -2,8 +2,6 @@ package com.beter.timehole;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,15 +13,13 @@ import android.support.v4.app.*;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
-import android.content.Context;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.util.Log;
 
-import com.beter.timehole.fragments.ActivitiesFragment;
-import com.beter.timehole.fragments.HelpFragment;
-import com.beter.timehole.fragments.MainFragment;
-import com.beter.timehole.fragments.ReminderFragment;
-import com.beter.timehole.fragments.StatisticsFragment;
-import com.beter.timehole.fragments.TagsFragment;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+
+import com.beter.timehole.fragments.*;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,11 +28,39 @@ public class MainActivity extends AppCompatActivity
     static Toolbar toolbar;
     static NavigationView navigationView;
     static FragmentTransaction fragmentTransaction;
+    private static final String TAG = "FAB";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        final FloatingActionsMenu FABMenu = (FloatingActionsMenu)findViewById(R.id.multiple_actions);
+
+        final FloatingActionButton FABActivity = (FloatingActionButton)findViewById(R.id.action_add_activity);
+        final FloatingActionButton FABReminder = (FloatingActionButton)findViewById(R.id.action_add_reminder);
+
+        final Intent FABActivityIntent = new Intent(this, AddActivityActivity.class);
+        final Intent FABReminderIntent = new Intent(this, AddReminderActivity.class);
+
+
+
+        FABReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(FABReminderIntent);
+            }
+        });
+
+        FABActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(FABActivityIntent);
+            }
+        });
 
 
         MainFragment mainScreenFragment = new MainFragment();
@@ -47,14 +71,8 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        final Intent fabIntent = new Intent(this, AddActivityActivity.class);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(fabIntent);
-            }
-        });
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -107,6 +125,8 @@ public class MainActivity extends AppCompatActivity
 
         fragment_manager = getFragmentManager();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        final FloatingActionsMenu FABMenu = (FloatingActionsMenu)findViewById(R.id.multiple_actions);
+        FABMenu.collapse();
 
         int id = item.getItemId();
 
