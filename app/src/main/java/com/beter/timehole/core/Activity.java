@@ -15,17 +15,17 @@ public class Activity implements java.io.Serializable {
     private long duration;
     private Date startDate;
     private Date finishDate;
-    private ArrayList<Tag> tags = null;
+    private Tag tag = null;
     private String note;
     public static final long serialVersionUID = 4321L;
 
-    public Activity(String name, boolean done, long duration, Date startDate, Date finishDate, ArrayList<Tag> tags, String note){
+    public Activity(String name, boolean done, long duration, Date startDate, Date finishDate, Tag tag, String note){
         this.name = name;
         this.done = done;
         this.duration = duration;
         this.startDate = startDate;
         this.finishDate = finishDate;
-        this.tags = tags;
+        this.tag = tag;
         this.note = note;
     }
 
@@ -41,8 +41,8 @@ public class Activity implements java.io.Serializable {
         return duration;
     }
 
-    public ArrayList<Tag> getTags() {
-        return tags;
+    public Tag getTags() {
+        return tag;
     }
 
     public String getNote() {
@@ -77,18 +77,8 @@ public class Activity implements java.io.Serializable {
         this.finishDate = finishDate;
     }
 
-    /**
-     * setTags methodu kullanıcı taglerı degıstırmek ıstedıgınde en bastan secerse yararlı
-     * ancak sadece ekstra bır tag eklemek ıstedıgı durumlar ıcın tag ekleme methodu gereklı
-     **/
-
-    public void setTags(ArrayList<Tag> tags) {
-        this.tags = tags;
-    }
-
-    public void addTag(Tag tag)
-    {
-        tags.add(tag);
+    public void setTags(Tag tag) {
+        this.tag = tag;
     }
 
     public void setNote(String note) {
@@ -98,11 +88,7 @@ public class Activity implements java.io.Serializable {
     @Override
     public String toString() {
         String result;
-        result= name + " " + duration + "\n" ;
-        //for(int i=0;i<tags.size();i++)
-        //{
-        //    result+= tags.get(i)+" ";
-        //}
+        result= name + " " + duration + " "+tag ;
         return result;
     }
 
