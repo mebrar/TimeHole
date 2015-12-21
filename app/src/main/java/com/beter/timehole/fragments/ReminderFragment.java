@@ -49,23 +49,15 @@ public class ReminderFragment extends Fragment {
 
         ListView reminderlist = (ListView) reminderRootView.findViewById(R.id.listView);
 
-        reminderlist.setAdapter(new ArrayAdapter<com.beter.timehole.core.Reminder>(getActivity(),
+        reminderlist.setAdapter(new ArrayAdapter<Reminder>(getActivity(),
                 android.R.layout.simple_list_item_1, reminderArrayList));
 
-        Button addReminderButton = (Button) reminderRootView.findViewById(R.id.reminderbutton);
-        addReminderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), AddReminderActivity.class);
-                startActivity(i);
-            }
-        });
         return reminderRootView;
     }
 
 
     private ArrayList<Reminder> readRemindersFromFile(){
-        ArrayList<com.beter.timehole.core.Reminder> remindersFromFile = new ArrayList<>();
+        ArrayList<Reminder> remindersFromFile = new ArrayList<>();
         try{
             FileInputStream reminderFileInputStream = getContext().openFileInput("reminderobjects.dat");
             ObjectInputStream reminderObjectInputStream = new ObjectInputStream(reminderFileInputStream);
