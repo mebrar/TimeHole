@@ -256,6 +256,11 @@ public class AddActivityActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    @Override
+    public void onBackPressed() {
+        getFragmentManager().popBackStack();
+        super.onBackPressed();
+    }
 
     private ArrayList<Tag> readTagsFromFile(){
         ArrayList<Tag> tagsFromFile = new ArrayList<>();
