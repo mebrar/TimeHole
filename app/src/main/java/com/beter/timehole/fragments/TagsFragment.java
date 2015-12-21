@@ -56,13 +56,13 @@ public class TagsFragment extends Fragment {
         tagsContainer.add(house_work);
         tagsContainer.add(hobby);
         ArrayList<Tag> addedTags = new ArrayList<Tag>();
-       // tagsContainer = readTagsFromFile();
+
         for(int i= 0 ; i < readTagsFromFile().size(); i++){
             addedTags.add( readTagsFromFile().get(i));
         }
 
         ListView tagsList = (ListView) tagsRootView.findViewById(R.id.tagsListView);
-        addedTags.add(new Tag("rümeyza"));
+
 
         for(int i = 0 ; i < addedTags.size(); i++){
             tagsContainer.add(addedTags.get(i));
