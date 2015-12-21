@@ -164,7 +164,6 @@ public class MainActivity extends AppCompatActivity
             Intent settingsInflater = new Intent(this, SettingsActivity.class);
             startActivity(settingsInflater);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

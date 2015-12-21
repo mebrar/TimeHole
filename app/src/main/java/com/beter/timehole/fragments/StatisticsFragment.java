@@ -48,7 +48,10 @@ import org.achartengine.renderer.XYSeriesRenderer;
 
 import com.beter.timehole.R;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class StatisticsFragment extends Fragment {
@@ -65,24 +68,57 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void initData() {
+        ArrayList<com.beter.timehole.core.Activity> activitiesArrayList = new ArrayList<>();
+        activitiesArrayList  = readActivitiesFromFile();
 
-        String[] codename = {"KitKat", "Jelly Bean", "Ice Cream Sandwich", "Gingerbread", "Froyo"};
-
-        double[] values = {13.6, 58.4, 12.3, 14.9, 0.8 };
-        String[] colors = {"#ff4444", "#99cc00", "#aa66cc", "#33b5e5", "#ffbb33"};
-
+        ArrayList<String> codename = new ArrayList<>();
+        ArrayList<Double> values = new ArrayList<>();
+        ArrayList<String> colors = new ArrayList<>();
+        for(int i=0;i<activitiesArrayList.size();i++)
+        {
+            for(int j=0;i<activitiesArrayList.get(i).getTags().size();j++)
+            {
+                if(codename.contains(activitiesArrayList.get(i).getTags().get(j).getTagName().toString()))
+                {
+                    int index = codename.indexOf(activitiesArrayList.get(i).getTags().get(j).getTagName().toString());
+                    values.set(index,values.get(index)+1);
+                }
+                else {
+                    codename.add(activitiesArrayList.get(i).getTags().get(j).getTagName().toString());
+                     int index = codename.indexOf(activitiesArrayList.get(i).getTags().get(j).getTagName().toString());
+                     values.set(index, 1.0);
+                }
+            }
+        }
+        /**
+        for(int i=0;i<activitiesArrayList.size();i++)
+        {
+            for(int j=0;j<activitiesArrayList.get(i).getTags().size();j++)
+            {
+                if(colors.contains("#"+activitiesArrayList.get(i).getTags().get(j).getColor()));
+                else {
+                    colors.add("#" + activitiesArrayList.get(i).getTags().get(j).getColor());
+                }
+            }
+        }
+         */
+        for(int i=0; i<codename.size();i++)
+        {
+            int integer =(int) (Math.random()*1000000);
+            String color = "#" + integer;
+            colors.add(color);
+        }
 
         CategorySeries series = new CategorySeries("Android Platform Version");
-        int length = codename.length;
+        int length = codename.size();
         for (int i = 0; i < length; i++)
-            series.add(codename[i], values[i]);
+            series.add(codename.get(i), values.get(i));
 
 
         DefaultRenderer renderer = new DefaultRenderer();
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
-            seriesRenderer.setColor(Color.parseColor(colors[i]));
-
+            seriesRenderer.setColor(Color.parseColor(colors.get(i)));
             renderer.addSeriesRenderer(seriesRenderer);
 
         }
@@ -94,6 +130,20 @@ public class StatisticsFragment extends Fragment {
         renderer.setLegendTextSize(30);
 
         drawChart(series, renderer);
+    }
+    private ArrayList<com.beter.timehole.core.Activity> readActivitiesFromFile(){
+        ArrayList<com.beter.timehole.core.Activity> activitiesFromFile = new ArrayList<>();
+        try{
+            FileInputStream activityFileInputStream = getContext().openFileInput("activityobjects.dat");
+            ObjectInputStream activityObjectInputStream = new ObjectInputStream(activityFileInputStream);
+            activitiesFromFile = (ArrayList<com.beter.timehole.core.Activity>)activityObjectInputStream.readObject();
+            activityObjectInputStream.close();
+            activityFileInputStream.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return activitiesFromFile;
     }
 
     private void drawChart(CategorySeries series, DefaultRenderer renderer) {
