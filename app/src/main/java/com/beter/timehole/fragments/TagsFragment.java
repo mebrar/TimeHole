@@ -6,6 +6,7 @@ import com.beter.timehole.core.Tag;
 import com.beter.timehole.AddTagsActivity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -43,6 +44,7 @@ public class TagsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View tagsRootView = inflater.inflate(R.layout.tags_fragment, container, false);
+
         Tag sleep= new Tag("Sleep");
         Tag eating= new Tag("Eating");
         Tag study= new Tag("Study");

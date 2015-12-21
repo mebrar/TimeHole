@@ -40,7 +40,7 @@ public class ActivitiesFragment extends Fragment {
         activitiesArrayList = readActivitiesFromFile();
 
         MyCustomAdapter adapter = new MyCustomAdapter(activitiesArrayList,getActivity());
-        ListView doneList = (ListView) ActivtiesRootView.findViewById(R.id.listView1);
+        ListView doneList = (ListView) ActivitiesRootView.findViewById(R.id.listView1);
         doneList.setAdapter(adapter);
 
         return ActivitiesRootView;
