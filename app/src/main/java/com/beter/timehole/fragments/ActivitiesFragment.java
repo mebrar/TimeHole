@@ -35,10 +35,7 @@ public class ActivitiesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View ActivtiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
-
-        ArrayList<Tag> tags1= new ArrayList<Tag>();
-        tags1.add(new Tag("Calisma"));
+        View ActivitiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
 
         activitiesArrayList = readActivitiesFromFile();
 
@@ -46,7 +43,7 @@ public class ActivitiesFragment extends Fragment {
         ListView doneList = (ListView) ActivtiesRootView.findViewById(R.id.listView1);
         doneList.setAdapter(adapter);
 
-        return ActivtiesRootView;
+        return ActivitiesRootView;
     }
 
     private ArrayList<Activity> readActivitiesFromFile(){

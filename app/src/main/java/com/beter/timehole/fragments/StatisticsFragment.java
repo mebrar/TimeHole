@@ -114,7 +114,6 @@ public class StatisticsFragment extends Fragment {
         for (int i = 0; i < length; i++)
             series.add(codename.get(i), values.get(i));
 
-
         DefaultRenderer renderer = new DefaultRenderer();
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
