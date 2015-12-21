@@ -22,4 +22,13 @@
     android:layout_marginRight="5dp"
     android:text="Done"
         android:checked="false" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/button"
+        android:layout_alignTop="@+id/doneCheckBox"
+        android:layout_toStartOf="@+id/doneCheckBox" />
 </RelativeLayout>

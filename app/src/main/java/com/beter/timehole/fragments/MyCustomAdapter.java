@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListAdapter;
@@ -55,7 +56,8 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
          * Takes the current item converts to string and puts in the current order in the list.
          */
         final CheckBox checkbox = (CheckBox) view.findViewById(R.id.doneCheckBox);
-        final int positionForCheckBox = position;
+        final Button button = (Button) view.findViewById(R.id.button);
+        final int Position = position;
         if(list.get(position).isDone()) {
             checkbox.setChecked(true);
             checkbox.setText("Done");
@@ -65,11 +67,18 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             checkbox.setText("Undone");
         }
 
+       button.setOnClickListener(new View.OnClickListener() {
+                                     public void onClick(View arg0) {
+                                         list.remove(Position);
+                                     }
+                                 }
+       );
+
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                                 @Override
                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                     String text="";
-                                                    list.get(positionForCheckBox).setDone(checkbox.isChecked());//Changes the value of the activity object's boolean
+                                                    list.get(Position).setDone(checkbox.isChecked());//Changes the value of the activity object's boolean
                                                     if(checkbox.isChecked())
                                                         checkbox.setText("Done");
                                                     else
@@ -79,6 +88,10 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             }
 
         );
+
+
+
+
 
         return view;
     }
