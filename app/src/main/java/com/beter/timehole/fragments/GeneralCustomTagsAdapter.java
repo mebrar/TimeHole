@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,6 +55,7 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
         TextView tagText = (TextView) view.findViewById(R.id.tagsText);
         ImageView tagImage= (ImageView) view.findViewById(R.id.tagsImage);
         ImageView lastImage=(ImageView) view.findViewById(R.id.imageView2);
+        Button button = (Button) view.findViewById(R.id.deleteButton);
 
 
         tagText.setText(singleTagItem.getTagName());
@@ -109,9 +111,17 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
         else{
             tagImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
         }
-
-
-
+        final int Position = position;
+        button.setOnClickListener(new View.OnClickListener() {
+                                      public void onClick(View v) {
+                                          list.remove(Position);
+                                          notifyDataSetChanged();
+                                          //dataFromFile = readActivitiesFromFile();
+                                          //dataFromFile.remove(position);
+                                          //writeActivityToFile(dataFromFile);
+                                      }
+                                  }
+        );
         return view;
 
     }
