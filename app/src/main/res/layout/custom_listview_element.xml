@@ -5,21 +5,21 @@
 
     <TextView
         android:id="@+id/list_item_string"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
         android:paddingLeft="8dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_toStartOf="@+id/doneCheckBox"
-        android:layout_alignBottom="@+id/doneCheckBox" />
+        android:layout_toStartOf="@+id/doneCheckBox" />
     <CheckBox
     android:id="@+id/doneCheckBox"
     android:layout_width="wrap_content"
     android:layout_height="64dp"
     android:layout_alignParentRight="true"
     android:layout_centerVertical="true"
-    android:layout_marginRight="5dp"
+    android:layout_marginRight="15dp"
     android:text="Done"
         android:checked="false" />
 
@@ -32,4 +32,5 @@
         android:layout_centerVertical="true"
         android:layout_alignTop="@+id/doneCheckBox"
         android:layout_toStartOf="@+id/doneCheckBox" />
+
 </RelativeLayout>

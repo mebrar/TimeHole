@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 MainActivity.this);
 
-        alertDialogBuilder.setTitle("Alert Dialogue Box");
+        alertDialogBuilder.setTitle("Exit");
 
         alertDialogBuilder.setMessage("Are you sure to exit?");
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-        alertDialogBuilder.setNeutralButton("Exit the app",
+        alertDialogBuilder.setNeutralButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         MainActivity.this.finish();

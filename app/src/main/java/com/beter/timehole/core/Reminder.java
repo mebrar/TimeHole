@@ -1,7 +1,9 @@
 package com.beter.timehole.core;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Ebrar on 01/12/15.
@@ -78,7 +80,19 @@ public class Reminder implements java.io.Serializable {
 
     @Override
     public String toString() {
-        String result = "Name: " +name + "\n"+ "Note  : "+ note + "\n"+"Date  : " + date.toString() +"\n"+ "Time : " + date.getHours() +":" + date.getMinutes();
+        if(note.equals(""))
+            note="-";
+        if(name.equals(""))
+            name="-";
+
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        int year = calendar.get(Calendar.YEAR)-1900;
+
+        int month = (calendar.get(Calendar.MONTH) + 1);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String result = "Name: " +name + "\n" + "Note  : " + note + "\n"+"Date  : "+day+"/"+(month) + "/" + year + "\n"+ "Time : " + date.getHours() +":" + date.getMinutes();
 
         return result;
     }

@@ -122,6 +122,7 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
         }
         else{
             tagImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
+            button.setVisibility(Button.VISIBLE);
         }
         final int Position = position;
         button.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +130,7 @@ public class GeneralCustomTagsAdapter extends BaseAdapter implements ListAdapter
                                           list.remove(Position);
                                           notifyDataSetChanged();
                                           dataFromFile = readTagsFromFile();
-                                          dataFromFile.remove(position);
+                                          dataFromFile.remove(position-6);
                                           writeTagToFile(dataFromFile);
                                       }
                                   }

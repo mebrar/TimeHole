@@ -8,12 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.beter.timehole.R;
 import com.beter.timehole.core.Activity;
+import com.beter.timehole.core.Tag;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -58,6 +60,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         }
         TextView listItemText = (TextView)view.findViewById(R.id.list_item_string);
         listItemText.setText(list.get(position).toString());
+
         /**
          * Takes the current item converts to string and puts in the current order in the list.
          */
@@ -67,11 +70,13 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         if(list.get(position).isDone()) {
             checkbox.setChecked(true);
             checkbox.setText("Done");
+
         }
         else {
             checkbox.setChecked(false);
             checkbox.setText("Undone");
         }
+
 
        button.setOnClickListener(new View.OnClickListener() {
                                      public void onClick(View v) {

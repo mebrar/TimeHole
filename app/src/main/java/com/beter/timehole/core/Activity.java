@@ -84,8 +84,12 @@ public class Activity implements java.io.Serializable {
 
     @Override
     public String toString() {
+        if(note.equals(""))
+            note="-";
+        if(name.equals(""))
+            name="-";
         String result;
-        result= name + " " + duration + " "+tag ;
+        result= "Name: " +name + "\nDuration: " + duration + "\nTag: "+tag + "\nNote: " + note;
         return result;
     }
 

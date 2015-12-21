@@ -71,21 +71,24 @@ public class StatisticsFragment extends Fragment {
         ArrayList<com.beter.timehole.core.Activity> activitiesArrayList = new ArrayList<com.beter.timehole.core.Activity>();
         activitiesArrayList  = readActivitiesFromFile();
 
-        ArrayList<String> codename = new ArrayList<>(5);
-        ArrayList<Double> values = new ArrayList<>(5);
-        ArrayList<String> colors = new ArrayList<>(5);
+        ArrayList<String> codename = new ArrayList<>();
+        ArrayList<Double> values = new ArrayList<>();
+        ArrayList<String> colors = new ArrayList<>();
         for(int i=0;i<activitiesArrayList.size();i++)
         {
                 if(codename.size() == 0)
-                    codename.add(activitiesArrayList.get(i).getTag().getTagName().toString());
-                if(codename.contains(activitiesArrayList.get(i).getTag().getTagName().toString()))
                 {
-                    int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName().toString());
+                    codename.add(activitiesArrayList.get(i).getTag().getTagName());
+                }
+
+                if(codename.contains(activitiesArrayList.get(i).getTag().getTagName()))
+                {
+                    int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName());
                     values.set(index,values.get(index)+1);
                 }
                 else {
-                     codename.add(activitiesArrayList.get(i).getTag().getTagName().toString());
-                     int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName().toString());
+                     codename.add(activitiesArrayList.get(i).getTag().getTagName());
+                     int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName());
                      values.set(index, 1.0);
                 }
         }
