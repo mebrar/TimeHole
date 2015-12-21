@@ -39,67 +39,67 @@ public class AddTagsActivity extends AppCompatActivity {
             }
         });
         ImageView yellowTag = (ImageView) findViewById(R.id.yellowImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        yellowTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.yellowColor;
             }
         });
         ImageView pinkTag = (ImageView) findViewById(R.id.pinkImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        pinkTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.pinkColor;
             }
         });
         ImageView brownTag = (ImageView) findViewById(R.id.brownImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        brownTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.brownColor;
             }
         });
         ImageView tealTag = (ImageView) findViewById(R.id.tealImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        tealTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.tealColor;
             }
         });
         ImageView lightBlueTag = (ImageView) findViewById(R.id.lightBlueImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        lightBlueTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.lightBlue;
             }
         });
         ImageView deepPurpleTag = (ImageView) findViewById(R.id.deepPurpleImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        deepPurpleTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.deepPurple;
             }
         });
         ImageView darkBlueTag = (ImageView) findViewById(R.id.darkBlueImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        darkBlueTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.darkBlue;
             }
         });
         ImageView greenTag = (ImageView) findViewById(R.id.greenImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        greenTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.greenColor;
             }
         });
         ImageView blueGreyTag = (ImageView) findViewById(R.id.blueGreyImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        blueGreyTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.blueGrey;
             }
         });
         ImageView purpleTag = (ImageView) findViewById(R.id.purpleImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        purpleTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.purpleColor;
             }
         });
         ImageView orangeTag = (ImageView) findViewById(R.id.orangeImage);
-        redTag.setOnClickListener(new OnClickListener() {
+        orangeTag.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 clickedColor = Tag.orangeColor;
             }
