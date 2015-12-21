@@ -52,6 +52,15 @@
             android:layout_toRightOf="@+id/activities_icon"
             android:layout_below="@+id/activities"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/please_go1"
+            android:layout_toRightOf="@+id/activities_icon"
+            android:layout_below="@+id/last_activities"
+            android:text="Click to View More Activities"
+            android:textSize="5pt"
+            android:textColor="#5E35B1"/>
     </RelativeLayout>
 
     </android.support.v7.widget.CardView>
@@ -96,6 +105,15 @@
             android:layout_toRightOf="@+id/reminder_icon"
             android:layout_below="@+id/reminder"
             />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/please_go2"
+                android:layout_toRightOf="@+id/reminder_icon"
+                android:layout_below="@+id/last_reminders"
+                android:text="Click to View More Reminders"
+                android:textSize="5pt"
+                android:textColor="#5E35B1"/>
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

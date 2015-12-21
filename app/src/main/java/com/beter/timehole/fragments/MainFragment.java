@@ -48,11 +48,14 @@ public class MainFragment extends Fragment {
         ArrayList<Activity> activitiesListFromFile = readActivitiesFromFile();
         TextView lastReminderTextView = (TextView)(mainRootView.findViewById(R.id.last_reminders));
         TextView lastActivityTextView = (TextView)(mainRootView.findViewById(R.id.last_activities));
+        TextView please1 = (TextView)(mainRootView.findViewById(R.id.please_go1));
+        TextView please2 = (TextView)(mainRootView.findViewById(R.id.please_go2));
         Reminder lastReminder;
         Activity lastActivity;
 
         if(reminderListFromFile.isEmpty()){
             lastReminderTextView.setText("No reminder created yet...");
+            please2.setText("");
         }
         else{
             lastReminder = reminderListFromFile.get(reminderListFromFile.size()-1);
@@ -61,6 +64,7 @@ public class MainFragment extends Fragment {
 
         if(activitiesListFromFile.isEmpty()){
             lastActivityTextView.setText("No activity created yet...");
+            please1.setText("");
         }
         else{
             lastActivity = activitiesListFromFile.get(activitiesListFromFile.size()-1);

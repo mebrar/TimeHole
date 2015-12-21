@@ -35,9 +35,9 @@
         app:et_helper="Click to Set Date"
         android:onClick="startDatePickerClicked"
         android:layout_marginLeft="20dp"
-        android:layout_marginBottom="37dp"
-        android:layout_above="@+id/activity_finish_date_input"
-        android:layout_alignStart="@+id/activity_finish_date_input" />
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/activity_name_input"
+        android:layout_alignParentStart="true" />
 
     <com.rey.material.widget.EditText
         android:id="@+id/activity_start_time_input"
@@ -53,7 +53,7 @@
         app:et_helper="Click to Set Time"
         android:layout_marginLeft="15dp"
         android:layout_alignTop="@+id/activity_start_date_input"
-        android:layout_alignStart="@+id/activity_finish_time_input" />
+        android:layout_alignStart="@+id/addActivityDoneInput" />
 
     <com.rey.material.widget.EditText
         android:id="@+id/activity_finish_date_input"
@@ -68,8 +68,9 @@
         app:et_helper="Click to Set Date"
         android:onClick="finishDatePickerClicked"
         android:layout_marginLeft="20dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/activity_start_date_input"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp" />
 
     <com.rey.material.widget.EditText
         android:id="@+id/activity_finish_time_input"
@@ -87,17 +88,6 @@
         android:layout_alignTop="@+id/activity_finish_date_input"
         android:layout_alignStart="@+id/addActivityDoneInput" />
 
-    <TextView
-        android:id="@+id/tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tags :"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="49dp"
-        android:layout_above="@+id/activity_note_input"
-        android:layout_alignStart="@+id/activity_finish_date_input" />
-
     <com.rey.material.widget.EditText
         android:id="@+id/activity_note_input"
         android:layout_width="320dp"
@@ -108,8 +98,9 @@
         app:et_supportMode="none"
         app:et_labelEnable="true"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="54dp"
         android:layout_above="@+id/createActivityButton"
-        android:layout_alignStart="@+id/activity_finish_date_input" />
+        android:layout_alignParentStart="true" />
 
     <com.rey.material.widget.CheckBox
         android:id="@+id/addActivityDoneInput"
@@ -118,8 +109,9 @@
         android:layout_height="wrap_content"
         android:checked="false"
         android:text="Done/Undone"
-        android:layout_alignEnd="@+id/activity_name_input"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:layout_alignBottom="@+id/activity_name_input"
+        android:layout_alignEnd="@+id/activity_name_input" />
 
 
     <com.rey.material.widget.Spinner
@@ -131,8 +123,8 @@
         android:gravity="left"
         app:spn_label="Select Tag for Activity"
         app:spn_labelEnable="true"
-        android:layout_alignTop="@+id/tag"
-        android:layout_alignEnd="@+id/activity_note_input" />
+        android:layout_above="@+id/activity_note_input"
+        android:layout_alignEnd="@+id/createActivityButton" />
 
 
     <Button
