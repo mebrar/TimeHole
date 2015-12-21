@@ -51,6 +51,7 @@ import com.beter.timehole.R;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -67,29 +68,51 @@ public class StatisticsFragment extends Fragment {
         return rootView;
     }
 
+
+
     private void initData() {
         ArrayList<com.beter.timehole.core.Activity> activitiesArrayList = new ArrayList<com.beter.timehole.core.Activity>();
         activitiesArrayList  = readActivitiesFromFile();
 
-        ArrayList<String> codename = new ArrayList<>();
-        ArrayList<Double> values = new ArrayList<>();
-        ArrayList<String> colors = new ArrayList<>();
+        ArrayList<String> temp = new ArrayList<String>();
+        int tagNumber=0;
         for(int i=0;i<activitiesArrayList.size();i++)
         {
-                if(codename.size() == 0)
-                {
-                    codename.add(activitiesArrayList.get(i).getTag().getTagName());
-                }
+            if(i==0) {
+                temp.add(activitiesArrayList.get(i).getTag().getTagName());
+                tagNumber ++;
+            }
+            else if(temp.contains(activitiesArrayList.get(i).getTag().getTagName()))
+            {}
+            else
+            {
+                temp.add(activitiesArrayList.get(i).getTag().getTagName());
+                tagNumber ++;
+            }
+        }
 
-                if(codename.contains(activitiesArrayList.get(i).getTag().getTagName()))
+
+
+        String[] codename = new String[tagNumber];
+        Double[] values = new Double[tagNumber];
+        String[] colors = new String[tagNumber];
+        int j=1;
+        for(int i=0;i<activitiesArrayList.size();i++)
+        {
+                if(codename.length == 0) {
+                    codename[0] = activitiesArrayList.get(i).getTag().getTagName();
+                    values[0]=1.0;
+                }
+                else if(Arrays.asList(codename).contains(activitiesArrayList.get(i).getTag().getTagName()))
                 {
-                    int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName());
-                    values.set(index,values.get(index)+1);
+                    int index = java.util.Arrays.asList(codename).indexOf(activitiesArrayList.get(i).getTag().getTagName());
+                    values[index]=values[index]+1;
                 }
                 else {
-                     codename.add(activitiesArrayList.get(i).getTag().getTagName());
-                     int index = codename.indexOf(activitiesArrayList.get(i).getTag().getTagName());
-                     values.set(index, 1.0);
+                    codename[j] = activitiesArrayList.get(i).getTag().getTagName();
+                    int index = java.util.Arrays.asList(codename).indexOf(activitiesArrayList.get(i).getTag().getTagName());
+                    values[index]=1.0;
+                    j++;
                 }
         }
         /**
@@ -104,22 +127,22 @@ public class StatisticsFragment extends Fragment {
             }
         }
          */
-        for(int i=0; i<codename.size();i++)
+        for(int i=0; i<codename.length;i++)
         {
             int integer =(int) (Math.random()*1000000);
             String color = "#" + integer;
-            colors.add(color);
+            colors[i]= color;
         }
 
         CategorySeries series = new CategorySeries("Android Platform Version");
-        int length = codename.size();
+        int length = codename.length;
         for (int i = 0; i < length; i++)
-            series.add(codename.get(i), values.get(i));
+            series.add(codename[i], values[i]);
 
         DefaultRenderer renderer = new DefaultRenderer();
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
-            seriesRenderer.setColor(Color.parseColor(colors.get(i)));
+            seriesRenderer.setColor(Color.parseColor(colors[i]));
             renderer.addSeriesRenderer(seriesRenderer);
 
         }
