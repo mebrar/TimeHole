@@ -71,9 +71,9 @@ public class StatisticsFragment extends Fragment {
         ArrayList<com.beter.timehole.core.Activity> activitiesArrayList = new ArrayList<com.beter.timehole.core.Activity>();
         activitiesArrayList  = readActivitiesFromFile();
 
-        ArrayList<String> codename = new ArrayList<>();
-        ArrayList<Double> values = new ArrayList<>();
-        ArrayList<String> colors = new ArrayList<>();
+        ArrayList<String> codename = new ArrayList<>(5);
+        ArrayList<Double> values = new ArrayList<>(5);
+        ArrayList<String> colors = new ArrayList<>(5);
         for(int i=0;i<activitiesArrayList.size();i++)
         {
                 if(codename.size() == 0)
