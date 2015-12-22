@@ -96,7 +96,6 @@ public class AddReminderActivity extends AppCompatActivity {
             dateYear = year;
             dateMonth = monthOfYear +1;
             dateDay = dayOfMonth;
-            Toast.makeText(AddReminderActivity.this,dateYear + "/" + dateMonth + "/"+dateDay,Toast.LENGTH_LONG).show();
             updateDatePickerText();
         }
     };
@@ -106,7 +105,6 @@ public class AddReminderActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             timeHour = hourOfDay;
             timeMinute = minute;
-            Toast.makeText(AddReminderActivity.this,timeHour + ":" +timeMinute,Toast.LENGTH_LONG).show();
             updateTimePickerText();
         }
     };
