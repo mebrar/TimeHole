@@ -95,23 +95,27 @@ public class StatisticsFragment extends Fragment {
 
         String[] codename = new String[tagNumber];
         Double[] values = new Double[tagNumber];
-        String[] colors = new String[tagNumber];
+        int[] colors = new int[tagNumber];
         int j=1;
         for(int i=0;i<activitiesArrayList.size();i++)
         {
-                if(codename.length == 0) {
+                if(j == codename.length)
+                    break;
+                if(i==0) {
                     codename[0] = activitiesArrayList.get(i).getTag().getTagName();
-                    values[0]=1.0;
+                    values[0]=activitiesArrayList.get(i).calculateDuration();
+                    colors[0] = activitiesArrayList.get(i).getTag().getColor();
                 }
                 else if(Arrays.asList(codename).contains(activitiesArrayList.get(i).getTag().getTagName()))
                 {
                     int index = java.util.Arrays.asList(codename).indexOf(activitiesArrayList.get(i).getTag().getTagName());
-                    values[index]=values[index]+1;
+                    values[index]=values[index]+activitiesArrayList.get(i).calculateDuration();
                 }
                 else {
                     codename[j] = activitiesArrayList.get(i).getTag().getTagName();
                     int index = java.util.Arrays.asList(codename).indexOf(activitiesArrayList.get(i).getTag().getTagName());
-                    values[index]=1.0;
+                    values[index]=activitiesArrayList.get(i).calculateDuration();
+                    colors[j]=activitiesArrayList.get(i).getTag().getColor();
                     j++;
                 }
         }
@@ -127,13 +131,6 @@ public class StatisticsFragment extends Fragment {
             }
         }
          */
-        for(int i=0; i<codename.length;i++)
-        {
-            int integer =(int) (Math.random()*1000000);
-            String color = "#" + integer;
-            colors[i]= color;
-        }
-
         CategorySeries series = new CategorySeries("Android Platform Version");
         int length = codename.length;
         for (int i = 0; i < length; i++)
@@ -142,9 +139,8 @@ public class StatisticsFragment extends Fragment {
         DefaultRenderer renderer = new DefaultRenderer();
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
-            seriesRenderer.setColor(Color.parseColor(colors[i]));
+            seriesRenderer.setColor(colors[i]);
             renderer.addSeriesRenderer(seriesRenderer);
-
         }
 
         renderer.setChartTitleTextSize(60);

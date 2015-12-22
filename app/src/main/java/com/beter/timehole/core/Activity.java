@@ -7,6 +7,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Activity implements java.io.Serializable {
 
@@ -35,8 +36,6 @@ public class Activity implements java.io.Serializable {
     public boolean isDone() {
         return done;
     }
-
-
 
     public Tag getTag() {
         return tag;
@@ -78,8 +77,8 @@ public class Activity implements java.io.Serializable {
         this.note = note;
     }
 
-    public void calculateDuration(){
-
+    public double calculateDuration(){
+         return (double) (finishDate.getTime()- startDate.getTime());
     }
 
     @Override
@@ -88,6 +87,11 @@ public class Activity implements java.io.Serializable {
             note="-";
         if(name.equals(""))
             name="-";
+        String duration = String.format("%02d min, %02d sec",
+                TimeUnit.MILLISECONDS.toMinutes((long)this.calculateDuration()),
+                TimeUnit.MILLISECONDS.toSeconds((long)calculateDuration()) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes((long)calculateDuration()))
+        );
         String result;
         result= "Name: " +name + "\nDuration: " + duration + "\nTag: "+tag + "\nNote: " + note;
         return result;
