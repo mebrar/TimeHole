@@ -78,8 +78,8 @@ public class Activity implements java.io.Serializable {
         this.note = note;
     }
 
-    public void calculateDuration(){
-
+    public double calculateDuration(){
+         return (double) (finishDate.getTime()- startDate.getTime());
     }
 
     @Override

@@ -103,17 +103,17 @@ public class StatisticsFragment extends Fragment {
                     break;
                 if(i==0) {
                     codename[0] = activitiesArrayList.get(i).getTag().getTagName();
-                    values[0]=1.0;
+                    values[0]=activitiesArrayList.get(i).calculateDuration();
                 }
                 else if(Arrays.asList(codename).contains(activitiesArrayList.get(i).getTag().getTagName()))
                 {
                     int index = java.util.Arrays.asList(codename).indexOf(activitiesArrayList.get(i).getTag().getTagName());
-                    values[index]=values[index]+1;
+                    values[index]=values[index]+activitiesArrayList.get(i).calculateDuration();
                 }
                 else {
                     codename[j] = activitiesArrayList.get(i).getTag().getTagName();
                     int index = java.util.Arrays.asList(codename).indexOf(activitiesArrayList.get(i).getTag().getTagName());
-                    values[index]=1.0;
+                    values[index]=activitiesArrayList.get(i).calculateDuration();
                     j++;
                 }
         }
@@ -148,7 +148,6 @@ public class StatisticsFragment extends Fragment {
             int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
             seriesRenderer.setColor(color);
             renderer.addSeriesRenderer(seriesRenderer);
-
         }
 
         renderer.setChartTitleTextSize(60);
