@@ -35,9 +35,7 @@ public class Activity implements java.io.Serializable {
     public boolean isDone() {
         return done;
     }
-
-
-
+    
     public Tag getTag() {
         return tag;
     }

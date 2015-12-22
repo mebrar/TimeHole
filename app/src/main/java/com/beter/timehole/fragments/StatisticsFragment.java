@@ -95,7 +95,7 @@ public class StatisticsFragment extends Fragment {
 
         String[] codename = new String[tagNumber];
         Double[] values = new Double[tagNumber];
-        String[] colors = new String[tagNumber];
+        int[] colors = new int[tagNumber];
         int j=1;
         for(int i=0;i<activitiesArrayList.size();i++)
         {
@@ -104,6 +104,7 @@ public class StatisticsFragment extends Fragment {
                 if(i==0) {
                     codename[0] = activitiesArrayList.get(i).getTag().getTagName();
                     values[0]=activitiesArrayList.get(i).calculateDuration();
+                    colors[0] = activitiesArrayList.get(i).getTag().getColor();
                 }
                 else if(Arrays.asList(codename).contains(activitiesArrayList.get(i).getTag().getTagName()))
                 {
@@ -114,6 +115,7 @@ public class StatisticsFragment extends Fragment {
                     codename[j] = activitiesArrayList.get(i).getTag().getTagName();
                     int index = java.util.Arrays.asList(codename).indexOf(activitiesArrayList.get(i).getTag().getTagName());
                     values[index]=activitiesArrayList.get(i).calculateDuration();
+                    colors[j]=activitiesArrayList.get(i).getTag().getColor();
                     j++;
                 }
         }
@@ -129,13 +131,6 @@ public class StatisticsFragment extends Fragment {
             }
         }
          */
-        for(int i=0; i<codename.length;i++)
-        {
-            int integer =(int) (Math.random()*1000000);
-            String color = "#" + integer;
-            colors[i]= color;
-        }
-
         CategorySeries series = new CategorySeries("Android Platform Version");
         int length = codename.length;
         for (int i = 0; i < length; i++)
@@ -144,9 +139,7 @@ public class StatisticsFragment extends Fragment {
         DefaultRenderer renderer = new DefaultRenderer();
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
-            Random rnd = new Random();
-            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            seriesRenderer.setColor(color);
+            seriesRenderer.setColor(colors[i]);
             renderer.addSeriesRenderer(seriesRenderer);
         }
 
