@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beter.timehole.R;
@@ -38,6 +39,10 @@ public class ActivitiesFragment extends Fragment {
         View ActivitiesRootView = inflater.inflate(R.layout.activity_fragment, container, false);
 
         activitiesArrayList = readActivitiesFromFile();
+        TextView noActivity =(TextView)ActivitiesRootView.findViewById(R.id.noActivity);
+        if(!activitiesArrayList.isEmpty()){
+            noActivity.setText("");
+        }
 
         MyCustomAdapter adapter = new MyCustomAdapter(activitiesArrayList,getActivity());
         ListView doneList = (ListView) ActivitiesRootView.findViewById(R.id.listView1);

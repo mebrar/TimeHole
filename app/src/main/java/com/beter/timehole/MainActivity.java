@@ -80,9 +80,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -92,35 +89,6 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Intent iin= getIntent();
-        Bundle b = iin.getExtras();
-        MenuItem activityMenuItem = (MenuItem)findViewById(R.id.nav_activities);
-        MenuItem reminderMenuItem = (MenuItem)findViewById(R.id.nav_reminder);
-        MenuItem tagsMenuItem = (MenuItem)findViewById(R.id.nav_tags);
-        if(activityMenuItem == null || reminderMenuItem == null || tagsMenuItem == null){
-            Toast.makeText(this, "NULLLLLLL", Toast.LENGTH_LONG);
-        }
-        navigationView.setCheckedItem(R.id.nav_reminder);
-
-
-        if(b != null)
-        {
-            String nav_it =(String) b.get("nav_item");
-            if(nav_it != null) {
-                if (nav_it.equals("activity")) {
-                    //onNavigationItemSelected()
-                    Log.i(TAG, "ACTIVITY");
-                } else if (nav_it.equals("reminder")) {
-                    //navigationView.setCheckedItem(R.id.nav_reminder);
-                    Log.i(TAG, "REMINDER");
-                } else if (nav_it.equals("tag")) {
-                    //navigationView.setCheckedItem(R.id.nav_tags);
-                    Log.i(TAG, "TAG");
-                } else {
-                    Log.i(TAG, "ELSE");
-                }
-            }
-        }
 
     }
 
@@ -157,7 +125,6 @@ public class MainActivity extends AppCompatActivity
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
-
     }
 
     @Override

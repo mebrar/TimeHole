@@ -109,7 +109,6 @@ public class AddTagsActivity extends AppCompatActivity {
 
 
         dfragbutton = (Button) findViewById(R.id.dfragbutton);
-        final Intent tagsBackIntent = new Intent(this, MainActivity.class);
 
         dfragbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
@@ -119,9 +118,7 @@ public class AddTagsActivity extends AppCompatActivity {
                 ArrayList<Tag> tempTagsContainer = readTagsFromFile();
                 tempTagsContainer.add(newTag);
                 writeTagToFile(tempTagsContainer);
-                String fragmName = "tag";
-                tagsBackIntent.putExtra("nav_item", fragmName);
-                startActivity(tagsBackIntent);
+                onBackPressed();
             }
         });
     }

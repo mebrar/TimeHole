@@ -135,7 +135,7 @@ public class AddActivityActivity extends AppCompatActivity {
     @Override
     protected Dialog onCreateDialog(int id){
         if(id == START_DATE_DIALOG_ID){
-            return new DatePickerDialog(this,R.style.Material_App_Dialog_DatePicker,startDatePickerListener, startDateYear,startDateMonth,startDateDay);
+            return new DatePickerDialog(this,startDatePickerListener, startDateYear,startDateMonth,startDateDay);
         }
         else if(id == FINISH_DATE_DIALOG_ID){
             return new DatePickerDialog(this,finishDatePickerListener, finishDateYear,finishDateMonth,finishDateDay);
@@ -254,10 +254,7 @@ public class AddActivityActivity extends AppCompatActivity {
         activitiesContainer = readActivitiesFromFile();
         activitiesContainer.add(activity);
         writeActivityToFile(activitiesContainer);
-        Intent activityBackIntent = new Intent(this, MainActivity.class);
-        String fragmName = "activity";
-        activityBackIntent.putExtra("nav_item", fragmName);
-        startActivity(activityBackIntent);
+        onBackPressed();
     }
 
     private ArrayList<Tag> readTagsFromFile(){

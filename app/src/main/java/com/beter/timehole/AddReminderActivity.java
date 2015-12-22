@@ -164,10 +164,8 @@ public class AddReminderActivity extends AppCompatActivity {
 
         Toast.makeText(this,"Reminder set",Toast.LENGTH_SHORT).show();
 
-        Intent reminderBackIntent = new Intent(this, MainActivity.class);
-        String fragmName = "reminder";
-        reminderBackIntent.putExtra("nav_item", fragmName);
-        startActivity(reminderBackIntent);
+
+        onBackPressed();
     }
 
     @Override
