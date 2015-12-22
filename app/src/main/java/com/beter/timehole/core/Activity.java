@@ -94,7 +94,7 @@ public class Activity implements java.io.Serializable {
         );
         int index = duration.indexOf("n");
         String result;
-        result= "Name: " +name + "\nDuration: " + duration.substring(0,index) + "\nTag: "+tag + "\nNote: " + note;
+        result= "Name: " +name + "\nDuration: " + duration.substring(0,index+1) + "\nTag: "+tag + "\nNote: " + note;
         return result;
     }
 
