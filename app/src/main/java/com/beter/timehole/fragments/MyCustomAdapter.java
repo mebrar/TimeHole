@@ -77,7 +77,6 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             checkbox.setText("Undone");
         }
 
-
        button.setOnClickListener(new View.OnClickListener() {
                                      public void onClick(View v) {
                                          list.remove(Position);
