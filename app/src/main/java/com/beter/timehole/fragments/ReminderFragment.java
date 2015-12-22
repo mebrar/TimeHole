@@ -45,7 +45,7 @@ public class ReminderFragment extends Fragment {
 
         reminderArrayList = readRemindersFromFile();
         if(!reminderArrayList.isEmpty()){
-            firstReminder = reminderArrayList.get(0);
+            firstReminder = reminderArrayList.get(reminderArrayList.size()-1);
         }
         CustomReminderAdapter adapter = new CustomReminderAdapter(reminderArrayList,getActivity());
         ListView reminderlist = (ListView) reminderRootView.findViewById(R.id.listView);

@@ -55,7 +55,7 @@ public class MainFragment extends Fragment {
 
         if(reminderListFromFile.isEmpty()){
             lastReminderTextView.setText("No reminder created yet...");
-            please2.setText("");
+            please2.setText("Click to Add Any Reminder");
         }
         else{
             lastReminder = reminderListFromFile.get(reminderListFromFile.size()-1);
@@ -64,7 +64,7 @@ public class MainFragment extends Fragment {
 
         if(activitiesListFromFile.isEmpty()){
             lastActivityTextView.setText("No activity created yet...");
-            please1.setText("");
+            please1.setText("Click to Add Any Activity");
         }
         else{
             lastActivity = activitiesListFromFile.get(activitiesListFromFile.size()-1);

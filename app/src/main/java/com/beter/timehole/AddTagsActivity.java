@@ -1,6 +1,7 @@
 package com.beter.timehole;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -108,6 +109,7 @@ public class AddTagsActivity extends AppCompatActivity {
 
 
         dfragbutton = (Button) findViewById(R.id.dfragbutton);
+        final Intent tagsBackIntent = new Intent(this, MainActivity.class);
 
         dfragbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
@@ -117,7 +119,9 @@ public class AddTagsActivity extends AppCompatActivity {
                 ArrayList<Tag> tempTagsContainer = readTagsFromFile();
                 tempTagsContainer.add(newTag);
                 writeTagToFile(tempTagsContainer);
-                onBackPressed();
+                String fragmName = "tag";
+                tagsBackIntent.putExtra("nav_item", fragmName);
+                startActivity(tagsBackIntent);
             }
         });
     }

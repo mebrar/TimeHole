@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.ViewGroup;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.beter.timehole.core.Reminder;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -90,6 +91,37 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent iin= getIntent();
+        Bundle b = iin.getExtras();
+        MenuItem activityMenuItem = (MenuItem)findViewById(R.id.nav_activities);
+        MenuItem reminderMenuItem = (MenuItem)findViewById(R.id.nav_reminder);
+        MenuItem tagsMenuItem = (MenuItem)findViewById(R.id.nav_tags);
+        if(activityMenuItem == null || reminderMenuItem == null || tagsMenuItem == null){
+            Toast.makeText(this, "NULLLLLLL", Toast.LENGTH_LONG);
+        }
+        navigationView.setCheckedItem(R.id.nav_reminder);
+
+
+        if(b != null)
+        {
+            String nav_it =(String) b.get("nav_item");
+            if(nav_it != null) {
+                if (nav_it.equals("activity")) {
+                    //onNavigationItemSelected()
+                    Log.i(TAG, "ACTIVITY");
+                } else if (nav_it.equals("reminder")) {
+                    //navigationView.setCheckedItem(R.id.nav_reminder);
+                    Log.i(TAG, "REMINDER");
+                } else if (nav_it.equals("tag")) {
+                    //navigationView.setCheckedItem(R.id.nav_tags);
+                    Log.i(TAG, "TAG");
+                } else {
+                    Log.i(TAG, "ELSE");
+                }
+            }
+        }
+
     }
 
 
@@ -151,6 +183,7 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
