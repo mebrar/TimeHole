@@ -144,7 +144,9 @@ public class StatisticsFragment extends Fragment {
         DefaultRenderer renderer = new DefaultRenderer();
         for (int i = 0; i < length; i++) {
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
-            seriesRenderer.setColor(Color.RED);
+            Random rnd = new Random();
+            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+            seriesRenderer.setColor(color);
             renderer.addSeriesRenderer(seriesRenderer);
 
         }
