@@ -27,6 +27,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import android.util.Log;
+import android.widget.TextView;
 
 public class ReminderFragment extends Fragment {
 
@@ -42,10 +43,11 @@ public class ReminderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View reminderRootView = inflater.inflate(R.layout.reminder_fragment, container, false);
-
+        TextView noReminder =(TextView)reminderRootView.findViewById(R.id.noReminder);
         reminderArrayList = readRemindersFromFile();
         if(!reminderArrayList.isEmpty()){
-            firstReminder = reminderArrayList.get(0);
+            firstReminder = reminderArrayList.get(reminderArrayList.size()-1);
+            noReminder.setText("");
         }
         CustomReminderAdapter adapter = new CustomReminderAdapter(reminderArrayList,getActivity());
         ListView reminderlist = (ListView) reminderRootView.findViewById(R.id.listView);

@@ -16,5 +16,14 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="no reminder created yet"
+        android:id="@+id/noReminder"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

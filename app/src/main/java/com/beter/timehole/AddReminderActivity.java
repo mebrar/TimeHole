@@ -164,6 +164,7 @@ public class AddReminderActivity extends AppCompatActivity {
 
         Toast.makeText(this,"Reminder set",Toast.LENGTH_SHORT).show();
 
+
         onBackPressed();
     }
 

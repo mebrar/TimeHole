@@ -92,8 +92,9 @@ public class Activity implements java.io.Serializable {
                 TimeUnit.MILLISECONDS.toSeconds((long)calculateDuration()) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes((long)calculateDuration()))
         );
+        int index = duration.indexOf("n");
         String result;
-        result= "Name: " +name + "\nDuration: " + duration + "\nTag: "+tag + "\nNote: " + note;
+        result= "Name: " +name + "\nDuration: " + duration.substring(0,index+1) + "\nTag: "+tag + "\nNote: " + note;
         return result;
     }
 
