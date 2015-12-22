@@ -99,7 +99,9 @@ public class StatisticsFragment extends Fragment {
         int j=1;
         for(int i=0;i<activitiesArrayList.size();i++)
         {
-                if(codename.length == 0) {
+                if(j == codename.length)
+                    break;
+                if(i==0) {
                     codename[0] = activitiesArrayList.get(i).getTag().getTagName();
                     values[0]=1.0;
                 }
