@@ -93,7 +93,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                                                 @Override
                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                                     String text = "";
-                                                    list.get(Position).setDone(checkbox.isChecked());//Changes the value of the activity object's boolean
+                                                    //list.get(Position).setDone(checkbox.isChecked());//Changes the value of the activity object's boolean
                                                     if (checkbox.isChecked())
                                                         checkbox.setText("Done");
                                                     else
