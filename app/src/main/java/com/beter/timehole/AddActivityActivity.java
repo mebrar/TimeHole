@@ -155,7 +155,6 @@ public class AddActivityActivity extends AppCompatActivity {
             startDateYear = year;
             startDateMonth = monthOfYear +1;
             startDateDay = dayOfMonth;
-            Toast.makeText(AddActivityActivity.this,startDateYear + "/" + startDateMonth + "/"+startDateDay,Toast.LENGTH_LONG).show();
             updateStartDatePickerText();
         }
     };
@@ -165,7 +164,6 @@ public class AddActivityActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             startTimeHour = hourOfDay;
             startTimeMinute = minute;
-            Toast.makeText(AddActivityActivity.this,startTimeHour + ":" +startTimeMinute,Toast.LENGTH_LONG).show();
             updateStartTimePickerText();
         }
     };
@@ -176,7 +174,6 @@ public class AddActivityActivity extends AppCompatActivity {
             finishDateYear = year;
             finishDateMonth = monthOfYear +1;
             finishDateDay = dayOfMonth;
-            Toast.makeText(AddActivityActivity.this,finishDateYear + "/" + finishDateMonth + "/"+finishDateDay,Toast.LENGTH_LONG).show();
             updateFinishDatePickerText();
         }
     };
@@ -186,7 +183,6 @@ public class AddActivityActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             finishTimeHour = hourOfDay;
             finishTimeMinute = minute;
-            Toast.makeText(AddActivityActivity.this,finishTimeHour + ":" +finishTimeMinute,Toast.LENGTH_LONG).show();
             updateFinishTimePickerText();
         }
     };
@@ -254,6 +250,17 @@ public class AddActivityActivity extends AppCompatActivity {
         activitiesContainer = readActivitiesFromFile();
         activitiesContainer.add(activity);
         writeActivityToFile(activitiesContainer);
+        boolean yearComparison = startDateYear < finishDateYear;
+        boolean monthComparison = startDateMonth < finishDateMonth;
+        boolean dayComparison = startDateDay < finishDateDay;
+        boolean hourComparison = startTimeHour < finishTimeHour;
+        boolean minuteComparison = startTimeMinute < finishTimeMinute;
+
+        boolean dateComparison = yearComparison || (!yearComparison && monthComparison) || (!yearComparison && !monthComparison && dayComparison)
+                || (!yearComparison && !monthComparison && !dayComparison && hourComparison) || (!yearComparison && !monthComparison && !dayComparison && !hourComparison && minuteComparison);
+
+        if (dateComparison == true)
+            Toast.makeText(AddActivityActivity.this,"Be aware that finish date is earlier than start date for this activity!",Toast.LENGTH_LONG).show();
         onBackPressed();
     }
 
