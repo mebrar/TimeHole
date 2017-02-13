@@ -1,2 +1,2 @@
 # "TimeHole" Time Tracking App
-CS102 Term Project Repository
+Algorithms and Programming (CS102) Term Project Repository
